@@ -1,0 +1,28 @@
+Public.carrera:
+    type: entity
+    table: public.carrera
+    fields:
+        idCarrera:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_carrera
+            generator:
+                strategy: SEQUENCE
+        nombre:
+            type: string
+            length: 75
+            fixed: false
+            nullable: false
+    manyToOne:
+        idFacultad:
+            targetEntity: Facultad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_facultad:
+                    referencedColumnName: id_facultad
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

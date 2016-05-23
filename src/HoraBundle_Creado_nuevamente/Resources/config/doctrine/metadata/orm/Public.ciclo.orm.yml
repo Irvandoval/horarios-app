@@ -1,0 +1,26 @@
+Public.ciclo:
+    type: entity
+    table: public.ciclo
+    fields:
+        idCiclo:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_ciclo
+            generator:
+                strategy: SEQUENCE
+        nombre:
+            type: string
+            length: 15
+            fixed: false
+            nullable: false
+        fechaInicio:
+            type: date
+            nullable: false
+            column: fecha_inicio
+        fechaFin:
+            type: date
+            nullable: false
+            column: fecha_fin
+    lifecycleCallbacks: {  }

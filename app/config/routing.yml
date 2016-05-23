@@ -1,0 +1,31 @@
+hora:
+    resource: "@HoraBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#q_qi_recordapp:
+#    resource: "@QQiRecordappBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
+
+# Internal routing configuration to handle ESI
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
+
+_usuario:
+    resource: "@QQiRecordappBundle/Resources/config/usuario_routing.yml"
+
+_rol:
+    resource: "@QQiRecordappBundle/Resources/config/rol_routing.yml"
+
+_tarea:
+    resource: "@QQiRecordappBundle/Resources/config/tarea_routing.yml"
+
+_enlace:
+    resource: "@QQiRecordappBundle/Resources/config/enlace_routing.yml"
+
+_informe:
+    resource: "@QQiRecordappBundle/Resources/config/informe_routing.yml"
+
+_comun:
+    resource: "@QQiRecordappBundle/Resources/config/routing.yml"

@@ -1,0 +1,50 @@
+Public.actividad:
+    type: entity
+    table: public.actividad
+    fields:
+        idActividad:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_actividad
+            generator:
+                strategy: SEQUENCE
+    manyToOne:
+        idTipoActividad:
+            targetEntity: Tipoactividad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tipo_actividad:
+                    referencedColumnName: id_tipo_actividad
+            orphanRemoval: false
+        idLugar:
+            targetEntity: Lugar
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_lugar:
+                    referencedColumnName: id_lugar
+            orphanRemoval: false
+        idDiahora:
+            targetEntity: Diahora
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_diahora:
+                    referencedColumnName: id_diahora
+            orphanRemoval: false
+        idHAsig:
+            targetEntity: Horarioasignatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_h_asig:
+                    referencedColumnName: id_h_asig
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

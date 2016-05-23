@@ -1,0 +1,153 @@
+{% extends "QQiRecordappBundle::layout.html.twig" %}
+
+{% block title %}RecordApp{% endblock %} 
+
+{% block body %}
+
+    {% include "QQiRecordappBundle::opciones.html.twig" with { 'tareas' : tareas | length, 'enlaces' : enlaces | length } %}
+
+<div class="row-fluid">
+    <div class="span12">
+        <section class="utopia-widget">
+            <div class="utopia-widget-title">
+                <img src="{{ asset('bundles/qqirecordapp/img/icons/group.png') }}" class="utopia-widget-icon"><span>Últimas actividades</span>
+            </div>
+            <div class="utopia-widget-content">
+                <div class="tabbable"> 
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Tareas</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Enlaces</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <div class="utopia-widget-content">
+                            <table class="table datatable table-striped table-bordered" id="example">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tarea</th>
+                                <th>Contenido</th>
+                                <th>Fecha</th>
+                                <th>Acción</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for datos in tareas %}
+                                <tr>
+                                    <td>{{ datos.id }}</td>
+                                    <td>{{ datos.titulo }}</td>
+                                    <td><a class="verTarea" data-toggle="modal" href="#verTarea">{{ datos.nombre }}</a></td>
+                                    <td>{{ datos.fecha | date("j/m/Y \\- g:i\\h\\s") }}</td>
+                                    <td>
+                                        <span class="date"><a href="{{ path('admin_tarea_editar', { 'id': datos.id }) }}" title="Editar"><i class="icon-edit"></i></a>
+
+                                        <span class="date"><a href="{{ path('admin_tarea_eliminar', { 'id': datos.id }) }}" title="Eliminar"><i class="icon-trash"></i></a></span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                            <div class="utopia-widget-content">
+                                {% for datos in enlaces %}
+                                <div class="utopia-chat">
+                                    <img src="{{ asset('bundles/qqirecordapp/img/icons/link.png') }}" alt="user1">
+                                    <div class="text">
+                                        <div class="status-alter"><i class="icon-envelope"></i><span class="user">{{ datos.titulo }}</span><span class="date"><a href="{{ path('admin_enlace_eliminar', { 'id': datos.id }) }}" title="Eliminar"><i class="icon-trash"></i></a> {{ datos.fecha | date("j/m/Y \\- g:i\\h\\s") }}</span>
+                                    </div>
+                                    <p><a href="{{ datos.url }}" target="_blank">{{ datos.url }}</a></p>
+                                </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Nueva Tarea -->
+<div class="modal hide fade" id="nuevaTarea">
+    <div class="modal-header">
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+        <h3>Nueva Tarea</h3>
+    </div>
+    <form class="modal-form" action="{{ path("admin_tarea_nueva") }}" method="post" name="formTarea">
+    <div class="modal-body">
+        <div>
+            <input class="input-xlarge" id="titulo" name="titulo" type="text" placeholder="Titulo" />
+        </div>
+        <div>
+            <textarea class="input-xlarge" id="nombre" name="nombre"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="utopia-all-button"><button class="btn btn-primary span4" href="javascript:void(0)">Enviar</button></div>
+    </div>
+    </form>
+</div>
+
+<!-- Nuevo Enlace -->
+<div class="modal hide fade" id="nuevoEnlace">
+    <div class="modal-header">
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+        <h3>Nuevo Enlace</h3>
+    </div>
+    <form class="modal-form" action="{{ path("admin_enlace_nuevo") }}" method="post" name="formTarea">
+    <div class="modal-body">
+        <div>
+            <input class="input-xlarge" id="titulo" name="titulo" type="text" placeholder="Titulo" />
+        </div>
+        <div>
+            <input class="input-xlarge" id="url" name="url" type="text" placeholder="http://" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="utopia-all-button"><button class="btn btn-primary span4" href="javascript:void(0)">Enviar</button></div>
+    </div>
+    </form>
+</div>
+
+<!-- Nuevo Enlace -->
+<div class="modal hide fade" id="verTarea">
+    <div class="modal-header">
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+        <h3>Tarea Titulo</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+            <p>Tarea contenido</p>
+            <p>Tarea Fecha</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Aceptar</button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+$(document).ready(function() {
+    $.extend( $.fn.dataTable.defaults, {
+        "bSort": false
+    } );
+
+    $('#example').dataTable( {
+        "sPaginationType": "bootstrap",
+        "oLanguage": {
+            "sLengthMenu": "Mostrar _MENU_ Tareas",
+            "sSearch": "Buscar ",
+            "sInfo": "Mostrando _START_ de _END_ en _TOTAL_ Tareas",
+            "sPrevious": "Anterior",
+            "sNext": "Siguiente",
+        }
+    } );
+} );
+</script>
+{% endblock %}

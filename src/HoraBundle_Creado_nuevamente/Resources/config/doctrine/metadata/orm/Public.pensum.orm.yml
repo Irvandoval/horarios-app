@@ -1,0 +1,47 @@
+Public.pensum:
+    type: entity
+    table: public.pensum
+    fields:
+        idPensum:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_pensum
+            generator:
+                strategy: SEQUENCE
+        nivel:
+            type: integer
+            unsigned: false
+            nullable: true
+        activa:
+            type: boolean
+            nullable: true
+        plan:
+            type: string
+            length: 25
+            fixed: false
+            nullable: true
+        vigente:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idCarrera:
+            targetEntity: Carrera
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_carrera:
+                    referencedColumnName: id_carrera
+            orphanRemoval: false
+        idAsignatura:
+            targetEntity: Asignatura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_asignatura:
+                    referencedColumnName: id_asignatura
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
