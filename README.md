@@ -22,7 +22,7 @@ El Código fuente de RecordApp se encuentra en los repositorios públicos de
 GitHub es por ello que para descargar solo bastará con hacer un clon de este
 repositorio en su servidor local.
 
-    git clone https://github.com/elcodigok/recordapp.git recordapp
+    git clone  https://github.com/Irvandoval/horarios-app.git  horariosApp
 
 Dentro del directorio generado ejecutamos:
 
@@ -31,17 +31,7 @@ Dentro del directorio generado ejecutamos:
 2) Configuración de la Base de Datos
 -------------------------------------
 
-Para utilizar RecordApp es necesario contar con una Base de Datos en MySQL 
-junto a las credenciales de un usuario válido.
-
-Para ello necesitamos copiar el contenido del archivo parameters.yml.dis de la
-siguiente manera:
-
-    cp app/config/parameters.yml.dis app/config/parameters.yml
-
-De esta forma solo queda modificar el archivo parameters.yml con los datos de 
-nuestra bases de datos y generar el esquema de base de datos de la siguiente 
-forma:
+generar el esquema de base de datos de la siguiente forma:
 
     php app/console doctrine:schema:create
 
