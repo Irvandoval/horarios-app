@@ -2,11 +2,11 @@ HorariosApp
 =========
 
 Bienvenidos a HorariosApp - Una aplicación desarrollada en Symfony2 que me 
-ermite gestionar todas las Tareas y los Enlaces que ejecutamos a diario en 
-nuestra actividad.
+permite gestionar todas las tareas para planificar los horarios de las asignaturas
+impartidas en un ciclo de estudio.
 
 En este documento se encuentra los pasos para poder instalar correctamente 
-RecodApp en un entorno local ya sea en un entorno de Desarrollo o de 
+HorariosApp en un entorno local ya sea en un entorno de Desarrollo o de 
 Producción.
 
 1) Instalación de HorariosApp
@@ -70,11 +70,12 @@ Ahora solo queda entrar desde un navegador web a http://<ip servidor>/HorariosAp
 
  * usuario@usuario.com / usuario
  
- 6) Configuracion postgresql 
+6) Configuracion postgresql 
 -----------------------
 
 Crear la base de datos en postgresq, colocar las credenciales en el parameter,
 da un error en el logueo por el tipo de dato booleano hay que ir a la entidad 
 UsuarioType y cambiar una condicion que verifica si el usuario esta activo en 
-ves de usar unos o cero para comparar valores booleanos usar True o False eso solo para postgresql
+ves de usar unos o cero para comparar valores booleanos usar True o False eso 
+solo para postgresql
 
