@@ -1,0 +1,67 @@
+<?php
+
+namespace QQi\RecordappBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Actividad
+ *
+ * @ORM\Table(name="actividad")
+ * @ORM\Entity
+ */
+class Actividad
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Horarioasignatura
+     *
+     * @ORM\ManyToOne(targetEntity="Horarioasignatura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_HOASIG", referencedColumnName="ID")
+     * })
+     */
+    private $idHoasig;
+
+    /**
+     * @var \Tipoactividad
+     *
+     * @ORM\ManyToOne(targetEntity="Tipoactividad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_TIPOACTIVIDAD", referencedColumnName="ID")
+     * })
+     */
+    private $idTipoactividad;
+
+    /**
+     * @var \Lugar
+     *
+     * @ORM\ManyToOne(targetEntity="Lugar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_LUGAR", referencedColumnName="ID")
+     * })
+     */
+    private $idLugar;
+
+    /**
+     * @var \Diahora
+     *
+     * @ORM\ManyToOne(targetEntity="Diahora")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_DIAHORA", referencedColumnName="ID")
+     * })
+     */
+    private $idDiahora;
+
+
+}

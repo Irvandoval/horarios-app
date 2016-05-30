@@ -1,0 +1,75 @@
+<?php
+
+namespace QQi\RecordappBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Pensum
+ *
+ * @ORM\Table(name="pensum")
+ * @ORM\Entity
+ */
+class Pensum
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NIVEL", type="integer", nullable=true)
+     */
+    private $nivel;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ACTIVA", type="boolean", nullable=true)
+     */
+    private $activa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PLAN", type="string", length=25, nullable=true)
+     */
+    private $plan;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="VIGENTE", type="boolean", nullable=true)
+     */
+    private $vigente;
+
+    /**
+     * @var \Asignatura
+     *
+     * @ORM\ManyToOne(targetEntity="Asignatura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ASIGNATURA", referencedColumnName="ID")
+     * })
+     */
+    private $idAsignatura;
+
+    /**
+     * @var \Carrera
+     *
+     * @ORM\ManyToOne(targetEntity="Carrera")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_CARRERA", referencedColumnName="ID")
+     * })
+     */
+    private $idCarrera;
+
+
+}

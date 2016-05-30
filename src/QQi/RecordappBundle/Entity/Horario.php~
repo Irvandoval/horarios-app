@@ -1,0 +1,54 @@
+<?php
+
+namespace QQi\RecordappBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Horario
+ *
+ * @ORM\Table(name="horario")
+ * @ORM\Entity
+ */
+class Horario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=true)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \Estados
+     *
+     * @ORM\ManyToOne(targetEntity="Estados")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ESTADO", referencedColumnName="ID")
+     * })
+     */
+    private $idEstado;
+
+    /**
+     * @var \Ciclo
+     *
+     * @ORM\ManyToOne(targetEntity="Ciclo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_CICLO", referencedColumnName="ID")
+     * })
+     */
+    private $idCiclo;
+
+
+}

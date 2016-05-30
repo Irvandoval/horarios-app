@@ -1,0 +1,47 @@
+{% extends "QQiRecordappBundle::layout.html.twig" %}
+
+{% block title %}Todas los ciclos{% endblock %}
+
+{% block body %}
+
+<h1>Ciclo</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ entity.nombre }}</td>
+        </tr>
+        <tr>
+            <th>Fechainicio</th>
+            <td>{{ entity.fechaInicio|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Fechafin</th>
+            <td>{{ entity.fechaFin|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+        <a href="{{ path('ciclo') }}">
+            <i class="icon-th-list"></i> Regresar a listado
+        </a>
+
+        <a href="{{ path('ciclo_edit', { 'id': entity.id }) }}">
+            <i class="icon-edit"></i> Modificar
+        </a>
+
+
+        <form action="{{ path('ciclo_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit" class="btn btn-info" value="Eliminar"></button>
+        </form>
+
+</div>
+
+{% endblock %}

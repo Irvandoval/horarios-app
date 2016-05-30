@@ -1,0 +1,54 @@
+<?php
+
+namespace QQi\RecordappBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Horarioasignatura
+ *
+ * @ORM\Table(name="horarioasignatura")
+ * @ORM\Entity
+ */
+class Horarioasignatura
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="CORRELATIVO", type="decimal", nullable=false)
+     */
+    private $correlativo;
+
+    /**
+     * @var \Horario
+     *
+     * @ORM\ManyToOne(targetEntity="Horario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_HORARIO", referencedColumnName="ID")
+     * })
+     */
+    private $idHorario;
+
+    /**
+     * @var \Asignatura
+     *
+     * @ORM\ManyToOne(targetEntity="Asignatura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ASIGNATURA", referencedColumnName="ID")
+     * })
+     */
+    private $idAsignatura;
+
+
+}
