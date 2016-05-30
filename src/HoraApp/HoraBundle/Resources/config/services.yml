@@ -1,7 +1,0 @@
-parameters:
-#    hora.example.class: HoraApp\HoraBundle\Example
-
-services:
-#    hora.example:
-#        class: %hora.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
