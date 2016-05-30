@@ -1,7 +1,7 @@
-RecordApp
+HorariosApp
 =========
 
-Bienvenidos a RecordApp - Una aplicación desarrollada en Symfony2 que me 
+Bienvenidos a HorariosApp - Una aplicación desarrollada en Symfony2 que me 
 ermite gestionar todas las Tareas y los Enlaces que ejecutamos a diario en 
 nuestra actividad.
 
@@ -9,7 +9,7 @@ En este documento se encuentra los pasos para poder instalar correctamente
 RecodApp en un entorno local ya sea en un entorno de Desarrollo o de 
 Producción.
 
-1) Instalación de RecordApp
+1) Instalación de HorariosApp
 ---------------------------
 
 Antes de comenzar con el proceso de instalación es necesario mencionar los 
@@ -18,7 +18,7 @@ Apache MySQL PHP) para proceder a la instalación.
 
 ### Descargar la Aplicación
 
-El Código fuente de RecordApp se encuentra en los repositorios públicos de 
+El Código fuente de HorariosApp se encuentra en los repositorios públicos de 
 GitHub es por ello que para descargar solo bastará con hacer un clon de este
 repositorio en su servidor local.
 
@@ -38,7 +38,7 @@ generar el esquema de base de datos de la siguiente forma:
 3) Permiso en los Directorios
 -----------------------------
 
-Antes de corroborar y comenzar a utilizar RecordApp es necesario asignarle 
+Antes de corroborar y comenzar a utilizar HorariosApp es necesario asignarle 
 algunos permisos especiales a dos directorios:
 
     chown www-data:www-data app/cache/ -R
@@ -56,7 +56,7 @@ necesita el sistema.
     php app/console assets:install web/
     php app/console doctrine:fixtures:load --append
 
-Ahora solo queda entrar desde un navegador web a http://<ip servidor>/recordapp/web/app.php
+Ahora solo queda entrar desde un navegador web a http://<ip servidor>/HorariosApp/web/app.php
 
 
 5) Usuarios por defecto
@@ -69,3 +69,12 @@ Ahora solo queda entrar desde un navegador web a http://<ip servidor>/recordapp/
 ### Credenciales para el usuario con menos privilegios
 
  * usuario@usuario.com / usuario
+ 
+ 6) Configuracion postgresql 
+-----------------------
+
+Crear la base de datos en postgresq, colocar las credenciales en el parameter,
+da un error en el logueo por el tipo de dato booleano hay que ir a la entidad 
+UsuarioType y cambiar una condicion que verifica si el usuario esta activo en 
+ves de usar unos o cero para comparar valores booleanos usar True o False eso solo para postgresql
+
