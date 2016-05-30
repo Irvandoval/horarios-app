@@ -1,6 +1,3 @@
-hora:
-    resource: "@HoraBundle/Resources/config/routing.yml"
-    prefix:   /
 
 #q_qi_recordapp:
 #    resource: "@QQiRecordappBundle/Controller/"
@@ -26,6 +23,15 @@ _enlace:
 
 _informe:
     resource: "@QQiRecordappBundle/Resources/config/informe_routing.yml"
+
+_tipoactividad:
+    resource: "@QQiRecordappBundle/Resources/config/routing/tipoactividad.yml"
+
+_ciclo:
+    resource: "@QQiRecordappBundle/Resources/config/routing/ciclo.yml"
+
+_estados:
+        resource: "@QQiRecordappBundle/Resources/config/routing/estados.yml"
 
 _comun:
     resource: "@QQiRecordappBundle/Resources/config/routing.yml"

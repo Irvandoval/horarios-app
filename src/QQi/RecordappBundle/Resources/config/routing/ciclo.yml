@@ -1,0 +1,30 @@
+ciclo:
+    pattern:  /ciclo/index
+    defaults: { _controller: QQiRecordappBundle:Ciclo:index }
+
+ciclo_show:
+    pattern:  /ciclo/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Ciclo:show }
+
+ciclo_new:
+    pattern:  /ciclo/new
+    defaults: { _controller: QQiRecordappBundle:Ciclo:new }
+
+ciclo_create:
+    pattern:  /ciclo/create
+    defaults: { _controller: QQiRecordappBundle:Ciclo:create }
+    requirements: { _method: post }
+
+ciclo_edit:
+    pattern:  /ciclo/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Ciclo:edit }
+
+ciclo_update:
+    pattern:  /ciclo/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Ciclo:update }
+    requirements: { _method: post }
+
+ciclo_delete:
+    pattern:  /ciclo/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Ciclo:delete }
+    requirements: { _method: post }

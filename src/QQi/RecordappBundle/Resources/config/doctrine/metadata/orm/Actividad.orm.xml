@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Actividad" table="actividad">
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idDiahora" target-entity="Diahora">
+      <join-columns>
+        <join-column name="ID_DIAHORA" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idLugar" target-entity="Lugar">
+      <join-columns>
+        <join-column name="ID_LUGAR" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTipoactividad" target-entity="Tipoactividad">
+      <join-columns>
+        <join-column name="ID_TIPOACTIVIDAD" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idHoasig" target-entity="Horarioasignatura">
+      <join-columns>
+        <join-column name="ID_HOASIG" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

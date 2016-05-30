@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Lugar" table="lugar">
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="NOMBRE" length="100" nullable="true"/>
+    <field name="cupo" type="integer" column="CUPO" nullable="true"/>
+    <many-to-one field="idTipolugar" target-entity="Tipolugar">
+      <join-columns>
+        <join-column name="ID_TIPOLUGAR" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idFacultad" target-entity="Facultad">
+      <join-columns>
+        <join-column name="ID_FACULTAD" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

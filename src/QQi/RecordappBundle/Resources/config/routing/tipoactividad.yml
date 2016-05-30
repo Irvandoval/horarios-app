@@ -1,0 +1,30 @@
+tipoactividad:
+    pattern:  /tipoactividad/index
+    defaults: { _controller: QQiRecordappBundle:Tipoactividad:index }
+
+tipoactividad_show:
+    pattern:  /tipoactividad/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Tipoactividad:show }
+
+tipoactividad_new:
+    pattern:  /tipoactividad/new
+    defaults: { _controller: QQiRecordappBundle:Tipoactividad:new }
+
+tipoactividad_create:
+    pattern:  /tipoactividad/create
+    defaults: { _controller: QQiRecordappBundle:Tipoactividad:create }
+    requirements: { _method: post }
+
+tipoactividad_edit:
+    pattern:  /tipoactividad/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Tipoactividad:edit }
+
+tipoactividad_update:
+    pattern:  /tipoactividad/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Tipoactividad:update }
+    requirements: { _method: post }
+
+tipoactividad_delete:
+    pattern:  /tipoactividad/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Tipoactividad:delete }
+    requirements: { _method: post }

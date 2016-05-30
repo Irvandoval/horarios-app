@@ -1,0 +1,14 @@
+<h1>Estados creation</h1>
+
+<form action="{{ path('estados_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<div class="row">
+        <a href="{{ path('estados') }}">
+            <i class="icon-th-list"></i> Regresar a listado
+        </a>
+</div>

@@ -1,0 +1,30 @@
+estados:
+    pattern:  /estados/index
+    defaults: { _controller: QQiRecordappBundle:Estados:index }
+
+estados_show:
+    pattern:  /estados/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Estados:show }
+
+estados_new:
+    pattern:  /estados/new
+    defaults: { _controller: QQiRecordappBundle:Estados:new }
+
+estados_create:
+    pattern:  /estados/create
+    defaults: { _controller: QQiRecordappBundle:Estados:create }
+    requirements: { _method: post }
+
+estados_edit:
+    pattern:  /estados/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Estados:edit }
+
+estados_update:
+    pattern:  /estados/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Estados:update }
+    requirements: { _method: post }
+
+estados_delete:
+    pattern:  /estados/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Estados:delete }
+    requirements: { _method: post }
