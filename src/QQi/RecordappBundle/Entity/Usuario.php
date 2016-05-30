@@ -240,4 +240,73 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
     	return $this->activo;
     }
 
+
+    /**
+     * Add usuario_rol
+     *
+     * @param \QQi\RecordappBundle\Entity\Rol $usuarioRol
+     * @return Usuario
+     */
+    public function addUsuarioRol(\QQi\RecordappBundle\Entity\Rol $usuarioRol)
+    {
+        $this->usuario_rol[] = $usuarioRol;
+    
+        return $this;
+    }
+
+    /**
+     * Remove usuario_rol
+     *
+     * @param \QQi\RecordappBundle\Entity\Rol $usuarioRol
+     */
+    public function removeUsuarioRol(\QQi\RecordappBundle\Entity\Rol $usuarioRol)
+    {
+        $this->usuario_rol->removeElement($usuarioRol);
+    }
+
+    /**
+     * Add tareas
+     *
+     * @param \QQi\RecordappBundle\Entity\Tarea $tareas
+     * @return Usuario
+     */
+    public function addTarea(\QQi\RecordappBundle\Entity\Tarea $tareas)
+    {
+        $this->tareas[] = $tareas;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tareas
+     *
+     * @param \QQi\RecordappBundle\Entity\Tarea $tareas
+     */
+    public function removeTarea(\QQi\RecordappBundle\Entity\Tarea $tareas)
+    {
+        $this->tareas->removeElement($tareas);
+    }
+
+    /**
+     * Add enlaces
+     *
+     * @param \QQi\RecordappBundle\Entity\Enlace $enlaces
+     * @return Usuario
+     */
+    public function addEnlace(\QQi\RecordappBundle\Entity\Enlace $enlaces)
+    {
+        $this->enlaces[] = $enlaces;
+    
+        return $this;
+    }
+
+    /**
+     * Remove enlaces
+     *
+     * @param \QQi\RecordappBundle\Entity\Enlace $enlaces
+     */
+    public function removeEnlace(\QQi\RecordappBundle\Entity\Enlace $enlaces)
+    {
+        $this->enlaces->removeElement($enlaces);
+    }
 }

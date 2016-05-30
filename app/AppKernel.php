@@ -20,9 +20,7 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new QQi\RecordappBundle\QQiRecordappBundle(),
-           // new Hora\HoraBundle\HoraBundle(),
-            new HoraApp\HoraBundle\HoraBundle(),
+            new QQi\RecordappBundle\QQiRecordappBundle(),            
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
