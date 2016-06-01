@@ -1,6 +1,6 @@
-{% extends "QQiRecordappBundle::layout.html.twig" %}
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
 
-{% block title %}Todas los ciclos{% endblock %}
+{% block title %}Todos los Ciclo {% endblock %}
 
 {% block body %}
 
@@ -32,8 +32,8 @@
             <td>{% if entity.fechaInicio %}{{ entity.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if entity.fechaFin %}{{ entity.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>
-                    <a href="{{ path('ciclo_show', { 'id': entity.id }) }}"><i class="icon-edit"></i> show</a>
-                    <a href="{{ path('ciclo_edit', { 'id': entity.id }) }}"><i class="icon-trash"></i> edit</a>
+                    <a href="{{ path('ciclo_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
+                    <a href="{{ path('ciclo_edit', { 'id': entity.id }) }}"><i class="icon-th-list"></i> edit</a>
             </td>
         </tr>
     {% endfor %}

@@ -31,7 +31,16 @@ _ciclo:
     resource: "@QQiRecordappBundle/Resources/config/routing/ciclo.yml"
 
 _estados:
-        resource: "@QQiRecordappBundle/Resources/config/routing/estados.yml"
+    resource: "@QQiRecordappBundle/Resources/config/routing/estados.yml"
+
+_lugar:
+    resource: "@QQiRecordappBundle/Resources/config/routing/lugar.yml"
+
+_facultad:
+    resource: "@QQiRecordappBundle/Resources/config/routing/facultad.yml"
+
+_ciclo:
+    resource: "@QQiRecordappBundle/Resources/config/routing/ciclo.yml"
 
 _comun:
     resource: "@QQiRecordappBundle/Resources/config/routing.yml"

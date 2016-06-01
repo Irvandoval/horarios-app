@@ -1,14 +1,21 @@
-<h1>Ciclo creation</h1>
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Nuevo Ciclo {% endblock %}
+
+{% block body %}
 
 <form action="{{ path('ciclo_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
-        <button type="submit">Create</button>
+        <input class="btn btn-success btn-sm" type="submit" value="Crear">
     </p>
 </form>
 
 <div class="row">
-        <a href="{{ path('ciclo') }}">
-            <i class="icon-th-list"></i> Regresar a listado
+        <a class="btn btn-primary btn-sm" href="{{ path('ciclo') }}">
+            Regresar a listado
         </a>
 </div>
+
+
+{% endblock %}

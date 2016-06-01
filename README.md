@@ -79,3 +79,27 @@ UsuarioType y cambiar una condicion que verifica si el usuario esta activo en
 ves de usar unos o cero para comparar valores booleanos usar True o False eso 
 solo para postgresql
 
+6) Si da error de timezone
+-----------------------
+
+En esta pagina esta la solucion
+http://stackoverflow.com/questions/27355859/php-producing-no-such-timezone-error-on-new-setup
+
+
+after no luck I found that if you edit the vendor\symfony\symfony\src\Symfony\Component\Form\Extension\Core\Type\DateType.php directly you can trick it
+
+change the default code from:
+
+    if (version_compare(\PHP_VERSION, '5.5.0-dev', '>=')) {
+        $formatter->setTimeZone(\DateTimeZone::UTC);
+    } else {
+        $formatter->setTimeZoneId(\DateTimeZone::UTC);
+    }
+to:
+
+    if (version_compare(\PHP_VERSION, '5.5.0-dev', '>=')) {
+        $formatter->setTimeZone('UTC');
+    } else {
+        $formatter->setTimeZoneId(\DateTimeZone::UTC);
+    }
+
