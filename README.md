@@ -103,3 +103,10 @@ to:
         $formatter->setTimeZoneId(\DateTimeZone::UTC);
     }
 
+7) Actualizar el generador de crud con el skeleton que esta en sensio
+-----------------------
+
+Descargar y actualizar la plantilla de generacion de crud
+van configuradas las vistas de new, show, edit, index
+
+https://www.dropbox.com/s/xf7ajj8b725kp78/skeleton.rar?dl=0
