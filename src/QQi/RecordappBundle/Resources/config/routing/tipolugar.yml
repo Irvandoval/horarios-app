@@ -1,0 +1,30 @@
+tipolugar:
+    pattern:  /tipolugar/index
+    defaults: { _controller: QQiRecordappBundle:Tipolugar:index }
+
+tipolugar_show:
+    pattern:  /tipolugar/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Tipolugar:show }
+
+tipolugar_new:
+    pattern:  /tipolugar/new
+    defaults: { _controller: QQiRecordappBundle:Tipolugar:new }
+
+tipolugar_create:
+    pattern:  /tipolugar/create
+    defaults: { _controller: QQiRecordappBundle:Tipolugar:create }
+    requirements: { _method: post }
+
+tipolugar_edit:
+    pattern:  /tipolugar/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Tipolugar:edit }
+
+tipolugar_update:
+    pattern:  /tipolugar/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Tipolugar:update }
+    requirements: { _method: post }
+
+tipolugar_delete:
+    pattern:  /tipolugar/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Tipolugar:delete }
+    requirements: { _method: post }

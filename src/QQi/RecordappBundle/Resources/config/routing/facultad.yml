@@ -1,0 +1,30 @@
+facultad:
+    pattern:  /facultad/index
+    defaults: { _controller: QQiRecordappBundle:Facultad:index }
+
+facultad_show:
+    pattern:  /facultad/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Facultad:show }
+
+facultad_new:
+    pattern:  /facultad/new
+    defaults: { _controller: QQiRecordappBundle:Facultad:new }
+
+facultad_create:
+    pattern:  /facultad/create
+    defaults: { _controller: QQiRecordappBundle:Facultad:create }
+    requirements: { _method: post }
+
+facultad_edit:
+    pattern:  /facultad/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Facultad:edit }
+
+facultad_update:
+    pattern:  /facultad/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Facultad:update }
+    requirements: { _method: post }
+
+facultad_delete:
+    pattern:  /facultad/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Facultad:delete }
+    requirements: { _method: post }

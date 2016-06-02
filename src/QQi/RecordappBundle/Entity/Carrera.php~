@@ -7,12 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Lugar
+ * Carrera
  *
- * @ORM\Table(name="lugar")
+ * @ORM\Table(name="carrera")
  * @ORM\Entity
  */
-class Lugar
+class Carrera
 {
     /**
      * @var integer
@@ -26,36 +26,19 @@ class Lugar
     /**
      * @var string
      *
-     * @ORM\Column(name="NOMBRE", type="string", length=100, nullable=true)
+     * @ORM\Column(name="NOMBRE", type="string", length=75, nullable=false)
      */
     private $nombre;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="CUPO", type="integer", nullable=true)
-     */
-    private $cupo;
-
-    /**
      * @var \Facultad
      *
-     * @ORM\ManyToOne(targetEntity="Facultad", inversedBy="lugares")
+     * @ORM\ManyToOne(targetEntity="Facultad")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_FACULTAD", referencedColumnName="ID")
      * })
      */
     private $idFacultad;
-
-    /**
-     * @var \Tipolugar
-     *
-     * @ORM\ManyToOne(targetEntity="Tipolugar", inversedBy="tipolugares")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_TIPOLUGAR", referencedColumnName="ID")
-     * })
-     */
-    private $idTipolugar;
 
 
 
@@ -73,7 +56,7 @@ class Lugar
      * Set nombre
      *
      * @param string $nombre
-     * @return Lugar
+     * @return Carrera
      */
     public function setNombre($nombre)
     {
@@ -93,33 +76,10 @@ class Lugar
     }
 
     /**
-     * Set cupo
-     *
-     * @param integer $cupo
-     * @return Lugar
-     */
-    public function setCupo($cupo)
-    {
-        $this->cupo = $cupo;
-    
-        return $this;
-    }
-
-    /**
-     * Get cupo
-     *
-     * @return integer 
-     */
-    public function getCupo()
-    {
-        return $this->cupo;
-    }
-
-    /**
      * Set idFacultad
      *
      * @param \QQi\RecordappBundle\Entity\Facultad $idFacultad
-     * @return Lugar
+     * @return Carrera
      */
     public function setIdFacultad(\QQi\RecordappBundle\Entity\Facultad $idFacultad = null)
     {
@@ -136,28 +96,5 @@ class Lugar
     public function getIdFacultad()
     {
         return $this->idFacultad;
-    }
-
-    /**
-     * Set idTipolugar
-     *
-     * @param \QQi\RecordappBundle\Entity\Tipolugar $idTipolugar
-     * @return Lugar
-     */
-    public function setIdTipolugar(\QQi\RecordappBundle\Entity\Tipolugar $idTipolugar = null)
-    {
-        $this->idTipolugar = $idTipolugar;
-    
-        return $this;
-    }
-
-    /**
-     * Get idTipolugar
-     *
-     * @return \QQi\RecordappBundle\Entity\Tipolugar 
-     */
-    public function getIdTipolugar()
-    {
-        return $this->idTipolugar;
     }
 }

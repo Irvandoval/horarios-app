@@ -1,10 +1,10 @@
 parameters:
-    database_driver:   pdo_mysql
+    database_driver:   pdo_pgsql
     database_host:     localhost
-    database_port:     ~
-    database_name:     happ
-    database_user:     root
-    database_password: root
+    database_port:     5432
+    database_name:     bad
+    database_user:     bad
+    database_password: bad
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1

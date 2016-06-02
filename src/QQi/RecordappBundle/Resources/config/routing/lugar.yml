@@ -1,0 +1,30 @@
+lugar:
+    pattern:  /lugar/index
+    defaults: { _controller: QQiRecordappBundle:Lugar:index }
+
+lugar_show:
+    pattern:  /lugar/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Lugar:show }
+
+lugar_new:
+    pattern:  /lugar/new
+    defaults: { _controller: QQiRecordappBundle:Lugar:new }
+
+lugar_create:
+    pattern:  /lugar/create
+    defaults: { _controller: QQiRecordappBundle:Lugar:create }
+    requirements: { _method: post }
+
+lugar_edit:
+    pattern:  /lugar/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Lugar:edit }
+
+lugar_update:
+    pattern:  /lugar/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Lugar:update }
+    requirements: { _method: post }
+
+lugar_delete:
+    pattern:  /lugar/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Lugar:delete }
+    requirements: { _method: post }
