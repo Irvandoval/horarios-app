@@ -1,6 +1,6 @@
 {% extends 'QQiRecordappBundle::layout.html.twig' %}
 
-{% block title %}Tipo Actividad {% endblock %}
+{% block title %}Asignatura {% endblock %}
 
 {% block body %}
 
@@ -17,6 +17,10 @@
             <th>Nombre</th>
             <td>{{ entity.nombre }}</td>
         </tr>
+        <tr>
+            <th>Codigo</th>
+            <td>{{ entity.codigo }}</td>
+        </tr>
     </tbody>
 </table>
 
@@ -24,16 +28,16 @@
 </div>
 
 <div class="row">
-        <a class="btn btn-primary btn-sm" href="{{ path('tipoactividad') }}">
+        <a class="btn btn-primary btn-sm" href="{{ path('asignatura') }}">
             Regresar a listado
         </a>
 
-        <a class="btn btn-success btn-sm"  href="{{ path('tipoactividad_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-success btn-sm"  href="{{ path('asignatura_edit', { 'id': entity.id }) }}">
            Modificar
         </a>
 
 
-        <form action="{{ path('tipoactividad_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('asignatura_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
             <br />
             <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">

@@ -43,7 +43,7 @@ class Horarioasignatura
     /**
      * @var \Asignatura
      *
-     * @ORM\ManyToOne(targetEntity="Asignatura")
+     * @ORM\ManyToOne(targetEntity="Asignatura", inversedBy="asignaturas")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_ASIGNATURA", referencedColumnName="ID")
      * })
@@ -51,11 +51,10 @@ class Horarioasignatura
     private $idAsignatura;
 
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -71,14 +70,14 @@ class Horarioasignatura
     public function setCorrelativo($correlativo)
     {
         $this->correlativo = $correlativo;
-    
+
         return $this;
     }
 
     /**
      * Get correlativo
      *
-     * @return float 
+     * @return float
      */
     public function getCorrelativo()
     {
@@ -94,14 +93,14 @@ class Horarioasignatura
     public function setIdHorario(\QQi\RecordappBundle\Entity\Horario $idHorario = null)
     {
         $this->idHorario = $idHorario;
-    
+
         return $this;
     }
 
     /**
      * Get idHorario
      *
-     * @return \QQi\RecordappBundle\Entity\Horario 
+     * @return \QQi\RecordappBundle\Entity\Horario
      */
     public function getIdHorario()
     {
@@ -117,14 +116,14 @@ class Horarioasignatura
     public function setIdAsignatura(\QQi\RecordappBundle\Entity\Asignatura $idAsignatura = null)
     {
         $this->idAsignatura = $idAsignatura;
-    
+
         return $this;
     }
 
     /**
      * Get idAsignatura
      *
-     * @return \QQi\RecordappBundle\Entity\Asignatura 
+     * @return \QQi\RecordappBundle\Entity\Asignatura
      */
     public function getIdAsignatura()
     {

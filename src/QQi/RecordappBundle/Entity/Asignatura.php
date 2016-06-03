@@ -42,7 +42,7 @@ class Asignatura
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -58,14 +58,14 @@ class Asignatura
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -81,17 +81,61 @@ class Asignatura
     public function setCodigo($codigo)
     {
         $this->codigo = $codigo;
-    
+
         return $this;
     }
 
     /**
      * Get codigo
      *
-     * @return string 
+     * @return string
      */
     public function getCodigo()
     {
         return $this->codigo;
+    }
+    /**
+    *@ORM\OneToMany(targetEntity="Horarioasignatura", mappedBy="idAsignatura")
+    */
+    protected $asignaturas;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->asignaturas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add asignaturas
+     *
+     * @param \QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas
+     * @return Asignatura
+     */
+    public function addAsignatura(\QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas)
+    {
+        $this->asignaturas[] = $asignaturas;
+    
+        return $this;
+    }
+
+    /**
+     * Remove asignaturas
+     *
+     * @param \QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas
+     */
+    public function removeAsignatura(\QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas)
+    {
+        $this->asignaturas->removeElement($asignaturas);
+    }
+
+    /**
+     * Get asignaturas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAsignaturas()
+    {
+        return $this->asignaturas;
     }
 }

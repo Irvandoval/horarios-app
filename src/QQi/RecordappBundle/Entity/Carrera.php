@@ -33,7 +33,7 @@ class Carrera
     /**
      * @var \Facultad
      *
-     * @ORM\ManyToOne(targetEntity="Facultad")
+     * @ORM\ManyToOne(targetEntity="Facultad", inversedBy="lugares")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_FACULTAD", referencedColumnName="ID")
      * })
@@ -45,7 +45,7 @@ class Carrera
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -61,14 +61,14 @@ class Carrera
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -84,14 +84,14 @@ class Carrera
     public function setIdFacultad(\QQi\RecordappBundle\Entity\Facultad $idFacultad = null)
     {
         $this->idFacultad = $idFacultad;
-    
+
         return $this;
     }
 
     /**
      * Get idFacultad
      *
-     * @return \QQi\RecordappBundle\Entity\Facultad 
+     * @return \QQi\RecordappBundle\Entity\Facultad
      */
     public function getIdFacultad()
     {

@@ -1,0 +1,30 @@
+escuelas:
+    pattern:  /escuelas/index
+    defaults: { _controller: QQiRecordappBundle:Escuelas:index }
+
+escuelas_show:
+    pattern:  /escuelas/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Escuelas:show }
+
+escuelas_new:
+    pattern:  /escuelas/new
+    defaults: { _controller: QQiRecordappBundle:Escuelas:new }
+
+escuelas_create:
+    pattern:  /escuelas/create
+    defaults: { _controller: QQiRecordappBundle:Escuelas:create }
+    requirements: { _method: post }
+
+escuelas_edit:
+    pattern:  /escuelas/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Escuelas:edit }
+
+escuelas_update:
+    pattern:  /escuelas/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Escuelas:update }
+    requirements: { _method: post }
+
+escuelas_delete:
+    pattern:  /escuelas/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Escuelas:delete }
+    requirements: { _method: post }

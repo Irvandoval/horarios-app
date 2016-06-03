@@ -1,13 +1,13 @@
 {% extends 'QQiRecordappBundle::layout.html.twig' %}
 
-{% block title %}Todos los Tipoactividad {% endblock %}
+{% block title %}Todos los Asignatura {% endblock %}
 
 {% block body %}
 
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="hero-unit">
-    <h3>Tipoactividad</h3>
-        <p><a class="btn btn-primary btn-large" href="{{ path('tipoactividad_new') }}">Nuevo &raquo;</a></p>
+    <h3>Asignatura</h3>
+        <p><a class="btn btn-primary btn-large" href="{{ path('asignatura_new') }}">Nuevo &raquo;</a></p>
     </div>
 
 <!-- Example row of columns -->
@@ -19,17 +19,19 @@
         <tr>
                 <th>#</th>
                 <th>Nombre</th>
+                <th>Codigo</th>
             <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('tipoactividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('asignatura_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.nombre }}</td>
+            <td>{{ entity.codigo }}</td>
             <td>
-                    <a href="{{ path('tipoactividad_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
-                    <a href="{{ path('tipoactividad_edit', { 'id': entity.id }) }}"><i class="icon-th-list"></i> edit</a>
+                    <a href="{{ path('asignatura_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
+                    <a href="{{ path('asignatura_edit', { 'id': entity.id }) }}"><i class="icon-th-list"></i> edit</a>
             </td>
         </tr>
     {% endfor %}

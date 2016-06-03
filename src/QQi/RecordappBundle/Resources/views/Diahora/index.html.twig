@@ -1,0 +1,49 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Todos los Diahora {% endblock %}
+
+{% block body %}
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+    <h3>Diahora</h3>
+        <p><a class="btn btn-primary btn-large" href="{{ path('diahora_new') }}">Nuevo &raquo;</a></p>
+    </div>
+
+<!-- Example row of columns -->
+<div class="row">
+    <div class="span12">
+
+        <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Dia</th>
+                <th>Hora</th>
+                <th>Ciclo</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('diahora_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.nombre }}</td>
+            <td>{{ entity.dia  }}</td>
+            <td>{{ entity.hora|date('G:ia') }}</td>
+            <td>{{ entity.idCiclo }}</td>
+            <td>
+                    <a href="{{ path('diahora_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
+                    <a href="{{ path('diahora_edit', { 'id': entity.id }) }}"><i class="icon-th-list"></i> edit</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+        </table>
+
+</div>
+    </div>
+
+{% endblock %}

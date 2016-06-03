@@ -1,3 +1,8 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Creacion de Ciclo {% endblock %}
+
+{% block body %}
 <h1>Ciclo creation</h1>
 
 <form action="{{ path('ciclo_create') }}" method="post" {{ form_enctype(form) }}>
@@ -12,3 +17,5 @@
             <i class="icon-th-list"></i> Regresar a listado
         </a>
 </div>
+
+{% endblock %}

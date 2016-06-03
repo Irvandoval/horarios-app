@@ -1,0 +1,30 @@
+carrera:
+    pattern:  /carrera/index
+    defaults: { _controller: QQiRecordappBundle:Carrera:index }
+
+carrera_show:
+    pattern:  /carrera/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Carrera:show }
+
+carrera_new:
+    pattern:  /carrera/new
+    defaults: { _controller: QQiRecordappBundle:Carrera:new }
+
+carrera_create:
+    pattern:  /carrera/create
+    defaults: { _controller: QQiRecordappBundle:Carrera:create }
+    requirements: { _method: post }
+
+carrera_edit:
+    pattern:  /carrera/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Carrera:edit }
+
+carrera_update:
+    pattern:  /carrera/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Carrera:update }
+    requirements: { _method: post }
+
+carrera_delete:
+    pattern:  /carrera/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Carrera:delete }
+    requirements: { _method: post }

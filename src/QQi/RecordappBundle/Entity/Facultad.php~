@@ -35,7 +35,7 @@ class Facultad
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -51,7 +51,7 @@ class Facultad
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 	public function __toString()
@@ -62,13 +62,13 @@ class Facultad
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
         return $this->nombre;
     }
-	/**
+    /**
     *@ORM\OneToMany(targetEntity="Lugar", mappedBy="idFacultad")
     */
     protected $lugares;
@@ -79,7 +79,7 @@ class Facultad
     {
         $this->lugares = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add lugares
      *
@@ -89,7 +89,7 @@ class Facultad
     public function addLugare(\QQi\RecordappBundle\Entity\Lugar $lugares)
     {
         $this->lugares[] = $lugares;
-    
+
         return $this;
     }
 
@@ -106,7 +106,7 @@ class Facultad
     /**
      * Get lugares
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLugares()
     {
