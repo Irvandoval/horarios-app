@@ -3,8 +3,8 @@
 {% block title %}Nuevo Tipolugar {% endblock %}
 
 {% block body %}
-
-<form action="{{ path('tipolugar_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="container">
+  <form action="{{ path('tipolugar_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
         <input class="btn btn-success btn-sm" type="submit" value="Crear">
@@ -16,6 +16,6 @@
             Regresar a listado
         </a>
 </div>
-
+</div>
 
 {% endblock %}

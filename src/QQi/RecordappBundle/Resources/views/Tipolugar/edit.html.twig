@@ -4,7 +4,8 @@
 
 {% block body %}
 
-<form action="{{ path('tipolugar_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<div class="container">
+  <form action="{{ path('tipolugar_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
     <p>
         <input class="btn btn-success btn-sm" type="submit" value="Modificar">
@@ -23,5 +24,8 @@
         </form>
 
 </div>
+
+</div>
+
 
 {% endblock %}
