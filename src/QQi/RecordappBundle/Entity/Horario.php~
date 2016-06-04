@@ -61,6 +61,11 @@ class Horario
     private $idEscuela;
 
     /**
+    *@ORM\OneToMany(targetEntity="Horarioasignatura", mappedBy="idHorario")
+    */
+    protected $Horarios;
+
+    /**
      * Get id
      *
      * @return integer
@@ -160,5 +165,9 @@ class Horario
     public function getIdEscuela()
     {
         return $this->idEscuela;
+    }
+    public function __toString()
+    {
+          return $this->fechaCreacion->format('y-m-d');
     }
 }

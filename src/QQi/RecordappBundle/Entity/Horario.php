@@ -170,4 +170,44 @@ class Horario
     {
           return $this->fechaCreacion->format('y-m-d');
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Horarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add Horarios
+     *
+     * @param \QQi\RecordappBundle\Entity\Horarioasignatura $horarios
+     * @return Horario
+     */
+    public function addHorario(\QQi\RecordappBundle\Entity\Horarioasignatura $horarios)
+    {
+        $this->Horarios[] = $horarios;
+    
+        return $this;
+    }
+
+    /**
+     * Remove Horarios
+     *
+     * @param \QQi\RecordappBundle\Entity\Horarioasignatura $horarios
+     */
+    public function removeHorario(\QQi\RecordappBundle\Entity\Horarioasignatura $horarios)
+    {
+        $this->Horarios->removeElement($horarios);
+    }
+
+    /**
+     * Get Horarios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHorarios()
+    {
+        return $this->Horarios;
+    }
 }

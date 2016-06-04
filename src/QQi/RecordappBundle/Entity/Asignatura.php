@@ -105,6 +105,16 @@ class Asignatura
     protected $Asignaturas2;
 
     /**
+     * @var \Escuela
+     *
+     * @ORM\ManyToOne(targetEntity="Escuelas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ESCUELA", referencedColumnName="ID")
+     * })
+     */
+    private $idEscuela;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -185,5 +195,61 @@ class Asignatura
     public function getAsignaturass()
     {
         return $this->asignaturass;
+    }
+
+    /**
+     * Add Asignaturas2
+     *
+     * @param \QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas2
+     * @return Asignatura
+     */
+    public function addAsignaturas2(\QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas2)
+    {
+        $this->Asignaturas2[] = $asignaturas2;
+    
+        return $this;
+    }
+
+    /**
+     * Remove Asignaturas2
+     *
+     * @param \QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas2
+     */
+    public function removeAsignaturas2(\QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas2)
+    {
+        $this->Asignaturas2->removeElement($asignaturas2);
+    }
+
+    /**
+     * Get Asignaturas2
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAsignaturas2()
+    {
+        return $this->Asignaturas2;
+    }
+
+    /**
+     * Set idEscuela
+     *
+     * @param \QQi\RecordappBundle\Entity\Escuelas $idEscuela
+     * @return Asignatura
+     */
+    public function setIdEscuela(\QQi\RecordappBundle\Entity\Escuelas $idEscuela = null)
+    {
+        $this->idEscuela = $idEscuela;
+    
+        return $this;
+    }
+
+    /**
+     * Get idEscuela
+     *
+     * @return \QQi\RecordappBundle\Entity\Escuelas 
+     */
+    public function getIdEscuela()
+    {
+        return $this->idEscuela;
     }
 }

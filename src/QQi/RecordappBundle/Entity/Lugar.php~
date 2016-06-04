@@ -62,7 +62,7 @@ class Lugar
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -78,14 +78,14 @@ class Lugar
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -101,14 +101,14 @@ class Lugar
     public function setCupo($cupo)
     {
         $this->cupo = $cupo;
-    
+
         return $this;
     }
 
     /**
      * Get cupo
      *
-     * @return integer 
+     * @return integer
      */
     public function getCupo()
     {
@@ -124,14 +124,14 @@ class Lugar
     public function setIdFacultad(\QQi\RecordappBundle\Entity\Facultad $idFacultad = null)
     {
         $this->idFacultad = $idFacultad;
-    
+
         return $this;
     }
 
     /**
      * Get idFacultad
      *
-     * @return \QQi\RecordappBundle\Entity\Facultad 
+     * @return \QQi\RecordappBundle\Entity\Facultad
      */
     public function getIdFacultad()
     {
@@ -147,17 +147,22 @@ class Lugar
     public function setIdTipolugar(\QQi\RecordappBundle\Entity\Tipolugar $idTipolugar = null)
     {
         $this->idTipolugar = $idTipolugar;
-    
+
         return $this;
     }
 
     /**
      * Get idTipolugar
      *
-     * @return \QQi\RecordappBundle\Entity\Tipolugar 
+     * @return \QQi\RecordappBundle\Entity\Tipolugar
      */
     public function getIdTipolugar()
     {
         return $this->idTipolugar;
     }
+    public function __toString()
+    {
+          return $this->nombre;
+    }
+
 }

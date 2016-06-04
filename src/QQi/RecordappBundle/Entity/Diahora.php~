@@ -157,4 +157,9 @@ class Diahora
     {
         return $this->idCiclo;
     }
+    public function __toString()
+    {
+          return $this->nombre;
+    }
+
 }

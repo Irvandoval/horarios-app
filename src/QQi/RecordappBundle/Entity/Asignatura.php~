@@ -98,6 +98,22 @@ class Asignatura
     *@ORM\OneToMany(targetEntity="Pensum", mappedBy="idAsignatura")
     */
     protected $Asignaturas;
+
+    /**
+    *@ORM\OneToMany(targetEntity="Horarioasignatura", mappedBy="idAsignatura")
+    */
+    protected $Asignaturas2;
+
+    /**
+     * @var \Escuela
+     *
+     * @ORM\ManyToOne(targetEntity="Escuelas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ESCUELA", referencedColumnName="ID")
+     * })
+     */
+    private $idEscuela;
+
     /**
      * Constructor
      */
