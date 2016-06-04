@@ -35,7 +35,7 @@ class Estados
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -51,7 +51,7 @@ class Estados
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
@@ -63,5 +63,13 @@ class Estados
     public function getNombre()
     {
         return $this->nombre;
+    }
+    /**
+    *@ORM\OneToMany(targetEntity="Horario", mappedBy="idEstados")
+    */
+    protected $Estadoss;
+    public function __toString()
+    {
+          return $this->nombre;
     }
 }

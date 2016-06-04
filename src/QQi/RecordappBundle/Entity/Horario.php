@@ -33,7 +33,7 @@ class Horario
     /**
      * @var \Estados
      *
-     * @ORM\ManyToOne(targetEntity="Estados")
+     * @ORM\ManyToOne(targetEntity="Estados", inversedBy="Estados")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_ESTADO", referencedColumnName="ID")
      * })
@@ -55,7 +55,7 @@ class Horario
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -71,14 +71,14 @@ class Horario
     public function setFechaCreacion($fechaCreacion)
     {
         $this->fechaCreacion = $fechaCreacion;
-    
+
         return $this;
     }
 
     /**
      * Get fechaCreacion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaCreacion()
     {
@@ -94,14 +94,14 @@ class Horario
     public function setIdEstado(\QQi\RecordappBundle\Entity\Estados $idEstado = null)
     {
         $this->idEstado = $idEstado;
-    
+
         return $this;
     }
 
     /**
      * Get idEstado
      *
-     * @return \QQi\RecordappBundle\Entity\Estados 
+     * @return \QQi\RecordappBundle\Entity\Estados
      */
     public function getIdEstado()
     {
@@ -117,14 +117,14 @@ class Horario
     public function setIdCiclo(\QQi\RecordappBundle\Entity\Ciclo $idCiclo = null)
     {
         $this->idCiclo = $idCiclo;
-    
+
         return $this;
     }
 
     /**
      * Get idCiclo
      *
-     * @return \QQi\RecordappBundle\Entity\Ciclo 
+     * @return \QQi\RecordappBundle\Entity\Ciclo
      */
     public function getIdCiclo()
     {

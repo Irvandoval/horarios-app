@@ -6,27 +6,26 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class EscuelasType extends AbstractType
+class HorarioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('idFacultad','entity', array(
-              'class' => 'QQiRecordappBundle:Facultad', 'empty_value' => 'opciones',
-            ))
+            ->add('fechaCreacion')
+            ->add('idEstado')
+            ->add('idCiclo')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'QQi\RecordappBundle\Entity\Escuelas'
+            'data_class' => 'QQi\RecordappBundle\Entity\Horario'
         ));
     }
 
     public function getName()
     {
-        return 'qqi_recordappbundle_escuelastype';
+        return 'qqi_recordappbundle_horariotype';
     }
 }

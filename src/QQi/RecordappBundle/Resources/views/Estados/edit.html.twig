@@ -1,3 +1,10 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Modificar Estado {% endblock %}
+
+{% block body %}
+
+<div class="container">
 <h1>Estados edit</h1>
 
 <form action="{{ path('estados_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
@@ -18,3 +25,6 @@
         </form>
 
 </div>
+</div>
+
+{% endblock %}

@@ -97,4 +97,58 @@ class Carrera
     {
         return $this->idFacultad;
     }
+    /**
+    *@ORM\OneToMany(targetEntity="Pensum", mappedBy="idCarrera")
+    */
+    protected $Carreras;
+
+    /**
+    *@ORM\OneToMany(targetEntity="Horario", mappedBy="idCarrera")
+    */
+    protected $Carreras;
+
+    public function __toString()
+    {
+          return $this->nombre;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Carreras = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add Carreras
+     *
+     * @param \QQi\RecordappBundle\Entity\Pensum $carreras
+     * @return Carrera
+     */
+    public function addCarrera(\QQi\RecordappBundle\Entity\Pensum $carreras)
+    {
+        $this->Carreras[] = $carreras;
+
+        return $this;
+    }
+
+    /**
+     * Remove Carreras
+     *
+     * @param \QQi\RecordappBundle\Entity\Pensum $carreras
+     */
+    public function removeCarrera(\QQi\RecordappBundle\Entity\Pensum $carreras)
+    {
+        $this->Carreras->removeElement($carreras);
+    }
+
+    /**
+     * Get Carreras
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarreras()
+    {
+        return $this->Carreras;
+    }
 }

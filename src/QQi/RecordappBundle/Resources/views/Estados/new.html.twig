@@ -1,3 +1,10 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}NUevo Estado {% endblock %}
+
+{% block body %}
+
+<div class="container">
 <h1>Estados creation</h1>
 
 <form action="{{ path('estados_create') }}" method="post" {{ form_enctype(form) }}>
@@ -12,3 +19,6 @@
             <i class="icon-th-list"></i> Regresar a listado
         </a>
 </div>
+</div>
+
+{% endblock %}

@@ -95,9 +95,9 @@ class Asignatura
         return $this->codigo;
     }
     /**
-    *@ORM\OneToMany(targetEntity="Horarioasignatura", mappedBy="idAsignatura")
+    *@ORM\OneToMany(targetEntity="Pensum", mappedBy="idAsignatura")
     */
-    protected $asignaturas;
+    protected $Asignaturas;
     /**
      * Constructor
      */
@@ -105,7 +105,7 @@ class Asignatura
     {
         $this->asignaturas = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add asignaturas
      *
@@ -115,7 +115,7 @@ class Asignatura
     public function addAsignatura(\QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas)
     {
         $this->asignaturas[] = $asignaturas;
-    
+
         return $this;
     }
 
@@ -132,10 +132,52 @@ class Asignatura
     /**
      * Get asignaturas
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAsignaturas()
     {
         return $this->asignaturas;
+    }
+    /**
+    *@ORM\OneToMany(targetEntity="Lugar", mappedBy="idAsignatura")
+    */
+    protected $asignaturass;
+
+    public function __toString()
+    {
+          return $this->nombre;
+    }
+
+    /**
+     * Add asignaturass
+     *
+     * @param \QQi\RecordappBundle\Entity\Lugar $asignaturass
+     * @return Asignatura
+     */
+    public function addAsignaturas(\QQi\RecordappBundle\Entity\Lugar $asignaturass)
+    {
+        $this->asignaturass[] = $asignaturass;
+
+        return $this;
+    }
+
+    /**
+     * Remove asignaturass
+     *
+     * @param \QQi\RecordappBundle\Entity\Lugar $asignaturass
+     */
+    public function removeAsignaturas(\QQi\RecordappBundle\Entity\Lugar $asignaturass)
+    {
+        $this->asignaturass->removeElement($asignaturass);
+    }
+
+    /**
+     * Get asignaturass
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAsignaturass()
+    {
+        return $this->asignaturass;
     }
 }

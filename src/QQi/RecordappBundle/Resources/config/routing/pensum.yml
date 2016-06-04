@@ -1,0 +1,30 @@
+pensum:
+    pattern:  /pensum/index
+    defaults: { _controller: QQiRecordappBundle:Pensum:index }
+
+pensum_show:
+    pattern:  /pensum/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Pensum:show }
+
+pensum_new:
+    pattern:  /pensum/new
+    defaults: { _controller: QQiRecordappBundle:Pensum:new }
+
+pensum_create:
+    pattern:  /pensum/create
+    defaults: { _controller: QQiRecordappBundle:Pensum:create }
+    requirements: { _method: post }
+
+pensum_edit:
+    pattern:  /pensum/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Pensum:edit }
+
+pensum_update:
+    pattern:  /pensum/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Pensum:update }
+    requirements: { _method: post }
+
+pensum_delete:
+    pattern:  /pensum/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Pensum:delete }
+    requirements: { _method: post }

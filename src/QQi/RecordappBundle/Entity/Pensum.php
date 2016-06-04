@@ -54,7 +54,7 @@ class Pensum
     /**
      * @var \Asignatura
      *
-     * @ORM\ManyToOne(targetEntity="Asignatura")
+     * @ORM\ManyToOne(targetEntity="Asignatura", inversedBy="Asignaturas")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_ASIGNATURA", referencedColumnName="ID")
      * })
@@ -64,7 +64,7 @@ class Pensum
     /**
      * @var \Carrera
      *
-     * @ORM\ManyToOne(targetEntity="Carrera")
+     * @ORM\ManyToOne(targetEntity="Carrera", inversedBy="Carreras")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_CARRERA", referencedColumnName="ID")
      * })
@@ -76,7 +76,7 @@ class Pensum
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -92,14 +92,14 @@ class Pensum
     public function setNivel($nivel)
     {
         $this->nivel = $nivel;
-    
+
         return $this;
     }
 
     /**
      * Get nivel
      *
-     * @return integer 
+     * @return integer
      */
     public function getNivel()
     {
@@ -115,14 +115,14 @@ class Pensum
     public function setActiva($activa)
     {
         $this->activa = $activa;
-    
+
         return $this;
     }
 
     /**
      * Get activa
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActiva()
     {
@@ -138,14 +138,14 @@ class Pensum
     public function setPlan($plan)
     {
         $this->plan = $plan;
-    
+
         return $this;
     }
 
     /**
      * Get plan
      *
-     * @return string 
+     * @return string
      */
     public function getPlan()
     {
@@ -161,14 +161,14 @@ class Pensum
     public function setVigente($vigente)
     {
         $this->vigente = $vigente;
-    
+
         return $this;
     }
 
     /**
      * Get vigente
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getVigente()
     {
@@ -184,14 +184,14 @@ class Pensum
     public function setIdAsignatura(\QQi\RecordappBundle\Entity\Asignatura $idAsignatura = null)
     {
         $this->idAsignatura = $idAsignatura;
-    
+
         return $this;
     }
 
     /**
      * Get idAsignatura
      *
-     * @return \QQi\RecordappBundle\Entity\Asignatura 
+     * @return \QQi\RecordappBundle\Entity\Asignatura
      */
     public function getIdAsignatura()
     {
@@ -207,14 +207,14 @@ class Pensum
     public function setIdCarrera(\QQi\RecordappBundle\Entity\Carrera $idCarrera = null)
     {
         $this->idCarrera = $idCarrera;
-    
+
         return $this;
     }
 
     /**
      * Get idCarrera
      *
-     * @return \QQi\RecordappBundle\Entity\Carrera 
+     * @return \QQi\RecordappBundle\Entity\Carrera
      */
     public function getIdCarrera()
     {

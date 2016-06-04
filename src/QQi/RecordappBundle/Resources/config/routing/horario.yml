@@ -1,0 +1,30 @@
+horario:
+    pattern:  /horario/index
+    defaults: { _controller: QQiRecordappBundle:Horario:index }
+
+horario_show:
+    pattern:  /horario/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Horario:show }
+
+horario_new:
+    pattern:  /horario/new
+    defaults: { _controller: QQiRecordappBundle:Horario:new }
+
+horario_create:
+    pattern:  /horario/create
+    defaults: { _controller: QQiRecordappBundle:Horario:create }
+    requirements: { _method: post }
+
+horario_edit:
+    pattern:  /horario/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Horario:edit }
+
+horario_update:
+    pattern:  /horario/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Horario:update }
+    requirements: { _method: post }
+
+horario_delete:
+    pattern:  /horario/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Horario:delete }
+    requirements: { _method: post }

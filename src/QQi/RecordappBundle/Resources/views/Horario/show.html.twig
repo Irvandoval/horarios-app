@@ -1,0 +1,44 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Horario {% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="span12">
+
+        <table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Fechacreacion</th>
+            <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+    </div>
+</div>
+
+<div class="row">
+        <a class="btn btn-primary btn-sm" href="{{ path('horario') }}">
+            Regresar a listado
+        </a>
+
+        <a class="btn btn-success btn-sm"  href="{{ path('horario_edit', { 'id': entity.id }) }}">
+           Modificar
+        </a>
+
+
+        <form action="{{ path('horario_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <br />
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
+        </form>
+
+</div>
+
+{% endblock %}
