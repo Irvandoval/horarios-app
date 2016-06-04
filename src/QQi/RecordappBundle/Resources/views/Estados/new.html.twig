@@ -1,14 +1,23 @@
-<h1>Estados creation</h1>
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Nuevo Estado {% endblock %}
+
+{% block body %}
+
+<div class="container">
 
 <form action="{{ path('estados_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
-        <button type="submit">Create</button>
+        <input class="btn btn-success btn-sm" type="submit" value="Crear">
     </p>
 </form>
 
 <div class="row">
-        <a href="{{ path('estados') }}">
-            <i class="icon-th-list"></i> Regresar a listado
-        </a>
+      <a class="btn btn-primary btn-sm" href="{{ path('estados') }}">
+          Regresar a listado
+      </a>
 </div>
+</div>
+
+{% endblock %}

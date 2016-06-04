@@ -31,7 +31,43 @@ _ciclo:
     resource: "@QQiRecordappBundle/Resources/config/routing/ciclo.yml"
 
 _estados:
-        resource: "@QQiRecordappBundle/Resources/config/routing/estados.yml"
+    resource: "@QQiRecordappBundle/Resources/config/routing/estados.yml"
+
+_lugar:
+    resource: "@QQiRecordappBundle/Resources/config/routing/lugar.yml"
+
+_facultad:
+    resource: "@QQiRecordappBundle/Resources/config/routing/facultad.yml"
+
+_tipolugar:
+    resource: "@QQiRecordappBundle/Resources/config/routing/tipolugar.yml"
+
+_tipoactividad:
+    resource: "@QQiRecordappBundle/Resources/config/routing/tipoactividad.yml"
+
+_carrera:
+    resource: "@QQiRecordappBundle/Resources/config/routing/carrera.yml"
+
+_escuelas:
+    resource: "@QQiRecordappBundle/Resources/config/routing/escuelas.yml"
+
+_asignatura:
+    resource: "@QQiRecordappBundle/Resources/config/routing/asignatura.yml"
+
+_diahora:
+    resource: "@QQiRecordappBundle/Resources/config/routing/diahora.yml"
+
+_pensum:
+    resource: "@QQiRecordappBundle/Resources/config/routing/pensum.yml"
+
+_horario:
+    resource: "@QQiRecordappBundle/Resources/config/routing/horario.yml"
+
+_horarioasignatura:
+    resource: "@QQiRecordappBundle/Resources/config/routing/horarioasignatura.yml"
+
+_actividad:
+    resource: "@QQiRecordappBundle/Resources/config/routing/actividad.yml"
 
 _comun:
     resource: "@QQiRecordappBundle/Resources/config/routing.yml"

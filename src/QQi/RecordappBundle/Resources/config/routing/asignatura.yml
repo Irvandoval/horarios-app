@@ -1,0 +1,30 @@
+asignatura:
+    pattern:  /asignatura/index
+    defaults: { _controller: QQiRecordappBundle:Asignatura:index }
+
+asignatura_show:
+    pattern:  /asignatura/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Asignatura:show }
+
+asignatura_new:
+    pattern:  /asignatura/new
+    defaults: { _controller: QQiRecordappBundle:Asignatura:new }
+
+asignatura_create:
+    pattern:  /asignatura/create
+    defaults: { _controller: QQiRecordappBundle:Asignatura:create }
+    requirements: { _method: post }
+
+asignatura_edit:
+    pattern:  /asignatura/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Asignatura:edit }
+
+asignatura_update:
+    pattern:  /asignatura/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Asignatura:update }
+    requirements: { _method: post }
+
+asignatura_delete:
+    pattern:  /asignatura/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Asignatura:delete }
+    requirements: { _method: post }

@@ -1,6 +1,13 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Estado {% endblock %}
+
+{% block body %}
+
+<div class="container">
 <h1>Estados</h1>
 
-<table class="record_properties">
+<table class="table table-bordered table-striped">
     <tbody>
         <tr>
             <th>Id</th>
@@ -14,18 +21,22 @@
 </table>
 
 <div class="row">
-        <a href="{{ path('estados') }}">
-            <i class="icon-th-list"></i> Regresar a listado
+        <a class="btn btn-primary btn-sm" href="{{ path('estados') }}">
+            Regresar a listado
         </a>
 
-        <a href="{{ path('estados_edit', { 'id': entity.id }) }}">
-            <i class="icon-edit"></i> Modificar
+        <a class="btn btn-success btn-sm"  href="{{ path('estados_edit', { 'id': entity.id }) }}">
+           Modificar
         </a>
 
 
         <form action="{{ path('estados_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit" class="btn btn-info" value="Eliminar">Eliminar</button>
+            <br />
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
         </form>
 
 </div>
+</div>
+
+{% endblock %}

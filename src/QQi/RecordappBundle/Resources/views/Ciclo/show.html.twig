@@ -4,10 +4,11 @@
 
 {% block body %}
 
-<h1>Ciclo</h1>
+<div class="container">
+<div class="row">
+  <div class="span12">
 
-<table class="record_properties">
-    <tbody>
+      <table class="table table-bordered table-striped">
         <tr>
             <th>Id</th>
             <td>{{ entity.id }}</td>
@@ -28,20 +29,21 @@
 </table>
 
 <div class="row">
-        <a href="{{ path('ciclo') }}">
-            <i class="icon-th-list"></i> Regresar a listado
+        <a class="btn btn-primary btn-sm" href="{{ path('ciclo') }}">
+            Regresar a listado
         </a>
 
-        <a href="{{ path('ciclo_edit', { 'id': entity.id }) }}">
-            <i class="icon-edit"></i> Modificar
+        <a class="btn btn-success btn-sm"  href="{{ path('ciclo_edit', { 'id': entity.id }) }}">
+           Modificar
         </a>
-
 
         <form action="{{ path('ciclo_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit" class="btn btn-info" value="Eliminar"></button>
+            <br />
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
         </form>
 
+</div>
 </div>
 
 {% endblock %}

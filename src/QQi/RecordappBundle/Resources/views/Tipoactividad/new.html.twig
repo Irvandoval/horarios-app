@@ -1,16 +1,21 @@
-<h1>Tipoactividad creation</h1>
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
 
+{% block title %}Nuevo Tipoactividad {% endblock %}
+
+{% block body %}
+
+<div class="container">
 <form action="{{ path('tipoactividad_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
-        <button type="submit">Create</button>
+        <input class="btn btn-success btn-sm" type="submit" value="Crear">
     </p>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('tipoactividad') }}">
-            Back to the list
+<div class="row">
+        <a class="btn btn-primary btn-sm" href="{{ path('tipoactividad') }}">
+            Regresar a listado
         </a>
-    </li>
-</ul>
+</div>
+</div>
+{% endblock %}

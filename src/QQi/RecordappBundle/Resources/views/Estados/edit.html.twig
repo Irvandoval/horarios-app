@@ -1,20 +1,29 @@
-<h1>Estados edit</h1>
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
 
+{% block title %}Modificar Estado {% endblock %}
+
+{% block body %}
+
+<div class="container">
 <form action="{{ path('estados_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
     <p>
-        <button type="submit">Edit</button>
+        <input class="btn btn-success btn-sm" type="submit" value="Modificar">
     </p>
 </form>
 
 <div class="row">
-        <a href="{{ path('estados') }}">
-            <i class="icon-th-list"></i> Regresar a listado
+        <a class="btn btn-primary btn-sm" href="{{ path('estados') }}">
+            Regresar a listado
         </a>
 
         <form action="{{ path('estados_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit" class="btn btn-info" value="Eliminar">Eliminar</button>
+            <br />
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
         </form>
 
 </div>
+</div>
+
+{% endblock %}

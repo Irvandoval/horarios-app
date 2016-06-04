@@ -1,0 +1,29 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Modificar Carrera {% endblock %}
+
+{% block body %}
+
+<div class="container">
+<form action="{{ path('carrera_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <input class="btn btn-success btn-sm" type="submit" value="Modificar">
+    </p>
+</form>
+
+<div class="row">
+        <a class="btn btn-primary btn-sm" href="{{ path('carrera') }}">
+            Regresar a listado
+        </a>
+
+        <form action="{{ path('carrera_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <br />
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
+        </form>
+
+</div>
+</div>
+
+{% endblock %}

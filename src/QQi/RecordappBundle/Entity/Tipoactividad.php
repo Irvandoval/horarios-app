@@ -35,7 +35,7 @@ class Tipoactividad
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -51,17 +51,22 @@ class Tipoactividad
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
         return $this->nombre;
     }
+    public function __toString()
+    {
+          return $this->nombre;
+    }
+
 }

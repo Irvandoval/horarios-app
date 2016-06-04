@@ -47,7 +47,7 @@ class Diahora
     /**
      * @var \Ciclo
      *
-     * @ORM\ManyToOne(targetEntity="Ciclo")
+     * @ORM\ManyToOne(targetEntity="Ciclo", inversedBy="ciclos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_CICLO", referencedColumnName="ID")
      * })
@@ -59,7 +59,7 @@ class Diahora
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -75,14 +75,14 @@ class Diahora
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -98,14 +98,14 @@ class Diahora
     public function setDia($dia)
     {
         $this->dia = $dia;
-    
+
         return $this;
     }
 
     /**
      * Get dia
      *
-     * @return integer 
+     * @return integer
      */
     public function getDia()
     {
@@ -121,14 +121,14 @@ class Diahora
     public function setHora($hora)
     {
         $this->hora = $hora;
-    
+
         return $this;
     }
 
     /**
      * Get hora
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHora()
     {
@@ -144,17 +144,22 @@ class Diahora
     public function setIdCiclo(\QQi\RecordappBundle\Entity\Ciclo $idCiclo = null)
     {
         $this->idCiclo = $idCiclo;
-    
+
         return $this;
     }
 
     /**
      * Get idCiclo
      *
-     * @return \QQi\RecordappBundle\Entity\Ciclo 
+     * @return \QQi\RecordappBundle\Entity\Ciclo
      */
     public function getIdCiclo()
     {
         return $this->idCiclo;
     }
+    public function __toString()
+    {
+          return $this->nombre;
+    }
+
 }

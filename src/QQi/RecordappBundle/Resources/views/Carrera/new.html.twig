@@ -1,0 +1,22 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Nuevo Carrera {% endblock %}
+
+{% block body %}
+
+<div class="container">
+<form action="{{ path('carrera_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <input class="btn btn-success btn-sm" type="submit" value="Crear">
+    </p>
+</form>
+
+<div class="row">
+        <a class="btn btn-primary btn-sm" href="{{ path('carrera') }}">
+            Regresar a listado
+        </a>
+</div>
+</div>
+
+{% endblock %}

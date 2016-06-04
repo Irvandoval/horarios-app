@@ -1,0 +1,22 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Nuevo Lugar {% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+<form action="{{ path('lugar_create') }}" method="post" {{ form_enctype(form) }}>
+    
+   {{ form_widget(form) }}
+   <input class="btn btn-success btn-sm" type="submit" value="Crear">
+</form>
+
+<div class="row">
+        <a class="btn btn-primary btn-sm" href="{{ path('lugar') }}">
+            Regresar a listado
+        </a>
+</div>
+</div>
+
+{% endblock %}

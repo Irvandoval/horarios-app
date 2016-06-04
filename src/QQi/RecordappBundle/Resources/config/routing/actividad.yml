@@ -1,0 +1,30 @@
+actividad:
+    pattern:  /actividad/index
+    defaults: { _controller: QQiRecordappBundle:Actividad:index }
+
+actividad_show:
+    pattern:  /actividad/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Actividad:show }
+
+actividad_new:
+    pattern:  /actividad/new
+    defaults: { _controller: QQiRecordappBundle:Actividad:new }
+
+actividad_create:
+    pattern:  /actividad/create
+    defaults: { _controller: QQiRecordappBundle:Actividad:create }
+    requirements: { _method: post }
+
+actividad_edit:
+    pattern:  /actividad/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Actividad:edit }
+
+actividad_update:
+    pattern:  /actividad/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Actividad:update }
+    requirements: { _method: post }
+
+actividad_delete:
+    pattern:  /actividad/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Actividad:delete }
+    requirements: { _method: post }
