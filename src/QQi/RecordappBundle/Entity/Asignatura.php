@@ -98,6 +98,12 @@ class Asignatura
     *@ORM\OneToMany(targetEntity="Pensum", mappedBy="idAsignatura")
     */
     protected $Asignaturas;
+
+    /**
+    *@ORM\OneToMany(targetEntity="Horarioasignatura", mappedBy="idAsignatura")
+    */
+    protected $Asignaturas2;
+
     /**
      * Constructor
      */

@@ -4,6 +4,7 @@
 
 {% block body %}
 
+<div class="container">
 <form action="{{ path('carrera_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
@@ -16,6 +17,6 @@
             Regresar a listado
         </a>
 </div>
-
+</div>
 
 {% endblock %}

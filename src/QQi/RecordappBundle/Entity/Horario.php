@@ -43,14 +43,27 @@ class Horario
     /**
      * @var \Ciclo
      *
-     * @ORM\ManyToOne(targetEntity="Ciclo")
+     * @ORM\ManyToOne(targetEntity="Ciclo", inversedBy="Ciclos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_CICLO", referencedColumnName="ID")
      * })
      */
     private $idCiclo;
 
+    /**
+     * @var \Escuela
+     *
+     * @ORM\ManyToOne(targetEntity="Escuelas", inversedBy="Escuelas2")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ESCUELA", referencedColumnName="ID")
+     * })
+     */
+    private $idEscuela;
 
+    /**
+    *@ORM\OneToMany(targetEntity="Horarioasignatura", mappedBy="idHorario")
+    */
+    protected $Horarios;
 
     /**
      * Get id
@@ -129,5 +142,32 @@ class Horario
     public function getIdCiclo()
     {
         return $this->idCiclo;
+    }
+
+    /**
+     * Set idEscuela
+     *
+     * @param \QQi\RecordappBundle\Entity\Escuelas $idEscuela
+     * @return Horario
+     */
+    public function setIdEscuela(\QQi\RecordappBundle\Entity\Escuelas $idEscuela = null)
+    {
+        $this->idEscuela = $idEscuela;
+
+        return $this;
+    }
+
+    /**
+     * Get idEscuela
+     *
+     * @return \QQi\RecordappBundle\Entity\Escuelas
+     */
+    public function getIdEscuela()
+    {
+        return $this->idEscuela;
+    }
+    public function __toString()
+    {
+          return $this->fechaCreacion->format('y-m-d');
     }
 }

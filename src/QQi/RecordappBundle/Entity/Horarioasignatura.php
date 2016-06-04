@@ -33,7 +33,7 @@ class Horarioasignatura
     /**
      * @var \Horario
      *
-     * @ORM\ManyToOne(targetEntity="Horario")
+     * @ORM\ManyToOne(targetEntity="Horario", inversedBy="Horarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_HORARIO", referencedColumnName="ID")
      * })
@@ -43,7 +43,7 @@ class Horarioasignatura
     /**
      * @var \Asignatura
      *
-     * @ORM\ManyToOne(targetEntity="Asignatura", inversedBy="asignaturas")
+     * @ORM\ManyToOne(targetEntity="Asignatura", inversedBy="asignaturas2")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_ASIGNATURA", referencedColumnName="ID")
      * })
@@ -129,4 +129,9 @@ class Horarioasignatura
     {
         return $this->idAsignatura;
     }
+    public function __toString()
+    {
+          return $this->correlativo;
+    }
+
 }

@@ -1,9 +1,10 @@
 {% extends 'QQiRecordappBundle::layout.html.twig' %}
 
-{% block title %}Todos los Asignatura {% endblock %}
+{% block title %}Todas las Asignaturas {% endblock %}
 
 {% block body %}
 
+<div class="container">
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="hero-unit">
     <h3>Asignatura</h3>
@@ -31,7 +32,7 @@
             <td>{{ entity.codigo }}</td>
             <td>
                     <a href="{{ path('asignatura_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
-                    <a href="{{ path('asignatura_edit', { 'id': entity.id }) }}"><i class="icon-th-list"></i> edit</a>
+                    <a href="{{ path('asignatura_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> edit</a>
             </td>
         </tr>
     {% endfor %}
@@ -40,6 +41,7 @@
         </table>
 
 </div>
-    </div>
+</div>
+</div>
 
 {% endblock %}

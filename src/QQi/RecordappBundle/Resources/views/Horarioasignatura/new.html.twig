@@ -1,12 +1,11 @@
 {% extends 'QQiRecordappBundle::layout.html.twig' %}
 
-{% block title %}Nuevo Asignatura {% endblock %}
+{% block title %}Nuevo Horarioasignatura {% endblock %}
 
 {% block body %}
 
 <div class="container">
-
-<form action="{{ path('asignatura_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('yes_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
         <input class="btn btn-success btn-sm" type="submit" value="Crear">
@@ -14,11 +13,10 @@
 </form>
 
 <div class="row">
-        <a class="btn btn-primary btn-sm" href="{{ path('asignatura') }}">
+        <a class="btn btn-primary btn-sm" href="{{ path('yes') }}">
             Regresar a listado
         </a>
 </div>
 </div>
-
 
 {% endblock %}

@@ -102,11 +102,6 @@ class Carrera
     */
     protected $Carreras;
 
-    /**
-    *@ORM\OneToMany(targetEntity="Horario", mappedBy="idCarrera")
-    */
-    protected $Carreras;
-
     public function __toString()
     {
           return $this->nombre;

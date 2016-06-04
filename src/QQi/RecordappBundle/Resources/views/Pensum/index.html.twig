@@ -4,6 +4,7 @@
 
 {% block body %}
 
+<div class="container">
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="hero-unit">
     <h3>Pensum</h3>
@@ -39,7 +40,7 @@
             <td>{{ entity.idCarrera}}</td>
             <td>
                     <a href="{{ path('pensum_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
-                    <a href="{{ path('pensum_edit', { 'id': entity.id }) }}"><i class="icon-th-list"></i> edit</a>
+                    <a href="{{ path('pensum_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> edit</a>
             </td>
         </tr>
     {% endfor %}
@@ -48,6 +49,7 @@
         </table>
 
 </div>
-    </div>
+</div>
+</div>
 
 {% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'QQiRecordappBundle::layout.html.twig' %}
 
-{% block title %}Modificar Diahora {% endblock %}
+{% block title %}Modificar Horarioasignatura {% endblock %}
 
 {% block body %}
 
 <div class="container">
-<form action="{{ path('diahora_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<form action="{{ path('yes_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
     <p>
         <input class="btn btn-success btn-sm" type="submit" value="Modificar">
@@ -13,11 +13,11 @@
 </form>
 
 <div class="row">
-        <a class="btn btn-primary btn-sm" href="{{ path('diahora') }}">
+        <a class="btn btn-primary btn-sm" href="{{ path('yes') }}">
             Regresar a listado
         </a>
 
-        <form action="{{ path('diahora_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('yes_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
             <br />
             <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">

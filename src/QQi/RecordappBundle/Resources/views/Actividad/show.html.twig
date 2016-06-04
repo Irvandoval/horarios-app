@@ -1,0 +1,54 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Actividad {% endblock %}
+
+{% block body %}
+
+<div class="container">
+<div class="row">
+    <div class="span12">
+
+        <table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <th>Hora Asignada</th>
+            <td>{{ entity.idHoasig }}</td>
+        </tr>
+        <tr>
+            <th>Tipo de Activiad</th>
+            <td>{{ entity.idTipoactividad }}</td>
+        </tr>
+        <tr>
+            <th>Local</th>
+            <td>{{ entity.idLugar }}</td>
+        </tr>
+        <tr>
+            <th>Dia y Hora</th>
+            <td>{{ entity.idDiahora }}</td>
+        </tr>
+    </tbody>
+</table>
+
+    </div>
+</div>
+
+<div class="row">
+        <a class="btn btn-primary btn-sm" href="{{ path('actividad') }}">
+            Regresar a listado
+        </a>
+
+        <a class="btn btn-success btn-sm"  href="{{ path('actividad_edit', { 'id': entity.id }) }}">
+           Modificar
+        </a>
+
+
+        <form action="{{ path('actividad_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <br />
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
+        </form>
+
+</div>
+</div>
+
+{% endblock %}

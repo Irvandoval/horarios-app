@@ -63,5 +63,11 @@ _pensum:
 _horario:
     resource: "@QQiRecordappBundle/Resources/config/routing/horario.yml"
 
+_horarioasignatura:
+    resource: "@QQiRecordappBundle/Resources/config/routing/horarioasignatura.yml"
+
+_actividad:
+    resource: "@QQiRecordappBundle/Resources/config/routing/actividad.yml"
+
 _comun:
     resource: "@QQiRecordappBundle/Resources/config/routing.yml"

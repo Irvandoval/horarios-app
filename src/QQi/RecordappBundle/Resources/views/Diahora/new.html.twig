@@ -4,6 +4,7 @@
 
 {% block body %}
 
+<div class="container">
 <form action="{{ path('diahora_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
@@ -15,6 +16,7 @@
         <a class="btn btn-primary btn-sm" href="{{ path('diahora') }}">
             Regresar a listado
         </a>
+</div>
 </div>
 
 

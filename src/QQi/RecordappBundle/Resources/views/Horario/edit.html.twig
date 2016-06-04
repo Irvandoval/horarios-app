@@ -4,6 +4,7 @@
 
 {% block body %}
 
+<div class="container">
 <form action="{{ path('horario_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
     <p>
@@ -22,6 +23,7 @@
             <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
         </form>
 
+</div>
 </div>
 
 {% endblock %}

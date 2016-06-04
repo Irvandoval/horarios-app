@@ -127,7 +127,7 @@ class Ciclo
     /**
     *@ORM\OneToMany(targetEntity="Diahora", mappedBy="idCiclo")
     */
-    protected $ciclos;
+    protected $Ciclos;
     /**
      * Constructor
      */
@@ -135,7 +135,7 @@ class Ciclo
     {
         $this->ciclos = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add ciclos
      *
@@ -145,7 +145,7 @@ class Ciclo
     public function addCiclo(\QQi\RecordappBundle\Entity\Diahora $ciclos)
     {
         $this->ciclos[] = $ciclos;
-    
+
         return $this;
     }
 
@@ -162,7 +162,7 @@ class Ciclo
     /**
      * Get ciclos
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCiclos()
     {

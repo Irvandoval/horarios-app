@@ -1,0 +1,30 @@
+yes:
+    pattern:  /horarioasignatura/index
+    defaults: { _controller: QQiRecordappBundle:Horarioasignatura:index }
+
+yes_show:
+    pattern:  /horarioasignatura/{id}/show
+    defaults: { _controller: QQiRecordappBundle:Horarioasignatura:show }
+
+yes_new:
+    pattern:  /horarioasignatura/new
+    defaults: { _controller: QQiRecordappBundle:Horarioasignatura:new }
+
+yes_create:
+    pattern:  /horarioasignatura/create
+    defaults: { _controller: QQiRecordappBundle:Horarioasignatura:create }
+    requirements: { _method: post }
+
+yes_edit:
+    pattern:  /horarioasignatura/{id}/edit
+    defaults: { _controller: QQiRecordappBundle:Horarioasignatura:edit }
+
+yes_update:
+    pattern:  /horarioasignatura/{id}/update
+    defaults: { _controller: QQiRecordappBundle:Horarioasignatura:update }
+    requirements: { _method: post }
+
+yes_delete:
+    pattern:  /horarioasignatura/{id}/delete
+    defaults: { _controller: QQiRecordappBundle:Horarioasignatura:delete }
+    requirements: { _method: post }

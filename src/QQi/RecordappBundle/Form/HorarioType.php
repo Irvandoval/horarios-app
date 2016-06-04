@@ -12,8 +12,15 @@ class HorarioType extends AbstractType
     {
         $builder
             ->add('fechaCreacion')
-            ->add('idEstado')
-            ->add('idCiclo')
+            ->add('idEstado','entity', array(
+              'class' => 'QQiRecordappBundle:Estados', 'empty_value' => 'opciones',
+            ))
+            ->add('idCiclo','entity', array(
+              'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'opciones',
+            ))
+            ->add('idEscuela','entity', array(
+              'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
+            ))
         ;
     }
 

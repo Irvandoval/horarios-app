@@ -3,19 +3,19 @@
 {% block title %}Creacion de Ciclo {% endblock %}
 
 {% block body %}
-<h1>Ciclo creation</h1>
+
+<div class="container">
 
 <form action="{{ path('ciclo_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+<input class="btn btn-success btn-sm" type="submit" value="Crear">
 </form>
 
 <div class="row">
-        <a href="{{ path('ciclo') }}">
-            <i class="icon-th-list"></i> Regresar a listado
-        </a>
+    <a class="btn btn-primary btn-sm" href="{{ path('ciclo') }}">
+        Regresar a listado
+    </a>
+</div>
 </div>
 
 {% endblock %}

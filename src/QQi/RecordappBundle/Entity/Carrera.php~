@@ -101,6 +101,7 @@ class Carrera
     *@ORM\OneToMany(targetEntity="Pensum", mappedBy="idCarrera")
     */
     protected $Carreras;
+
     public function __toString()
     {
           return $this->nombre;
@@ -112,7 +113,7 @@ class Carrera
     {
         $this->Carreras = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add Carreras
      *
@@ -122,7 +123,7 @@ class Carrera
     public function addCarrera(\QQi\RecordappBundle\Entity\Pensum $carreras)
     {
         $this->Carreras[] = $carreras;
-    
+
         return $this;
     }
 
@@ -139,7 +140,7 @@ class Carrera
     /**
      * Get Carreras
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCarreras()
     {

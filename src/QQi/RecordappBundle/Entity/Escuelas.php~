@@ -45,7 +45,7 @@ class Escuelas
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -61,14 +61,14 @@ class Escuelas
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -84,17 +84,28 @@ class Escuelas
     public function setIdFacultad(\QQi\RecordappBundle\Entity\Facultad $idFacultad = null)
     {
         $this->idFacultad = $idFacultad;
-    
+
         return $this;
     }
 
     /**
      * Get idFacultad
      *
-     * @return \QQi\RecordappBundle\Entity\Facultad 
+     * @return \QQi\RecordappBundle\Entity\Facultad
      */
     public function getIdFacultad()
     {
         return $this->idFacultad;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Escuelas2 = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    /**
+    *@ORM\OneToMany(targetEntity="Horario", mappedBy="idEscuelas")
+    */
+    protected $Escuelas2;
 }
