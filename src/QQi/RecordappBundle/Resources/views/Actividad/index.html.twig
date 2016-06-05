@@ -21,6 +21,7 @@
                 <th>#</th>
             <th>Hora Asignada</th>
             <th>Tipo de Actividad</th>
+            <th>Numero de Grupo</th>
             <th>Local</th>
             <th>Dia y Hora</th>
         </tr>
@@ -31,6 +32,7 @@
             <td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.idHoasig }}</td>
             <td>{{ entity.idTipoactividad }}</td>
+            <td>{{ entity.numero_grupo }}</td>
             <td>{{ entity.idLugar }}</td>
             <td>{{ entity.idDiahora }}</td>
             <td>

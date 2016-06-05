@@ -17,6 +17,7 @@ class ActividadType extends AbstractType
             ->add('idTipoactividad','entity', array(
               'class' => 'QQiRecordappBundle:Tipoactividad', 'empty_value' => 'opciones',
             ))
+            ->add('numero_grupo')
             ->add('idLugar','entity', array(
               'class' => 'QQiRecordappBundle:Lugar', 'empty_value' => 'opciones',
             ))

@@ -15,6 +15,7 @@ class UsuarioType extends AbstractType
             ->add('apellido', 'text', array('label' => 'Apellido:'))
             ->add('email', 'email', array('label' => 'Correo electrónico:'))
             ->add('password', 'password', array('label' => 'Contraseña'))
+            ->add('Asignatura')
             //->add('activo')
             //->add('usuario_rol')
         ;

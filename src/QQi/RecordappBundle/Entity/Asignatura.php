@@ -5,6 +5,7 @@ namespace QQi\RecordappBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 /**
  * Asignatura
@@ -36,6 +37,11 @@ class Asignatura
      * @ORM\Column(name="CODIGO", type="string", length=20, nullable=false)
      */
     private $codigo;
+
+    /**
+     * @ManyToMany(targetEntity="Usuario", mappedBy="Asignatura")
+     */
+    private $usuario;
 
 
 
@@ -206,7 +212,7 @@ class Asignatura
     public function addAsignaturas2(\QQi\RecordappBundle\Entity\Horarioasignatura $asignaturas2)
     {
         $this->Asignaturas2[] = $asignaturas2;
-    
+
         return $this;
     }
 
@@ -223,7 +229,7 @@ class Asignatura
     /**
      * Get Asignaturas2
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAsignaturas2()
     {
@@ -239,17 +245,50 @@ class Asignatura
     public function setIdEscuela(\QQi\RecordappBundle\Entity\Escuelas $idEscuela = null)
     {
         $this->idEscuela = $idEscuela;
-    
+
         return $this;
     }
 
     /**
      * Get idEscuela
      *
-     * @return \QQi\RecordappBundle\Entity\Escuelas 
+     * @return \QQi\RecordappBundle\Entity\Escuelas
      */
     public function getIdEscuela()
     {
         return $this->idEscuela;
+    }  
+
+    /**
+     * Add usuario
+     *
+     * @param \QQi\RecordappBundle\Entity\Usuario $usuario
+     * @return Asignatura
+     */
+    public function addUsuario(\QQi\RecordappBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario[] = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Remove usuario
+     *
+     * @param \QQi\RecordappBundle\Entity\Usuario $usuario
+     */
+    public function removeUsuario(\QQi\RecordappBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario->removeElement($usuario);
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }
