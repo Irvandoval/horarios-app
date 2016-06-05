@@ -28,13 +28,18 @@ class Diahora
      *
      * @ORM\Column(name="NOMBRE", type="string", length=20, nullable=true)
      */
+     /**
+     *@Assert\NotBlank()
+     */
     private $nombre;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="DIA", type="integer", nullable=true)
+     * @ORM\Column(name="DIA", type="string", length=20, nullable=true)
+     *@Assert\NotBlank()
      */
+
     private $dia;
 
     /**
