@@ -29,6 +29,9 @@ class Asignatura
      *
      * @ORM\Column(name="NOMBRE", type="string", length=50, nullable=false)
      */
+     /**
+     *@Assert\NotBlank()
+     */
     private $nombre;
 
     /**
@@ -36,6 +39,11 @@ class Asignatura
      *
      * @ORM\Column(name="CODIGO", type="string", length=20, nullable=false)
      */
+     /**
+     * @Assert\NotBlank()
+     * @Assert\Regex("/([A-Z]){3}\d{3}$/")
+     */
+
     private $codigo;
 
     /**
@@ -257,7 +265,7 @@ class Asignatura
     public function getIdEscuela()
     {
         return $this->idEscuela;
-    }  
+    }
 
     /**
      * Add usuario
@@ -268,7 +276,7 @@ class Asignatura
     public function addUsuario(\QQi\RecordappBundle\Entity\Usuario $usuario)
     {
         $this->usuario[] = $usuario;
-    
+
         return $this;
     }
 
@@ -285,7 +293,7 @@ class Asignatura
     /**
      * Get usuario
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsuario()
     {

@@ -28,6 +28,9 @@ class Lugar
      *
      * @ORM\Column(name="NOMBRE", type="string", length=100, nullable=true)
      */
+     /**
+     *@Assert\NotBlank()
+     */
     private $nombre;
 
     /**

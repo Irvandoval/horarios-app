@@ -28,6 +28,9 @@ class Estados
      *
      * @ORM\Column(name="NOMBRE", type="string", length=30, nullable=true)
      */
+     /**
+     *@Assert\NotBlank()
+     */
     private $nombre;
 
 
@@ -58,7 +61,7 @@ class Estados
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -79,7 +82,7 @@ class Estados
     {
         $this->Estadoss = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add Estadoss
      *
@@ -89,7 +92,7 @@ class Estados
     public function addEstados(\QQi\RecordappBundle\Entity\Horario $estadoss)
     {
         $this->Estadoss[] = $estadoss;
-    
+
         return $this;
     }
 
@@ -106,7 +109,7 @@ class Estados
     /**
      * Get Estadoss
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEstadoss()
     {

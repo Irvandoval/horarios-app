@@ -23,6 +23,7 @@ class Enlace
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
+		 
 	protected $titulo;
 
 	/**
@@ -132,14 +133,14 @@ class Enlace
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -155,14 +156,14 @@ class Enlace
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

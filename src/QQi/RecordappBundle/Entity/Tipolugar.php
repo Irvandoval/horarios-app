@@ -28,6 +28,9 @@ class Tipolugar
      *
      * @ORM\Column(name="NOMBRE", type="string", length=100, nullable=false)
      */
+     /**
+     *@Assert\NotBlank()
+     */
     private $nombre;
 
 
@@ -35,7 +38,7 @@ class Tipolugar
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -51,14 +54,14 @@ class Tipolugar
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -79,7 +82,7 @@ class Tipolugar
     {
         $this->idTipolugar = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add idTipolugar
      *
@@ -89,7 +92,7 @@ class Tipolugar
     public function addIdTipolugar(\QQi\RecordappBundle\Entity\Lugar $idTipolugar)
     {
         $this->idTipolugar[] = $idTipolugar;
-    
+
         return $this;
     }
 
@@ -106,7 +109,7 @@ class Tipolugar
     /**
      * Get idTipolugar
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIdTipolugar()
     {
