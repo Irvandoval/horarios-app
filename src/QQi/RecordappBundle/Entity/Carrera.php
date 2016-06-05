@@ -27,8 +27,6 @@ class Carrera
      * @var string
      *
      * @ORM\Column(name="NOMBRE", type="string", length=75, nullable=false)
-     */
-     /**
      *@Assert\NotBlank()
      */
     private $nombre;

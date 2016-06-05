@@ -27,6 +27,7 @@ class Horarioasignatura
      * @var float
      *
      * @ORM\Column(name="CORRELATIVO", type="decimal", nullable=false)
+     *@Assert\NotBlank()
      */
     private $correlativo;
 

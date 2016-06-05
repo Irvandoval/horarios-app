@@ -27,8 +27,6 @@ class Estados
      * @var string
      *
      * @ORM\Column(name="NOMBRE", type="string", length=30, nullable=true)
-     */
-     /**
      *@Assert\NotBlank()
      */
     private $nombre;

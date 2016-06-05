@@ -27,8 +27,6 @@ class Diahora
      * @var string
      *
      * @ORM\Column(name="NOMBRE", type="string", length=20, nullable=true)
-     */
-     /**
      *@Assert\NotBlank()
      */
     private $nombre;
@@ -46,6 +44,7 @@ class Diahora
      * @var \DateTime
      *
      * @ORM\Column(name="HORA", type="time", nullable=true)
+     *@Assert\NotBlank()
      */
     private $hora;
 

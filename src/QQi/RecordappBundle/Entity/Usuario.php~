@@ -353,4 +353,37 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
     {
         return $this->idEscuela;
     }
+
+    /**
+     * Add Asignatura
+     *
+     * @param \QQi\RecordappBundle\Entity\Asignatura $asignatura
+     * @return Usuario
+     */
+    public function addAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignatura)
+    {
+        $this->Asignatura[] = $asignatura;
+    
+        return $this;
+    }
+
+    /**
+     * Remove Asignatura
+     *
+     * @param \QQi\RecordappBundle\Entity\Asignatura $asignatura
+     */
+    public function removeAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignatura)
+    {
+        $this->Asignatura->removeElement($asignatura);
+    }
+
+    /**
+     * Get Asignatura
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAsignatura()
+    {
+        return $this->Asignatura;
+    }
 }

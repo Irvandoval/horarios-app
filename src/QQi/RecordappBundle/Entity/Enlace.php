@@ -23,7 +23,7 @@ class Enlace
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
-		 
+
 	protected $titulo;
 
 	/**
@@ -34,6 +34,7 @@ class Enlace
 
     /**
      * @ORM\Column(type="datetime")
+		 * @Assert\NotBlank()
      */
     protected $fecha;
 
@@ -50,11 +51,13 @@ class Enlace
 
     /**
      * @ORM\Column(type="datetime")
+		 * @Assert\NotBlank()
      */
     protected $created_at;
 
     /**
      * @ORM\Column(type="datetime")
+		 * @Assert\NotBlank()
      */
     protected $updated_at;
 

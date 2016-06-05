@@ -27,6 +27,7 @@ class Ciclo
      * @var string
      *
      * @ORM\Column(name="NOMBRE", type="string", length=15, nullable=false)
+     *@Assert\NotBlank()
      */
     private $nombre;
 
