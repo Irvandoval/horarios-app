@@ -1,0 +1,216 @@
+<?php
+
+namespace QQi\RecordappBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Bitacora
+ *
+ * @ORM\Table(name="bitacora")
+ * @ORM\Entity
+ */
+
+class Bitacora
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="operacion", type="string", length=30, nullable=false)
+     */
+    private $operacion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_tbl", type="integer", nullable=false)
+     */
+    private $id_tbl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="host", type="string", length=30, nullable=false)
+     */
+    private $host;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="fecha", type="datetime", nullable=true)
+     */
+    private $fecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comentario", type="string", length=255, nullable=false)
+     */
+    private $comentario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tabla", type="string", length=255, nullable=false)
+     */
+    private $tabla;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set operacion
+     *
+     * @param string $operacion
+     * @return bitacora
+     */
+    public function setOperacion($operacion)
+    {
+        $this->operacion = $operacion;
+
+        return $this;
+    }
+
+    /**
+     * Get operacion
+     *
+     * @return string
+     */
+    public function getOperacion()
+    {
+        return $this->operacion;
+    }
+
+    /**
+     * Set id_tbl
+     *
+     * @param integer $idTbl
+     * @return bitacora
+     */
+    public function setIdTbl($idTbl)
+    {
+        $this->id_tbl = $idTbl;
+
+        return $this;
+    }
+
+    /**
+     * Get id_tbl
+     *
+     * @return integer
+     */
+    public function getIdTbl()
+    {
+        return $this->id_tbl;
+    }
+
+    /**
+     * Set host
+     *
+     * @param string $host
+     * @return bitacora
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    /**
+     * Get host
+     *
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     * @return bitacora
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * Set comentario
+     *
+     * @param string $comentario
+     * @return bitacora
+     */
+    public function setComentario($comentario)
+    {
+        $this->comentario = $comentario;
+
+        return $this;
+    }
+
+    /**
+     * Get comentario
+     *
+     * @return string
+     */
+    public function getComentario()
+    {
+        return $this->comentario;
+    }
+
+    /**
+     * Set tabla
+     *
+     * @param string $tabla
+     * @return bitacora
+     */
+    public function setTabla($tabla)
+    {
+        $this->tabla = $tabla;
+
+        return $this;
+    }
+
+    /**
+     * Get tabla
+     *
+     * @return string
+     */
+    public function getTabla()
+    {
+        return $this->tabla;
+    }
+}

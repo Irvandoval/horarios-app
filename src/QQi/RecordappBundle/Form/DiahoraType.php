@@ -12,7 +12,15 @@ class DiahoraType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('dia')
+            ->add('dia','choice', array(
+                     'choices'   => array(
+                      'Lunes'   => 'Lunes',
+                      'Martes' => 'Martes',
+                      'Miercoles'   => 'Miercoles',
+                      'Jueves'   => 'Jueves',
+                      'Viernes'   => 'Viernes',
+                      'Sabado'   => 'Sabado',
+                  )))
             ->add('hora')
             ->add('idCiclo','entity', array(
               'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'opciones',

@@ -1,0 +1,53 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Bitacora{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<div class="row">
+    <div class="span12">
+
+        <table class="table table-bordered table-striped">
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <td>{{ entity.id }}</td>
+    </tr>
+    <tr>
+        <th>Operacion</th>
+        <td>{{ entity.operacion }}</td>
+    </tr>
+    <tr>
+        <th>Id_tbl</th>
+        <td>{{ entity.idtbl }}</td>
+    </tr>
+    <tr>
+        <th>Host</th>
+        <td>{{ entity.host }}</td>
+    </tr>
+    <tr>
+        <th>Fecha</th>
+        <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+    </tr>
+    <tr>
+        <th>Comentario</th>
+        <td>{{ entity.comentario }}</td>
+    </tr>
+
+    </tbody>
+</table>
+
+    </div>
+</div>
+
+<div class="row">
+        <a class="btn btn-primary btn-sm" href="{{ path('bitacora') }}">
+            Regresar a listado
+        </a>
+        </form>
+
+</div>
+</div>
+
+{% endblock %}

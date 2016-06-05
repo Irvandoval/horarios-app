@@ -1,0 +1,53 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Bitacora{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+    <h3>Bitacora</h3>
+    </div>
+
+<!-- Example row of columns -->
+<div class="row">
+    <div class="span12">
+
+        <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+        <th>Id</th>
+        <th>Operacion</th>
+        <th>Id_tbl</th>
+        <th>Host</th>
+        <th>Fecha</th>
+        <th>Comentario</th>
+        <th>Tabla</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+        <td><a href="{{ path('bitacora_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        <td>{{ entity.operacion }}</td>
+        <td>{{ entity.idtbl }}</td>
+        <td>{{ entity.host }}</td>
+        <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+        <td>{{ entity.comentario }}</td>
+        <td>{{ entity.tabla }}</td>
+            <td>
+                    <a href="{{ path('bitacora_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+        </table>
+
+</div>
+</div>
+</div>
+
+{% endblock %}
