@@ -51,7 +51,16 @@ class Actividad
      *   @ORM\JoinColumn(name="ID_LUGAR", referencedColumnName="ID")
      * })
      */
+
+
     private $idLugar;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numero_grupo", type="integer", nullable=false)
+     */
+    private $numero_grupo;
 
     /**
      * @var \Diahora
@@ -68,7 +77,7 @@ class Actividad
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -84,14 +93,14 @@ class Actividad
     public function setIdHoasig(\QQi\RecordappBundle\Entity\Horarioasignatura $idHoasig = null)
     {
         $this->idHoasig = $idHoasig;
-    
+
         return $this;
     }
 
     /**
      * Get idHoasig
      *
-     * @return \QQi\RecordappBundle\Entity\Horarioasignatura 
+     * @return \QQi\RecordappBundle\Entity\Horarioasignatura
      */
     public function getIdHoasig()
     {
@@ -107,14 +116,14 @@ class Actividad
     public function setIdTipoactividad(\QQi\RecordappBundle\Entity\Tipoactividad $idTipoactividad = null)
     {
         $this->idTipoactividad = $idTipoactividad;
-    
+
         return $this;
     }
 
     /**
      * Get idTipoactividad
      *
-     * @return \QQi\RecordappBundle\Entity\Tipoactividad 
+     * @return \QQi\RecordappBundle\Entity\Tipoactividad
      */
     public function getIdTipoactividad()
     {
@@ -130,14 +139,14 @@ class Actividad
     public function setIdLugar(\QQi\RecordappBundle\Entity\Lugar $idLugar = null)
     {
         $this->idLugar = $idLugar;
-    
+
         return $this;
     }
 
     /**
      * Get idLugar
      *
-     * @return \QQi\RecordappBundle\Entity\Lugar 
+     * @return \QQi\RecordappBundle\Entity\Lugar
      */
     public function getIdLugar()
     {
@@ -153,17 +162,40 @@ class Actividad
     public function setIdDiahora(\QQi\RecordappBundle\Entity\Diahora $idDiahora = null)
     {
         $this->idDiahora = $idDiahora;
-    
+
         return $this;
     }
 
     /**
      * Get idDiahora
      *
-     * @return \QQi\RecordappBundle\Entity\Diahora 
+     * @return \QQi\RecordappBundle\Entity\Diahora
      */
     public function getIdDiahora()
     {
         return $this->idDiahora;
+    }
+
+    /**
+     * Set numero_grupo
+     *
+     * @param integer $numeroGrupo
+     * @return Actividad
+     */
+    public function setNumeroGrupo($numeroGrupo)
+    {
+        $this->numero_grupo = $numeroGrupo;
+    
+        return $this;
+    }
+
+    /**
+     * Get numero_grupo
+     *
+     * @return integer 
+     */
+    public function getNumeroGrupo()
+    {
+        return $this->numero_grupo;
     }
 }

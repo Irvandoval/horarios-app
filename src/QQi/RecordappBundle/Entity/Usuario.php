@@ -8,7 +8,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\JoinColumn;
 /**
 * @ORM\Table(name="usuario")
 * @ORM\Entity()
@@ -77,6 +79,25 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
      * @ORM\OneToMany(targetEntity="Enlace", mappedBy="enlace")
      */
     protected $enlaces;
+
+    /**
+     * @var \Escuela
+     *
+     * @ORM\ManyToOne(targetEntity="Escuelas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_Escuela", referencedColumnName="ID")
+     * })
+     */
+    private $idEscuela;
+
+    /**
+     * @ManyToMany(targetEntity="Asignatura", inversedBy="usuario")
+     * @JoinTable(name="users_groups",
+     *      joinColumns={@JoinColumn(name="id_usuario", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_asignatura", referencedColumnName="id")}
+     *      )
+     */
+    private $Asignatura;
 
     public function __construct()
     {
@@ -250,7 +271,7 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
     public function addUsuarioRol(\QQi\RecordappBundle\Entity\Rol $usuarioRol)
     {
         $this->usuario_rol[] = $usuarioRol;
-    
+
         return $this;
     }
 
@@ -273,7 +294,7 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
     public function addTarea(\QQi\RecordappBundle\Entity\Tarea $tareas)
     {
         $this->tareas[] = $tareas;
-    
+
         return $this;
     }
 
@@ -296,7 +317,7 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
     public function addEnlace(\QQi\RecordappBundle\Entity\Enlace $enlaces)
     {
         $this->enlaces[] = $enlaces;
-    
+
         return $this;
     }
 
@@ -308,5 +329,61 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
     public function removeEnlace(\QQi\RecordappBundle\Entity\Enlace $enlaces)
     {
         $this->enlaces->removeElement($enlaces);
+    }
+
+    /**
+     * Set idEscuela
+     *
+     * @param \QQi\RecordappBundle\Entity\Escuela $idEscuela
+     * @return Usuario
+     */
+    public function setIdEscuela(\QQi\RecordappBundle\Entity\Escuela $idEscuela = null)
+    {
+        $this->idEscuela = $idEscuela;
+
+        return $this;
+    }
+
+    /**
+     * Get idEscuela
+     *
+     * @return \QQi\RecordappBundle\Entity\Escuela
+     */
+    public function getIdEscuela()
+    {
+        return $this->idEscuela;
+    }
+
+    /**
+     * Add Asignatura
+     *
+     * @param \QQi\RecordappBundle\Entity\Asignatura $asignatura
+     * @return Usuario
+     */
+    public function addAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignatura)
+    {
+        $this->Asignatura[] = $asignatura;
+    
+        return $this;
+    }
+
+    /**
+     * Remove Asignatura
+     *
+     * @param \QQi\RecordappBundle\Entity\Asignatura $asignatura
+     */
+    public function removeAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignatura)
+    {
+        $this->Asignatura->removeElement($asignatura);
+    }
+
+    /**
+     * Get Asignatura
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAsignatura()
+    {
+        return $this->Asignatura;
     }
 }
