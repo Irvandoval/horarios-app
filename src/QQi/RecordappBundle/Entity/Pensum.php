@@ -42,6 +42,9 @@ class Pensum
      *
      * @ORM\Column(name="PLAN", type="string", length=25, nullable=true)
      */
+     /**
+     *@Assert\NotBlank()
+     */
     private $plan;
 
     /**

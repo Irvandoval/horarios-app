@@ -28,6 +28,9 @@ class Escuelas
      *
      * @ORM\Column(name="NOMBRE", type="string", length=150, nullable=true)
      */
+     /**
+     *@Assert\NotBlank()
+     */
     private $nombre;
 
     /**
