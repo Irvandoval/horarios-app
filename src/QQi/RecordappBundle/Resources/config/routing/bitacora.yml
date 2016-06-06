@@ -1,0 +1,7 @@
+bitacora:
+    pattern:  /bitacora/index
+    defaults: { _controller: "QQiRecordappBundle:Bitacora:index" }
+
+bitacora_show:
+    pattern:  /bitacora/{id}/show
+    defaults: { _controller: "QQiRecordappBundle:Bitacora:show" }

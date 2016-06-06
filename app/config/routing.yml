@@ -69,5 +69,8 @@ _horarioasignatura:
 _actividad:
     resource: "@QQiRecordappBundle/Resources/config/routing/actividad.yml"
 
+_bitacora:
+    resource: "@QQiRecordappBundle/Resources/config/routing/bitacora.yml"
+
 _comun:
     resource: "@QQiRecordappBundle/Resources/config/routing.yml"

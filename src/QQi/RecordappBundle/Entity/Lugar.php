@@ -27,8 +27,6 @@ class Lugar
      * @var string
      *
      * @ORM\Column(name="NOMBRE", type="string", length=100, nullable=true)
-     */
-     /**
      *@Assert\NotBlank()
      */
     private $nombre;
@@ -37,6 +35,7 @@ class Lugar
      * @var integer
      *
      * @ORM\Column(name="CUPO", type="integer", nullable=true)
+     *@Assert\NotBlank()
      */
     private $cupo;
 

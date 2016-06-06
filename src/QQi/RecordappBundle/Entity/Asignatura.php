@@ -28,8 +28,6 @@ class Asignatura
      * @var string
      *
      * @ORM\Column(name="NOMBRE", type="string", length=50, nullable=false)
-     */
-     /**
      *@Assert\NotBlank()
      */
     private $nombre;
@@ -38,12 +36,9 @@ class Asignatura
      * @var string
      *
      * @ORM\Column(name="CODIGO", type="string", length=20, nullable=false)
-     */
-     /**
      * @Assert\NotBlank()
      * @Assert\Regex("/([A-Z]){3}\d{3}$/")
      */
-
     private $codigo;
 
     /**

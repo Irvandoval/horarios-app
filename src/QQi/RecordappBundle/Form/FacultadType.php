@@ -11,7 +11,9 @@ class FacultadType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
+            ->add('nombre', null, array(
+                  'invalid_message' => 'El número de elementos introducido no es válido.',
+              ))
         ;
     }
 
