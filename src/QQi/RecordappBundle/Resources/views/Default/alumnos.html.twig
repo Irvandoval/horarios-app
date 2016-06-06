@@ -1,0 +1,27 @@
+
+{% extends "QQiRecordappBundle::layout.html.twig" %}
+
+{% block title %}Alumnos{% endblock %} 
+
+{% block body %}
+
+	<!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+      	<h2>Listado de alumnos</h2>
+    </div>
+
+    <div class="row">
+
+    	<div class="span4">
+          
+        </div>
+
+        <div class="span8">
+          <h2>RecordApp</h2>
+        	<h2>{% for alumno in alumnos%}</h2><br>
+			<h2>{{alumno.matricula}}-{{alumno.nombre}}</h2>
+			{%endfor%}
+        </div>
+    </div><!--/row-->
+
+{% endblock %}

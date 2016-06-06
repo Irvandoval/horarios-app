@@ -20,13 +20,29 @@ class AsignaturaController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+		
+	$repository = $this->getDoctrine()->getRepository('QQiRecordappBundle:Asignatura');
+ 
+    $query = $repository->createQueryBuilder('p')
+    ->where('p.codigo = :cod')
+    ->setParameter('cod', 'COS115')
+    ->orWhere('p.codigo = :cod1')
+	->setParameter('cod1', 'IGF115')
+    ->getQuery();
+	
+	$entities = $query->getResult();
+
+        return $this->render('QQiRecordappBundle:Asignatura:index.html.twig', array(
+            'entities' => $entities,
+        ));
+		
+       /* $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('QQiRecordappBundle:Asignatura')->findAll();
 
         return $this->render('QQiRecordappBundle:Asignatura:index.html.twig', array(
             'entities' => $entities,
-        ));
+        ));*/
     }
 
     /**
