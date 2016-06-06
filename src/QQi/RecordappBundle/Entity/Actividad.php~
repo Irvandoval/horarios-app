@@ -51,14 +51,13 @@ class Actividad
      *   @ORM\JoinColumn(name="ID_LUGAR", referencedColumnName="ID")
      * })
      */
-
-
     private $idLugar;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="numero_grupo", type="integer", nullable=false)
+     *@Assert\NotBlank()
      */
     private $numero_grupo;
 
@@ -176,26 +175,5 @@ class Actividad
         return $this->idDiahora;
     }
 
-    /**
-     * Set numero_grupo
-     *
-     * @param integer $numeroGrupo
-     * @return Actividad
-     */
-    public function setNumeroGrupo($numeroGrupo)
-    {
-        $this->numero_grupo = $numeroGrupo;
-    
-        return $this;
-    }
 
-    /**
-     * Get numero_grupo
-     *
-     * @return integer 
-     */
-    public function getNumeroGrupo()
-    {
-        return $this->numero_grupo;
-    }
 }

@@ -51,14 +51,13 @@ class Actividad
      *   @ORM\JoinColumn(name="ID_LUGAR", referencedColumnName="ID")
      * })
      */
-
-
     private $idLugar;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="numero_grupo", type="integer", nullable=false)
+     *@Assert\NotBlank()
      */
     private $numero_grupo;
 
@@ -175,6 +174,8 @@ class Actividad
     {
         return $this->idDiahora;
     }
+
+
 
     /**
      * Set numero_grupo

@@ -85,10 +85,11 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @ORM\ManyToOne(targetEntity="Escuelas")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_Escuela", referencedColumnName="ID")
+     *   @ORM\JoinColumn(name="ID_ESCUELA", referencedColumnName="ID")
      * })
      */
     private $idEscuela;
+
 
     /**
      * @ManyToMany(targetEntity="Asignatura", inversedBy="usuario")
@@ -97,7 +98,7 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
      *      inverseJoinColumns={@JoinColumn(name="id_asignatura", referencedColumnName="id")}
      *      )
      */
-    private $Asignatura;
+    public $Asignaturas;
 
     public function __construct()
     {
@@ -331,59 +332,83 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
         $this->enlaces->removeElement($enlaces);
     }
 
+
+    /**
+     * Set idEscuelas
+     *
+     * @param \QQi\RecordappBundle\Entity\Escuelas $idEscuelas
+     * @return Usuario
+     */
+    public function setIdEscuelas(\QQi\RecordappBundle\Entity\Escuelas $idEscuelas = null)
+    {
+        $this->idEscuelas = $idEscuelas;
+
+        return $this;
+    }
+
+    /**
+     * Get idEscuelas
+     *
+     * @return \QQi\RecordappBundle\Entity\Escuelas
+     */
+    public function getIdEscuelas()
+    {
+        return $this->idEscuelas;
+    }
+
+    /**
+     * Add Asignaturas
+     *
+     * @param \QQi\RecordappBundle\Entity\Asignatura $asignaturas
+     * @return Usuario
+     */
+    public function addAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignaturas)
+    {
+        $this->Asignaturas[] = $asignaturas;
+
+        return $this;
+    }
+
+    /**
+     * Remove Asignaturas
+     *
+     * @param \QQi\RecordappBundle\Entity\Asignatura $asignaturas
+     */
+    public function removeAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignaturas)
+    {
+        $this->Asignaturas->removeElement($asignaturas);
+    }
+
+    /**
+     * Get Asignaturas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAsignaturas()
+    {
+        return $this->Asignaturas;
+    }
+
     /**
      * Set idEscuela
      *
-     * @param \QQi\RecordappBundle\Entity\Escuela $idEscuela
+     * @param \QQi\RecordappBundle\Entity\Escuelas $idEscuela
      * @return Usuario
      */
-    public function setIdEscuela(\QQi\RecordappBundle\Entity\Escuela $idEscuela = null)
+    public function setIdEscuela(\QQi\RecordappBundle\Entity\Escuelas $idEscuela = null)
     {
         $this->idEscuela = $idEscuela;
-
+    
         return $this;
     }
 
     /**
      * Get idEscuela
      *
-     * @return \QQi\RecordappBundle\Entity\Escuela
+     * @return \QQi\RecordappBundle\Entity\Escuelas 
      */
     public function getIdEscuela()
     {
         return $this->idEscuela;
-    }
-
-    /**
-     * Add Asignatura
-     *
-     * @param \QQi\RecordappBundle\Entity\Asignatura $asignatura
-     * @return Usuario
-     */
-    public function addAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignatura)
-    {
-        $this->Asignatura[] = $asignatura;
-    
-        return $this;
-    }
-
-    /**
-     * Remove Asignatura
-     *
-     * @param \QQi\RecordappBundle\Entity\Asignatura $asignatura
-     */
-    public function removeAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignatura)
-    {
-        $this->Asignatura->removeElement($asignatura);
-    }
-
-    /**
-     * Get Asignatura
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAsignatura()
-    {
-        return $this->Asignatura;
     }
 }

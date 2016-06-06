@@ -41,8 +41,6 @@ class Escuelas
      */
     private $idFacultad;
 
-
-
     /**
      * Get id
      *
@@ -145,5 +143,38 @@ class Escuelas
     public function __toString()
     {
           return $this->nombre;
+    }
+
+    /**
+     * Add usuario_e
+     *
+     * @param \QQi\RecordappBundle\Entity\Usuario $usuarioE
+     * @return Escuelas
+     */
+    public function addUsuarioE(\QQi\RecordappBundle\Entity\Usuario $usuarioE)
+    {
+        $this->usuario_e[] = $usuarioE;
+
+        return $this;
+    }
+
+    /**
+     * Remove usuario_e
+     *
+     * @param \QQi\RecordappBundle\Entity\Usuario $usuarioE
+     */
+    public function removeUsuarioE(\QQi\RecordappBundle\Entity\Usuario $usuarioE)
+    {
+        $this->usuario_e->removeElement($usuarioE);
+    }
+
+    /**
+     * Get usuario_e
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsuarioE()
+    {
+        return $this->usuario_e;
     }
 }
