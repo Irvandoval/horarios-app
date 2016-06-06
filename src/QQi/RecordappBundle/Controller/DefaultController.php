@@ -34,6 +34,14 @@ class DefaultController extends Controller
     {
         return $this->render('QQiRecordappBundle:Default:ayuda.html.twig');
     }
+	public function alumnosAction()
+    {
+		$alumnos = array(
+		array("matricula"=>1,"nombre"=>"Prueba1"),
+		array("matricula"=>1,"nombre"=>"Prueba2")
+		);
+        return $this->render('QQiRecordappBundle:Default:alumnos.html.twig', array("alumnos"=>$alumnos));
+    }
 
     public function portadaAction()
     {

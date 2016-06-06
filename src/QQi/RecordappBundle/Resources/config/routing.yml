@@ -13,3 +13,6 @@ ayuda:
 portada:
     pattern:	/
     defaults:	{ _controller: QQiRecordappBundle:Default:portada }
+alumno:
+    pattern:	/alumnos
+    defaults:	{ _controller: QQiRecordappBundle:Default:alumnos }
