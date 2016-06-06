@@ -34,10 +34,11 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
         $this->manager = $manager;
-        $rsm = new ResultSetMapping();
+
+       $rsm = new ResultSetMapping();
 								#eliminar datos anteriores
 							 $manager->createNativeQuery('DELETE FROM usuario_rol',$rsm)->getResult();
-							 $users = $manager->getRepository('QQiRecordappBundle:Usuario')->findAll();
+							$users = $manager->getRepository('QQiRecordappBundle:Usuario')->findAll();
 							 for ($i=0; $i < count($users) ; $i++) {
 							 	 $manager->remove($users[$i]);
 							 }
@@ -222,6 +223,13 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 								$ciclo->setFechaFin(new \DateTime('12-12-2015'));
 								$manager->persist($ciclo);
 								# Tipo Actividad
+
+        $ciclo2 = new Ciclo();
+								$ciclo2->setNombre('Ciclo II');
+								$ciclo2->setFechaInicio(new \DateTime('08-08-2016'));
+								$ciclo2->setFechaFin(new \DateTime('12-12-2016'));
+								$manager->persist($ciclo2);
+
 								$tiposActividadArray = array('GT', 'GD', 'GL');
 								for ($i=0; $i < count($tiposActividadArray); $i++) {
 								 $tipoActividad = new Tipoactividad();
@@ -311,7 +319,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $actividad1->setIdTipoactividad($primertipoActividad);
         $actividad1->setIdLugar($B11);
         $actividad1->setNumeroGrupo(1);
-        $actividad1->setIdDiahora($diahora1);
+        $actividad1->setIdDiahora($diahora2);
         $manager->persist($actividad1);
 
         $manager->flush();
