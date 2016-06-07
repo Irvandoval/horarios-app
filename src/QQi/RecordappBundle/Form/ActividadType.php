@@ -34,6 +34,7 @@ class ActividadType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'QQi\RecordappBundle\Entity\Actividad'
+        ));
 
     }
 
