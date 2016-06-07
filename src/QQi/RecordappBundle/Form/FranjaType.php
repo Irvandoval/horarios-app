@@ -6,22 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DiahoraType extends AbstractType
+class FranjaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('nombre')
-            ->add('dia','choice', array(
-                     'choices'   => array(
-                      'Lunes'   => 'Lunes',
-                      'Martes' => 'Martes',
-                      'Miercoles'   => 'Miercoles',
-                      'Jueves'   => 'Jueves',
-                      'Viernes'   => 'Viernes',
-                      'Sabado'   => 'Sabado',
-                  )))
-            ->add('hora')
+            ->add('hora_inicio')
+            ->add('hora_fin')
             ->add('idCiclo','entity', array(
               'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'opciones',
             ))
@@ -31,12 +23,12 @@ class DiahoraType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'QQi\RecordappBundle\Entity\Diahora'
+            'data_class' => 'QQi\RecordappBundle\Entity\Franja'
         ));
     }
 
     public function getName()
     {
-        return 'qqi_recordappbundle_diahoratype';
+        return 'qqi_recordappbundle_franjatype';
     }
 }

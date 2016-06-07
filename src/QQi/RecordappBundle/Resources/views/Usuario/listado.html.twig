@@ -20,6 +20,7 @@
 				<th>#</th>
 				<th>Apellido y Nombre</th>
 				<th>Email</th>
+				<th>Escuela</th>
 				<th>Acceso</th>
 				<th></th>
 			</tr>
@@ -37,6 +38,7 @@
 				{% endif %}
 			</td>
 			<td>{{ datos.email }}</td>
+			<td>{{ datos.idEscuela }}</td>
 			<td>
 				{% for r in datos.roles %}
 				<ul>

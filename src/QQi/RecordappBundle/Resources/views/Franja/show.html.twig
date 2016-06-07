@@ -1,0 +1,58 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+
+{% block title %}Franja{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<div class="row">
+    <div class="span12">
+
+        <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Hora_inicio</th>
+                <td>{{ entity.horainicio|date('G:ia') }}</td>
+            </tr>
+            <tr>
+                <th>Hora_fin</th>
+                <td>{{ entity.horafin|date('G:ia') }}</td>
+            </tr>
+            <tr>
+                <th>Ciclo</th>
+                <td>{{ entity.IdCiclo }}</td>
+            </tr>
+        </tbody>
+</table>
+
+    </div>
+</div>
+
+<div class="row">
+        <a class="btn btn-primary btn-sm" href="{{ path('franja') }}">
+            Regresar a listado
+        </a>
+
+        <a class="btn btn-success btn-sm"  href="{{ path('franja_edit', { 'id': entity.id }) }}">
+           Modificar
+        </a>
+
+
+        <form action="{{ path('franja_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <br />
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
+        </form>
+
+</div>
+</div>
+
+{% endblock %}

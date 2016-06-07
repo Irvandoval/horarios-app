@@ -11,8 +11,12 @@
         <table class="table table-bordered table-striped">
     <tbody>
         <tr>
+            <th>Codigo de Materia</th>
+            <td>{{ entity.idHoasig.idAsignatura.codigo }}</td>
+        </tr>
+        <tr>
             <th>Hora Asignada</th>
-            <td>{{ entity.idHoasig }}</td>
+            <td>{{ entity.idHoasig.idAsignatura.nombre }}</td>
         </tr>
         <tr>
             <th>Tipo de Activiad</th>
@@ -27,8 +31,16 @@
             <td>{{ entity.idLugar }}</td>
         </tr>
         <tr>
-            <th>Dia y Hora</th>
-            <td>{{ entity.idDiahora }}</td>
+            <th>Dia</th>
+            <td>{{ entity.idDia }}</td>
+        </tr>
+        <tr>
+            <th>Hora Inicio</th>
+            <td>{{ entity.idFranja.horaInicio|date('G:ia') }}</td>
+        </tr>
+        <tr>
+            <th>Hora Fin</th>
+            <td>{{ entity.idFranja.horaFin|date('G:ia') }}</td>
         </tr>
     </tbody>
 </table>

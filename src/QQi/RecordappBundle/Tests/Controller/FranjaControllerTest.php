@@ -4,7 +4,7 @@ namespace QQi\RecordappBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DiahoraControllerTest extends WebTestCase
+class FranjaControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class DiahoraControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/diahora/');
+        $crawler = $client->request('GET', '/franja/');
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'qqi_recordappbundle_diahoratype[field_name]'  => 'Test',
+            'qqi_recordappbundle_franjatype[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class DiahoraControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Edit')->form(array(
-            'qqi_recordappbundle_diahoratype[field_name]'  => 'Foo',
+            'qqi_recordappbundle_franjatype[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

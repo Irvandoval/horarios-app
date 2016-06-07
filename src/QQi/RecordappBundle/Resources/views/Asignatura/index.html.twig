@@ -22,8 +22,7 @@
                 <th>Nombre</th>
                 <th>Codigo</th>
                 <th>Escuela</th>
-                <th>Usuario</th>
-            <th>Opciones</th>
+                <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -32,7 +31,6 @@
             <td><a href="{{ path('asignatura_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.nombre }}</td>
             <td>{{ entity.codigo }}</td>
-            <td>{{ entity.idEscuela }}</td>
             <td>{{ entity.idEscuela }}</td>
             <td>
                     <a href="{{ path('asignatura_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>

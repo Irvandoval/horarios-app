@@ -21,8 +21,11 @@ class ActividadType extends AbstractType
             ->add('idLugar','entity', array(
               'class' => 'QQiRecordappBundle:Lugar', 'empty_value' => 'opciones',
             ))
-            ->add('idDiahora','entity', array(
-              'class' => 'QQiRecordappBundle:Diahora', 'empty_value' => 'opciones',
+            ->add('idDia','entity', array(
+              'class' => 'QQiRecordappBundle:Dia', 'empty_value' => 'opciones',
+            ))
+            ->add('idFranja','entity', array(
+              'class' => 'QQiRecordappBundle:Franja', 'empty_value' => 'opciones',
             ))
         ;
     }
@@ -32,6 +35,14 @@ class ActividadType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'QQi\RecordappBundle\Entity\Actividad'
         ));
+        $this->widgetSchema->setLabels(array(
+              'idHoasig'  => 'Materia',
+              'idTipoactividad'  => 'Tipo de grupo',
+              'numero_grupo'  => 'Numero de grupo',
+              'idDia'  => 'Dia',
+              'idFranja'  => 'Horario', 
+        ));
+
     }
 
     public function getName()

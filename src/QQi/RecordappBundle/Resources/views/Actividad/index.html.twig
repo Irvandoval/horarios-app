@@ -19,22 +19,31 @@
     <thead>
         <tr>
                 <th>#</th>
-            <th>Hora Asignada</th>
+            <th>Código</th>
+            <th>Asignatura</th>
             <th>Tipo de Actividad</th>
             <th>Numero de Grupo</th>
             <th>Local</th>
-            <th>Dia y Hora</th>
+            <th>Dia</th>
+            <th>Franja</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.idHoasig }}</td>
+            <td>{{ entity.idHoasig.idAsignatura.codigo }}</td>
+            <td>{{ entity.idHoasig.idAsignatura.nombre }}</td>
             <td>{{ entity.idTipoactividad }}</td>
             <td>{{ entity.numerogrupo }}</td>
             <td>{{ entity.idLugar }}</td>
-            <td>{{ entity.idDiahora }}</td>
+            <td>{{ entity.idDia.nombre }}</td>
+            <td>{{ entity.idFranja.nombre }}</td>
+            <td>{{ entity.idFranja.horaInicio|date('G:ia')}}</td>
+            <td>{{ entity.idFranja.horaFin|date('G:ia')}}</td>
             <td>
                     <a href="{{ path('actividad_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
                     <a href="{{ path('actividad_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> edit</a>

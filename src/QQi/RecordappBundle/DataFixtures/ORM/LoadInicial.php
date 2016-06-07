@@ -17,7 +17,8 @@ use QQi\RecordappBundle\Entity\Ciclo;
 use QQi\RecordappBundle\Entity\Tipoactividad;
 use QQi\RecordappBundle\Entity\Estados;
 use QQi\RecordappBundle\Entity\Horario;
-use QQi\RecordappBundle\Entity\Diahora;
+use QQi\RecordappBundle\Entity\Dia;
+use QQi\RecordappBundle\Entity\Franja;
 use QQi\RecordappBundle\Entity\Actividad;
 use QQi\RecordappBundle\Entity\Horarioasignatura;
 
@@ -81,9 +82,13 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         for ($i=0; $i < count($estados) ; $i++) {
          $manager->remove($estados[$i]);
         }
-        $diahora = $manager->getRepository('QQiRecordappBundle:Diahora')->findAll();
-        for ($i=0; $i < count($diahora) ; $i++) {
-         $manager->remove($diahora[$i]);
+        $dia = $manager->getRepository('QQiRecordappBundle:Dia')->findAll();
+        for ($i=0; $i < count($dia) ; $i++) {
+         $manager->remove($dia[$i]);
+        }
+        $franja = $manager->getRepository('QQiRecordappBundle:Franja')->findAll();
+        for ($i=0; $i < count($franja) ; $i++) {
+         $manager->remove($franja[$i]);
         }
         $actividades = $manager->getRepository('QQiRecordappBundle:Actividad')->findAll();
         for ($i=0; $i < count($actividades) ; $i++) {
@@ -254,42 +259,120 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
             $manager->persist($horario);
           }
         }
+#Dias
+        $dia1 = new Dia();
+        $dia1->setNombre('Lunes');
+        $manager->persist($dia1);
 
-        $diahora1 = new Diahora();
-        $diahora1->setNombre('Lunes 8:05');
-        $diahora1->setDia(1);
-        $dateAux = new \DateTime('06-06-06');
-        $dateAux->setTime(8,5);
-        $diahora1->setHora($dateAux);
-        $diahora1->setIdCiclo($ciclo);
-        $manager->persist($diahora1);
+        $dia2 = new Dia();
+        $dia2->setNombre('Martes');
+        $manager->persist($dia2);
 
-        $diahora2 = new Diahora();
-        $diahora2->setNombre('Miercoles 8:05');
-        $diahora2->setDia(3);
-        $dateAux = new \DateTime('06-06-06');
-        $dateAux->setTime(8,5);
-        $diahora2->setHora($dateAux);
-        $diahora2->setIdCiclo($ciclo);
-        $manager->persist($diahora2);
+        $dia3 = new Dia();
+        $dia3->setNombre('Miercoles');
+        $manager->persist($dia3);
 
-        $diahora3 = new Diahora();
-        $diahora3->setNombre('Martes 8:05');
-        $diahora3->setDia(2);
-        $dateAux = new \DateTime('06-06-06');
-        $dateAux->setTime(8,5);
-        $diahora3->setHora($dateAux);
-        $diahora3->setIdCiclo($ciclo);
-        $manager->persist($diahora3);
+        $dia4 = new Dia();
+        $dia4->setNombre('Jueves');
+        $manager->persist($dia4);
 
-        $diahora4 = new Diahora();
-        $diahora4->setNombre('Viernes 8:05');
-        $diahora4->setDia(5);
+        $dia5 = new Dia();
+        $dia5->setNombre('Viernes');
+        $manager->persist($dia5);
+
+        $dia6 = new Dia();
+        $dia6->setNombre('Sabado');
+        $manager->persist($dia6);
+#Franjas
+        $franja1 = new Franja();
+        $franja1->setNombre('franja 1');
         $dateAux = new \DateTime('06-06-06');
-        $dateAux->setTime(8,5);
-        $diahora4->setHora($dateAux);
-        $diahora4->setIdCiclo($ciclo);
-        $manager->persist($diahora4);
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(6,20);
+        $dateAux2->setTime(8,00);
+        $franja1->setHoraInicio($dateAux);
+        $franja1->setHoraFin($dateAux2);
+        $franja1->setIdCiclo($ciclo);
+        $manager->persist($franja1);
+
+        $franja2 = new Franja();
+        $franja2->setNombre('franja 2');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(8,05);
+        $dateAux2->setTime(9,45);
+        $franja2->setHoraInicio($dateAux);
+        $franja2->setHoraFin($dateAux2);
+        $franja2->setIdCiclo($ciclo);
+        $manager->persist($franja2);
+
+        $franja3 = new Franja();
+        $franja3->setNombre('franja 3');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(9,50);
+        $dateAux2->setTime(11,30);
+        $franja3->setHoraInicio($dateAux);
+        $franja3->setHoraFin($dateAux2);
+        $franja3->setIdCiclo($ciclo);
+        $manager->persist($franja3);
+
+        $franja4 = new Franja();
+        $franja4->setNombre('franja 4');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(11,35);
+        $dateAux2->setTime(13,15);
+        $franja4->setHoraInicio($dateAux);
+        $franja4->setHoraFin($dateAux2);
+        $franja4->setIdCiclo($ciclo);
+        $manager->persist($franja4);
+
+        $franja5 = new Franja();
+        $franja5->setNombre('franja 5');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(13,20);
+        $dateAux2->setTime(15,00);
+        $franja5->setHoraInicio($dateAux);
+        $franja5->setHoraFin($dateAux2);
+        $franja5->setIdCiclo($ciclo);
+        $manager->persist($franja5);
+
+        $franja6 = new Franja();
+        $franja6->setNombre('franja 6');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(15,05);
+        $dateAux2->setTime(16,45);
+        $franja6->setHoraInicio($dateAux);
+        $franja6->setHoraFin($dateAux2);
+        $franja6->setIdCiclo($ciclo);
+        $manager->persist($franja6);
+
+        $franja7 = new Franja();
+        $franja7->setNombre('franja 7');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(16,50);
+        $dateAux2->setTime(18,30);
+        $franja7->setHoraInicio($dateAux);
+        $franja7->setHoraFin($dateAux2);
+        $franja7->setIdCiclo($ciclo);
+        $manager->persist($franja7);
+
+        $franja8 = new Franja();
+        $franja8->setNombre('franja 8');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(18,35);
+        $dateAux2->setTime(20,15);
+        $franja8->setHoraInicio($dateAux);
+        $franja8->setHoraFin($dateAux2);
+        $franja8->setIdCiclo($ciclo);
+        $manager->persist($franja8);
+
+
 
        #HorarioAsignatura
         $horasig = new Horarioasignatura();
@@ -303,7 +386,8 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $actividad->setIdTipoactividad($primertipoActividad);
         $actividad->setIdLugar($B11);
         $actividad->setNumeroGrupo(1);
-        $actividad->setIdDiahora($diahora1);
+        $actividad->setIdFranja($franja1);
+        $actividad->setIdDia($dia1);
         $manager->persist($actividad);
         #miercoles 805
         $actividad1 = new Actividad();
@@ -311,7 +395,8 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $actividad1->setIdTipoactividad($primertipoActividad);
         $actividad1->setIdLugar($B11);
         $actividad1->setNumeroGrupo(1);
-        $actividad1->setIdDiahora($diahora1);
+        $actividad1->setIdFranja($franja2);
+        $actividad->setIdDia($dia2);
         $manager->persist($actividad1);
 
         $manager->flush();

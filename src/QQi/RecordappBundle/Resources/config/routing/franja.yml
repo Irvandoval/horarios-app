@@ -1,0 +1,30 @@
+franja:
+    pattern:  /franja/index
+    defaults: { _controller: "QQiRecordappBundle:Franja:index" }
+
+franja_show:
+    pattern:  /franja/{id}/show
+    defaults: { _controller: "QQiRecordappBundle:Franja:show" }
+
+franja_new:
+    pattern:  /franja/new
+    defaults: { _controller: "QQiRecordappBundle:Franja:new" }
+
+franja_create:
+    pattern:  /franja/create
+    defaults: { _controller: "QQiRecordappBundle:Franja:create" }
+    requirements: { _method: post }
+
+franja_edit:
+    pattern:  /franja/{id}/edit
+    defaults: { _controller: "QQiRecordappBundle:Franja:edit" }
+
+franja_update:
+    pattern:  /franja/{id}/update
+    defaults: { _controller: "QQiRecordappBundle:Franja:update" }
+    requirements: { _method: post }
+
+franja_delete:
+    pattern:  /franja/{id}/delete
+    defaults: { _controller: "QQiRecordappBundle:Franja:delete" }
+    requirements: { _method: post }

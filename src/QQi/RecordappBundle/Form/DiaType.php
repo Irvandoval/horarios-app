@@ -6,30 +6,24 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class AsignaturaType extends AbstractType
+class DiaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('nombre')
-            ->add('codigo')
-            ->add('idEscuela','entity', array(
-              'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
-            ))
-            ->add('usuario')
-
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'QQi\RecordappBundle\Entity\Asignatura'
+            'data_class' => 'QQi\RecordappBundle\Entity\Dia'
         ));
     }
 
     public function getName()
     {
-        return 'qqi_recordappbundle_asignaturatype';
+        return 'qqi_recordappbundle_diatype';
     }
 }
