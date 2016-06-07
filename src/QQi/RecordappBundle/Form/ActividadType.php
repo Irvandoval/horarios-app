@@ -34,14 +34,6 @@ class ActividadType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'QQi\RecordappBundle\Entity\Actividad'
-        ));
-        $this->widgetSchema->setLabels(array(
-              'idHoasig'  => 'Materia',
-              'idTipoactividad'  => 'Tipo de grupo',
-              'numero_grupo'  => 'Numero de grupo',
-              'idDia'  => 'Dia',
-              'idFranja'  => 'Horario', 
-        ));
 
     }
 
