@@ -11,6 +11,7 @@ use QQi\RecordappBundle\Entity\Rol;
 use QQi\RecordappBundle\Entity\Asignatura;
 use QQi\RecordappBundle\Entity\Escuelas;
 use QQi\RecordappBundle\Entity\Facultad;
+use QQi\RecordappBundle\Entity\Carrera;
 use QQi\RecordappBundle\Entity\Tipolugar;
 use QQi\RecordappBundle\Entity\Lugar;
 use QQi\RecordappBundle\Entity\Ciclo;
@@ -98,6 +99,11 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         for ($i=0; $i < count($hrs) ; $i++) {
          $manager->remove($hrs[$i]);
         }
+        $carreras = $manager->getRepository('QQiRecordappBundle:carrera')->findAll();
+        for ($i=0; $i < count($carreras) ; $i++) {
+         $manager->remove($carreras[$i]);
+        }
+
 
         # Add Rol Administrador
         $rolAdmin = new Rol();
@@ -116,6 +122,13 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 								$escuela->setNombre('ESCUELA DE INGENIERIA DE SISTEMAS INFORMATICOS');
 								$escuela->setIdFacultad($facultad);
 								$manager->persist($escuela);
+                #add Carrera
+                $carrera = new Carrera();
+                $carrera->setNombre('(I10515-1998) INGENIERIA DE SISTEMAS INFORMATICOS');
+                $carrera->setIdFacultad($facultad);
+                $manager->persist($carrera);
+
+
         # Add Usuario Administrador
         $usuario = new Usuario();
         $usuario->setNombre('admin');

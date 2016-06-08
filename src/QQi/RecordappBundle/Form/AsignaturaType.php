@@ -13,8 +13,8 @@ class AsignaturaType extends AbstractType
         $builder
             ->add('nombre')
             ->add('codigo')
-            ->add('idEscuela','entity', array(
-              'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
+            ->add('idEscuela','entity', array('label'=>'Escuelas',
+              'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'Elija una Escuela',
             ))
             ->add('usuario')
 
