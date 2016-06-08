@@ -6,10 +6,25 @@
 
 <div class="container">
 <!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit">
-    <h3>Actividad</h3>
-        <p><a class="btn btn-primary btn-large" href="{{ path('actividad_new') }}">Nuevo &raquo;</a></p>
-    </div>
+<div class="hero-unit" weigt='50%'>
+
+<td><h3>Actividad</h3></td>
+
+        <div class="btn-group">
+        <button type="button" class="btn-primary btn-block dropdown-toggle"data-toggle="dropdown">
+          Acciones <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="{{ path('actividad_new') }}">Asignar Horario</a></li>
+          <li><a href="{{ path('yes') }}">Asignaturas Aprobadas</a></li>
+          <li><a href="#">Acción #3</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #4</a></li>
+        </ul>
+      </div>
+
+</div>
 
 <!-- Example row of columns -->
 <div class="row">

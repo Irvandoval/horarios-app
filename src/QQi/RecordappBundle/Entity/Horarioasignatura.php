@@ -132,7 +132,7 @@ class Horarioasignatura
     }
     public function __toString()
     {
-          return $this->correlativo;
+          return $this->idAsignatura->getNombre();
     }
 
 }
