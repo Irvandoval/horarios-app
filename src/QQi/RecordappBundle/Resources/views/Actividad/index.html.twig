@@ -4,6 +4,18 @@
 
 {% block body %}
 
+{% for type, flashMessage in app.session.flashbag.all() %}
+    <div class="alert alert-{{ type }} fade in">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        {% if flashMessage.title is defined %}
+        <strong>{{ flashMessage.title }}</strong>
+        {{ flashMessage.message }}
+        {% else %}
+        {{ type }}
+        {% endif %}
+    </div>
+{% endfor %}
+
 <div class="container">
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="hero-unit" weigt='50%'>
@@ -55,7 +67,7 @@
             <td>{{ entity.idTipoactividad }}</td>
             <td>{{ entity.numerogrupo }}</td>
             <td>{{ entity.idLugar }}</td>
-            <td>{{ entity.idDia.nombre }}</td>
+            <td>{{ entity.idDia.nombre}}</td>
             <td>{{ entity.idFranja.nombre }}</td>
             <td>{{ entity.idFranja.horaInicio|date('G:ia')}}</td>
             <td>{{ entity.idFranja.horaFin|date('G:ia')}}</td>

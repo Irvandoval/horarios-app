@@ -54,6 +54,7 @@ class Franja
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_CICLO", referencedColumnName="ID")
      * })
+     *@Assert\NotBlank()
      */
     private $idCiclo;
 
@@ -160,4 +161,8 @@ class Franja
     {
         return $this->idCiclo;
     }
+    public function __toString()
+      {
+          return $this->hora_inicio->format('G:ia')." a ".$this->hora_fin->format('G:ia');
+      }
 }

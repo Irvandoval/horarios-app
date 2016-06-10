@@ -9,6 +9,7 @@ actividad_show:
 actividad_new:
     pattern:  /actividad/new
     defaults: { _controller: QQiRecordappBundle:Actividad:new }
+    requirements: { _method: get }
 
 actividad_create:
     pattern:  /actividad/create

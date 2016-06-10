@@ -4,6 +4,18 @@
 
 {% block body %}
 
+{% for type, flashMessage in app.session.flashbag.all() %}
+    <div class="alert alert-{{ type }} fade in">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        {% if flashMessage.title is defined %}
+        <strong>{{ flashMessage.title }}</strong>
+        {{ flashMessage.message }}
+        {% else %}
+        {{ type }}
+        {% endif %}
+    </div>
+{% endfor %}
+
 <div class="container">
 <div class="row">
     <div class="span12">
@@ -58,10 +70,10 @@
         </a>
 
 
-        <form action="{{ path('actividad_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('actividad_delete', { 'id': entity.id }) }}" method="post" >
             {{ form_widget(delete_form) }}
             <br />
-            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar" >
         </form>
 
 </div>

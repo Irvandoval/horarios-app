@@ -409,7 +409,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $actividad1->setIdLugar($B11);
         $actividad1->setNumeroGrupo(1);
         $actividad1->setIdFranja($franja2);
-        $actividad->setIdDia($dia2);
+        $actividad1->setIdDia($dia2);
         $manager->persist($actividad1);
 
         $manager->flush();

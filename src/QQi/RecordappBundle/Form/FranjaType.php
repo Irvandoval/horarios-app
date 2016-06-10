@@ -11,11 +11,11 @@ class FranjaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('hora_inicio')
-            ->add('hora_fin')
-            ->add('idCiclo','entity', array(
-              'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'opciones',
+            ->add('nombre','text',array('label'=>'Nombre',))
+            ->add('hora_inicio','DateTime',array('label'=>'Hora de Inicio',))
+            ->add('hora_fin','DateTime',array('label'=>'Hora Fin',))
+            ->add('idCiclo','entity', array('label'=>'Ciclo',
+              'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'Elija el Ciclo',
             ))
         ;
     }

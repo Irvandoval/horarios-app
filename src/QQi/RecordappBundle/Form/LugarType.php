@@ -11,12 +11,12 @@ class LugarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('cupo')
-            ->add('idFacultad','entity', array(
+            ->add('nombre','text',array('label'=>'Nombre',))
+            ->add('cupo',null,array('label'=>'cupo',))
+            ->add('idFacultad','entity', array('label'=>'Facultad',
               'class' => 'QQiRecordappBundle:Facultad', 'empty_value' => 'opciones',
             ))
-            ->add('idTipolugar','entity', array(
+            ->add('idTipolugar','entity', array('label'=>'Local',
               'class' => 'QQiRecordappBundle:Tipolugar', 'empty_value' => 'opciones',
             ))
         ;

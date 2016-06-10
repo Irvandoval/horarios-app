@@ -8,6 +8,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ActividadType extends AbstractType
 {
+    /**
+    * @param FormBuilderInterface $builder
+    * @param array $options
+    */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -31,6 +35,9 @@ class ActividadType extends AbstractType
         ;
     }
 
+    /**
+   * @param OptionsResolverInterface $resolver
+   */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -39,6 +46,9 @@ class ActividadType extends AbstractType
 
     }
 
+    /**
+   * @return string
+   */
     public function getName()
     {
         return 'qqi_recordappbundle_actividadtype';

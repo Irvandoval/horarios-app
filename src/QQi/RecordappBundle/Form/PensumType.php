@@ -11,14 +11,14 @@ class PensumType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nivel')
-            ->add('activa')
-            ->add('plan')
-            ->add('vigente')
-            ->add('idAsignatura','entity', array(
+            ->add('nivel',null,array('label'=>'Nivel',))
+            ->add('activa',null,array('label'=>'Activa',))
+            ->add('plan','text',array('label'=>'Plan de estudio',))
+            ->add('vigente',null,array('label'=>'Vigente',))
+            ->add('idAsignatura','entity', array('label'=>'Asignatura',
               'class' => 'QQiRecordappBundle:Asignatura', 'empty_value' => 'opciones',
             ))
-            ->add('idCarrera','entity', array(
+            ->add('idCarrera','entity', array('label'=>'Carrera',
               'class' => 'QQiRecordappBundle:Carrera', 'empty_value' => 'opciones',
             ))
         ;

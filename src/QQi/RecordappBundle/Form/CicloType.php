@@ -11,9 +11,9 @@ class CicloType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre',null,array('label'=>'Nombre',))
-            ->add('fechaInicio',null,array('label'=>'Fecha Inicio',))
-            ->add('fechaFin',null,array('label'=>'Fecha Finalización',))
+            ->add('nombre','text',array('label'=>'Nombre',))
+            ->add('fechaInicio','date',array('label'=>'Fecha Inicio',))
+            ->add('fechaFin','date',array('label'=>'Fecha Finalización',))
         ;
     }
 

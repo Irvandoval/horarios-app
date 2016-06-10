@@ -50,7 +50,7 @@ class Ciclo
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -66,14 +66,14 @@ class Ciclo
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -89,14 +89,14 @@ class Ciclo
     public function setFechaInicio($fechaInicio)
     {
         $this->fechaInicio = $fechaInicio;
-    
+
         return $this;
     }
 
     /**
      * Get fechaInicio
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaInicio()
     {
@@ -112,17 +112,21 @@ class Ciclo
     public function setFechaFin($fechaFin)
     {
         $this->fechaFin = $fechaFin;
-    
+
         return $this;
     }
 
     /**
      * Get fechaFin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaFin()
     {
         return $this->fechaFin;
     }
+    public function __toString()
+      {
+          return $this->nombre;
+      }
 }

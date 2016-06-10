@@ -11,7 +11,7 @@ class CarreraType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
+            ->add('nombre','text',array('label'=>'Nombre',))
             ->add('idFacultad','entity', array('label'=>'Facultad',
               'class' => 'QQiRecordappBundle:Facultad', 'empty_value' => 'Elija la Facultad',
             ))
