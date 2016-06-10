@@ -11,7 +11,7 @@ class HorarioasignaturaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('correlativo','number',array('label'=>'Correlativo',))
+            ->add('correlativo','integer',array('label'=>'Correlativo',))
             ->add('idHorario','entity', array('label'=>'Nombre',
               'class' => 'QQiRecordappBundle:Horario', 'empty_value' => 'Elija el Horario',
             ))

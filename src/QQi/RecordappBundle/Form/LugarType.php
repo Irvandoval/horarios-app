@@ -12,7 +12,7 @@ class LugarType extends AbstractType
     {
         $builder
             ->add('nombre','text',array('label'=>'Nombre',))
-            ->add('cupo',null,array('label'=>'cupo',))
+            ->add('cupo','integer',array('label'=>'cupo',))
             ->add('idFacultad','entity', array('label'=>'Facultad',
               'class' => 'QQiRecordappBundle:Facultad', 'empty_value' => 'opciones',
             ))

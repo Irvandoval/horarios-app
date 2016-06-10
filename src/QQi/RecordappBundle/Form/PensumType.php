@@ -11,7 +11,7 @@ class PensumType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nivel',null,array('label'=>'Nivel',))
+            ->add('nivel','integer',array('label'=>'Nivel',))
             ->add('activa',null,array('label'=>'Activa',))
             ->add('plan','text',array('label'=>'Plan de estudio',))
             ->add('vigente',null,array('label'=>'Vigente',))

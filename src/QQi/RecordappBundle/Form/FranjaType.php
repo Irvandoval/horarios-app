@@ -12,8 +12,8 @@ class FranjaType extends AbstractType
     {
         $builder
             ->add('nombre','text',array('label'=>'Nombre',))
-            ->add('hora_inicio','DateTime',array('label'=>'Hora de Inicio',))
-            ->add('hora_fin','DateTime',array('label'=>'Hora Fin',))
+            ->add('hora_inicio','time',array('label'=>'Hora de Inicio',))
+            ->add('hora_fin','time',array('label'=>'Hora Fin',))
             ->add('idCiclo','entity', array('label'=>'Ciclo',
               'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'Elija el Ciclo',
             ))
