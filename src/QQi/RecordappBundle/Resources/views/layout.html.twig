@@ -12,22 +12,17 @@
           <a class="brand" href="{{ path('portada') }}">HorariosApp</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              {% if is_granted('ROLE_ADMIN') %}
+              {% if is_granted('ROLE_PLAN') %}   {# El rol de Administrador tiene acceso a todo #}
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administración <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="nav-header">Usuario</li>
+                  {#<li class="nav-header">Usuario</li>#}
                   <li><a href="{{ path('admin_usuario_listado') }}">Usuarios</a></li>
                   <li><a href="{{ path('admin_rol_listado') }}">Roles</a></li>
-                  <li><a href="{{ path('facultad') }}">Facultades</a></li>
-                  <li><a href="{{ path('bitacora') }}">Bitacora</a></li>
-                  <li><a href="{{ path('estados') }}">Estados</a></li>
+                   <li><a href="{{ path('bitacora') }}">Bitacora</a></li>
                 </ul>
               </li>
-              {% endif %}
 
-              {% if is_granted('ROLE_TEACHER') %}
-              {% endif %}
 
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Horarios <b class="caret"></b></a>
@@ -36,33 +31,69 @@
                     <li><a href="{{ path('horario') }}">Horarios</a></li>
                     {#<li><a href="{{ path('horarioasignatura') }}">Horarios y Asignaturas</a></li>#}
                     <li><a href="{{ path('actividad') }}">Actividades</a></li>
+                    <li><a href="{{ path('asignatura') }}" >Asignaturas</a></li>
                   </ul>
                 </li>
 
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Planificador <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Organización <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Espacios Fisicos</li>
-                  <li><a href="{{ path('tipolugar') }}">Tipo de Lugares</a></li>
-                  <li><a href="{{ path('lugar') }}">Lugares</a></li>
+                  <li><a href="{{ path('facultad') }}">Facultades</a></li>
+                  <li><a href="{{ path('carrera') }}">Carreras</a></li>
+
                   <li class="nav-header">Planificación</li>
+                  <li><a href="{{ path('escuelas') }}">Escuelas</a></li>
+                  <li><a href="{{ path('pensum') }}">Pensum</a></li>
                   <li><a href="{{ path('ciclo') }}">Ciclos</a></li>
-                  <li><a href="{{ path('tipoactividad') }}">Tipo de Actividad</a></li>
-                  <li><a href="{{ path('dia') }}">Dias de actividades</a></li>
-                  <li><a href="{{ path('franja') }}">Franjas de Horarios</a></li>
+
+
                 </ul>
               </li>
 
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Escuela <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catálogo <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="nav-header">Escuelas</li>
-                  <li><a href="{{ path('escuelas') }}">Escuelas</a></li>
-                  <li><a href="{{ path('asignatura') }}" >Asignaturas</a></li>
-                  <li><a href="{{ path('carrera') }}">Carreras</a></li>
+                  <li class="nav-header">Tablas Origen</li>
+                  <li><a href="{{ path('tipolugar') }}">Tipo de Lugares</a></li>
+                  <li><a href="{{ path('lugar') }}">Lugares</a></li>
+                  <li><a href="{{ path('tipoactividad') }}">Tipo de Actividad</a></li>
+                  <li><a href="{{ path('dia') }}">Dias de actividades</a></li>
+                  <li><a href="{{ path('franja') }}">Franjas de Horarios</a></li>
+                  <li><a href="{{ path('estados') }}">Estados</a></li>
                 </ul>
               </li>
+              {% endif %}
 
+              {% if is_granted('ROLE_HORA') %}
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Horarios <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-header">Programador</li>
+                    <li><a href="{{ path('horario') }}">Horarios</a></li>
+                    {#<li><a href="{{ path('horarioasignatura') }}">Horarios y Asignaturas</a></li>#}
+                    <li><a href="{{ path('actividad') }}">Actividades</a></li>
+                    <li><a href="{{ path('asignatura') }}" >Asignaturas</a></li>
+                  </ul>
+                </li>
+
+              {% endif %}
+
+              {% if is_granted('ROLE_ASIGNA') %}
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Horarios <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-header">Programador</li>
+                    <li><a href="{{ path('horario') }}">Horarios</a></li>
+                    {#<li><a href="{{ path('horarioasignatura') }}">Horarios y Asignaturas</a></li>#}
+                    <li><a href="{{ path('actividad') }}">Actividades</a></li>
+                    <li><a href="{{ path('asignatura') }}" >Asignaturas</a></li>
+                  </ul>
+                </li>
+
+              {% endif %}
 
               <li><a href="{{ path('acerca_de') }}">Acerca de</a></li>
               <li><a href="{{ path('contacto') }}">Contacto</a></li>

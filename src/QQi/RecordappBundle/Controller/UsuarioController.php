@@ -13,6 +13,7 @@ use QQi\RecordappBundle\Entity\Rol;
 use QQi\RecordappBundle\Form\UsuarioType;
 use QQi\RecordappBundle\Form\UsuarioEditType;
 
+
 class UsuarioController extends Controller
 {
 	public function nuevoAction()
@@ -20,7 +21,7 @@ class UsuarioController extends Controller
 		$peticion = $this->get('request');
 		$em = $this->get('doctrine')->getEntityManager();
 
-		$rol = $em->getRepository('QQiRecordappBundle:Rol')->findBy(array('nombre' => 'ROLE_USER'));
+		$rol = $em->getRepository('QQiRecordappBundle:Rol')->findBy(array('nombre' => 'ROLE_HORA'));
 		
 
 		$usuario = new Usuario();
@@ -49,6 +50,7 @@ class UsuarioController extends Controller
             'formulario' => $formulario->createView()
         ));
 	}
+
 
 	public function listadoAction()
 	{
