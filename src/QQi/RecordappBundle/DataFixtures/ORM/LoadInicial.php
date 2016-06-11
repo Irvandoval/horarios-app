@@ -107,12 +107,18 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 
         # Add Rol Administrador
         $rolAdmin = new Rol();
-        $rolAdmin->setNombre('ROLE_ADMIN');
+        $rolAdmin->setNombre('ROLE_PLAN');
         $manager->persist($rolAdmin);
         # Add Rol Usuario
         $rolUser = new Rol();
-        $rolUser->setNombre('ROLE_USER');
+        $rolUser->setNombre('ROLE_HORA');
         $manager->persist($rolUser);
+
+        # Add Rol Encargado de asignaturas
+        $rolAsigna = new Rol();
+        $rolAsigna->setNombre('ROLE_ASIGNA');
+        $manager->persist($rolAsigna);
+
 								#Add Facultad
 								$facultad = new Facultad();
 								$facultad->setNombre('FACULTAD DE INGENIERIA Y ARQUITECTURA');
@@ -131,28 +137,44 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 
         # Add Usuario Administrador
         $usuario = new Usuario();
-        $usuario->setNombre('admin');
-        $usuario->setApellido('Admin');
-        $usuario->setEmail('admin@admin.com');
+        $usuario->setNombre('Planificador');
+        $usuario->setApellido('De Asignaturas');
+        $usuario->setEmail('planificador@mail.com');
         $usuario->setActivo(true);
         $factory = $this->container->get('security.encoder_factory');
         $codificador = $factory->getEncoder($usuario);
-        $password = $codificador->encodePassword('admin', $usuario->getSalt());
+        $password = $codificador->encodePassword('planificador', $usuario->getSalt());
         $usuario->setPassword($password);
         $usuario->addRole($rolAdmin);
+        //$usuario->addRole($rolAsigna);
         $manager->persist($usuario);
         # Add Usuario Administrador
         $usuario = new Usuario();
-        $usuario->setNombre('usuario');
-        $usuario->setApellido('Usuario');
-        $usuario->setEmail('usuario@usuario.com');
+        $usuario->setNombre('Encargado');
+        $usuario->setApellido('Horarios');
+        $usuario->setEmail('horario@mail.com');
         $usuario->setActivo(true);
         $factory = $this->container->get('security.encoder_factory');
         $codificador = $factory->getEncoder($usuario);
-        $password = $codificador->encodePassword('usuario', $usuario->getSalt());
+        $password = $codificador->encodePassword('horario', $usuario->getSalt());
         $usuario->setPassword($password);
         $usuario->addRole($rolUser);
         $manager->persist($usuario);
+
+        # Add Usuario Encargado Asignatura
+        $usuario = new Usuario();
+        $usuario->setNombre('Encargado');
+        $usuario->setApellido('De Asignaturas');
+        $usuario->setEmail('asignatura@mail.com');
+        $usuario->setActivo(true);
+        $factory = $this->container->get('security.encoder_factory');
+        $codificador = $factory->getEncoder($usuario);
+        $password = $codificador->encodePassword('asignatura', $usuario->getSalt());
+        $usuario->setPassword($password);
+        $usuario->addRole($rolAsigna);
+        $manager->persist($usuario);
+
+
 								#add TipoLugar and Lugar
 								$tiposLugarArray = array('Edificio', 'Laboratorio', 'Auditorio');
 								$lugarEdificio = array('B11', 'B21', 'B22', 'B31', 'B32', 'B41', 'B42', 'B43',
