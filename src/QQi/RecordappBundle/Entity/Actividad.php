@@ -62,14 +62,25 @@ class Actividad
     private $numero_grupo;
 
     /**
-     * @var \Diahora
+     * @var \Franja
      *
-     * @ORM\ManyToOne(targetEntity="Diahora")
+     * @ORM\ManyToOne(targetEntity="Franja")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_DIAHORA", referencedColumnName="ID")
+     *   @ORM\JoinColumn(name="ID_FRANJA", referencedColumnName="ID")
      * })
      */
-    private $idDiahora;
+    private $idFranja;
+
+    /**
+     * @var \Dia
+     *
+     * @ORM\ManyToOne(targetEntity="Dia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_DIA", referencedColumnName="ID")
+     * })
+     */
+    private $idDia;
+
 
 
 
@@ -81,6 +92,29 @@ class Actividad
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set numero_grupo
+     *
+     * @param integer $numeroGrupo
+     * @return Actividad
+     */
+    public function setNumeroGrupo($numeroGrupo)
+    {
+        $this->numero_grupo = $numeroGrupo;
+
+        return $this;
+    }
+
+    /**
+     * Get numero_grupo
+     *
+     * @return integer
+     */
+    public function getNumeroGrupo()
+    {
+        return $this->numero_grupo;
     }
 
     /**
@@ -153,50 +187,48 @@ class Actividad
     }
 
     /**
-     * Set idDiahora
+     * Set idFranja
      *
-     * @param \QQi\RecordappBundle\Entity\Diahora $idDiahora
+     * @param \QQi\RecordappBundle\Entity\Franja $idFranja
      * @return Actividad
      */
-    public function setIdDiahora(\QQi\RecordappBundle\Entity\Diahora $idDiahora = null)
+    public function setIdFranja(\QQi\RecordappBundle\Entity\Franja $idFranja = null)
     {
-        $this->idDiahora = $idDiahora;
+        $this->idFranja = $idFranja;
 
         return $this;
     }
 
     /**
-     * Get idDiahora
+     * Get idFranja
      *
-     * @return \QQi\RecordappBundle\Entity\Diahora
+     * @return \QQi\RecordappBundle\Entity\Franja
      */
-    public function getIdDiahora()
+    public function getIdFranja()
     {
-        return $this->idDiahora;
+        return $this->idFranja;
     }
 
-
-
     /**
-     * Set numero_grupo
+     * Set idDia
      *
-     * @param integer $numeroGrupo
+     * @param \QQi\RecordappBundle\Entity\Dia $idDia
      * @return Actividad
      */
-    public function setNumeroGrupo($numeroGrupo)
+    public function setIdDia(\QQi\RecordappBundle\Entity\Dia $idDia = null)
     {
-        $this->numero_grupo = $numeroGrupo;
-    
+        $this->idDia = $idDia;
+
         return $this;
     }
 
     /**
-     * Get numero_grupo
+     * Get idDia
      *
-     * @return integer 
+     * @return \QQi\RecordappBundle\Entity\Dia
      */
-    public function getNumeroGrupo()
+    public function getIdDia()
     {
-        return $this->numero_grupo;
+        return $this->idDia;
     }
 }

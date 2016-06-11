@@ -4,6 +4,18 @@
 
 {% block body %}
 
+{% for type, flashMessage in app.session.flashbag.all() %}
+    <div class="alert alert-{{ type }} fade in">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        {% if flashMessage.title is defined %}
+        <strong>{{ flashMessage.title }}</strong>
+        {{ flashMessage.message }}
+        {% else %}
+        {{ type }}
+        {% endif %}
+    </div>
+{% endfor %}
+
 <div class="container">
 <div class="row">
     <div class="span12">
@@ -11,8 +23,12 @@
         <table class="table table-bordered table-striped">
     <tbody>
         <tr>
+            <th>Codigo de Materia</th>
+            <td>{{ entity.idHoasig.idAsignatura.codigo }}</td>
+        </tr>
+        <tr>
             <th>Hora Asignada</th>
-            <td>{{ entity.idHoasig }}</td>
+            <td>{{ entity.idHoasig.idAsignatura.nombre }}</td>
         </tr>
         <tr>
             <th>Tipo de Activiad</th>
@@ -27,8 +43,16 @@
             <td>{{ entity.idLugar }}</td>
         </tr>
         <tr>
-            <th>Dia y Hora</th>
-            <td>{{ entity.idDiahora }}</td>
+            <th>Dia</th>
+            <td>{{ entity.idDia }}</td>
+        </tr>
+        <tr>
+            <th>Hora Inicio</th>
+            <td>{{ entity.idFranja.horaInicio|date('G:ia') }}</td>
+        </tr>
+        <tr>
+            <th>Hora Fin</th>
+            <td>{{ entity.idFranja.horaFin|date('G:ia') }}</td>
         </tr>
     </tbody>
 </table>
@@ -46,10 +70,10 @@
         </a>
 
 
-        <form action="{{ path('actividad_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('actividad_delete', { 'id': entity.id }) }}" method="post" >
             {{ form_widget(delete_form) }}
             <br />
-            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar">
+            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar" >
         </form>
 
 </div>

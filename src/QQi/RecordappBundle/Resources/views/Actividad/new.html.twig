@@ -4,19 +4,40 @@
 
 {% block body %}
 
+{% for type, flashMessage in app.session.flashbag.all() %}
+    <div class="alert alert-{{ type }} fade in">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        {% if flashMessage.title is defined %}
+        <strong>{{ flashMessage.title }}</strong>
+        {{ flashMessage.message }}
+        {% else %}
+        {{ type }}
+        {% endif %}
+    </div>
+{% endfor %}
+
 <div class="container">
+
+
 <form action="{{ path('actividad_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
+
     <p>
-        <input class="btn btn-success btn-sm" type="submit" value="Crear">
+          <input class="btn btn-success btn-sm" type="submit" value="Crear">
     </p>
+
 </form>
+
 
 <div class="row">
         <a class="btn btn-primary btn-sm" href="{{ path('actividad') }}">
             Regresar a listado
         </a>
+
+        {{form_errors(form)}}
 </div>
 </div>
 
-{% endblock %}
+
+
+{% endblock  body%}

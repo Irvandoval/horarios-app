@@ -1,5 +1,4 @@
 <?php
-
 namespace QQi\RecordappBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -11,34 +10,32 @@ use QQi\RecordappBundle\Entity\Rol;
 use QQi\RecordappBundle\Entity\Asignatura;
 use QQi\RecordappBundle\Entity\Escuelas;
 use QQi\RecordappBundle\Entity\Facultad;
+use QQi\RecordappBundle\Entity\Carrera;
 use QQi\RecordappBundle\Entity\Tipolugar;
 use QQi\RecordappBundle\Entity\Lugar;
 use QQi\RecordappBundle\Entity\Ciclo;
 use QQi\RecordappBundle\Entity\Tipoactividad;
 use QQi\RecordappBundle\Entity\Estados;
 use QQi\RecordappBundle\Entity\Horario;
-use QQi\RecordappBundle\Entity\Diahora;
+use QQi\RecordappBundle\Entity\Dia;
+use QQi\RecordappBundle\Entity\Franja;
 use QQi\RecordappBundle\Entity\Actividad;
 use QQi\RecordappBundle\Entity\Horarioasignatura;
-
 class LoadInicial implements FixtureInterface, ContainerAwareInterface
 {
     protected $manager;
     private $container;
-
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
     }
-
     public function load(ObjectManager $manager)
     {
         $this->manager = $manager;
-
-       $rsm = new ResultSetMapping();
+        $rsm = new ResultSetMapping();
 								#eliminar datos anteriores
 							 $manager->createNativeQuery('DELETE FROM usuario_rol',$rsm)->getResult();
-							$users = $manager->getRepository('QQiRecordappBundle:Usuario')->findAll();
+							 $users = $manager->getRepository('QQiRecordappBundle:Usuario')->findAll();
 							 for ($i=0; $i < count($users) ; $i++) {
 							 	 $manager->remove($users[$i]);
 							 }
@@ -82,9 +79,13 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         for ($i=0; $i < count($estados) ; $i++) {
          $manager->remove($estados[$i]);
         }
-        $diahora = $manager->getRepository('QQiRecordappBundle:Diahora')->findAll();
-        for ($i=0; $i < count($diahora) ; $i++) {
-         $manager->remove($diahora[$i]);
+        $dia = $manager->getRepository('QQiRecordappBundle:Dia')->findAll();
+        for ($i=0; $i < count($dia) ; $i++) {
+         $manager->remove($dia[$i]);
+        }
+        $franja = $manager->getRepository('QQiRecordappBundle:Franja')->findAll();
+        for ($i=0; $i < count($franja) ; $i++) {
+         $manager->remove($franja[$i]);
         }
         $actividades = $manager->getRepository('QQiRecordappBundle:Actividad')->findAll();
         for ($i=0; $i < count($actividades) ; $i++) {
@@ -94,7 +95,10 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         for ($i=0; $i < count($hrs) ; $i++) {
          $manager->remove($hrs[$i]);
         }
-
+        $carreras = $manager->getRepository('QQiRecordappBundle:Carrera')->findAll();
+        for ($i=0; $i < count($carreras) ; $i++) {
+         $manager->remove($carreras[$i]);
+        }
         # Add Rol Administrador
         $rolAdmin = new Rol();
         $rolAdmin->setNombre('ROLE_ADMIN');
@@ -112,6 +116,11 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 								$escuela->setNombre('ESCUELA DE INGENIERIA DE SISTEMAS INFORMATICOS');
 								$escuela->setIdFacultad($facultad);
 								$manager->persist($escuela);
+                #add Carrera
+                $carrera = new Carrera();
+                $carrera->setNombre('(I10515-1998) INGENIERIA DE SISTEMAS INFORMATICOS');
+                $carrera->setIdFacultad($facultad);
+                $manager->persist($carrera);
         # Add Usuario Administrador
         $usuario = new Usuario();
         $usuario->setNombre('admin');
@@ -190,7 +199,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 																																					 'Comercio Electronico',
 																																					 'Comunicaciones',
 																																					 'Consultoria Profesional',
-																																					 'DiseÃ±o de Sistemas II',
+																																					 'Diseño de Sistemas II',
 																																					 'Estructura de Datos',
 																																					 'Ingenieria de Software',
 																																					 'Metodos Probabilisticos');
@@ -213,9 +222,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 										$manager->persist($asignatura);
           #guardamos objetos para usarlos abajo
           if($i == 0) $primerAsig = $asignatura;
-
           if($i == 1) $segundaAsig = $asignatura;
-
 							 }
 								$ciclo = new Ciclo();
 								$ciclo->setNombre('Ciclo II');
@@ -223,13 +230,6 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 								$ciclo->setFechaFin(new \DateTime('12-12-2015'));
 								$manager->persist($ciclo);
 								# Tipo Actividad
-
-        $ciclo2 = new Ciclo();
-								$ciclo2->setNombre('Ciclo II');
-								$ciclo2->setFechaInicio(new \DateTime('08-08-2016'));
-								$ciclo2->setFechaFin(new \DateTime('12-12-2016'));
-								$manager->persist($ciclo2);
-
 								$tiposActividadArray = array('GT', 'GD', 'GL');
 								for ($i=0; $i < count($tiposActividadArray); $i++) {
 								 $tipoActividad = new Tipoactividad();
@@ -237,12 +237,11 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 									$manager->persist($tipoActividad);
          if($i == 0) $primertipoActividad = $tipoActividad;
 								}
-
         #Crear estados
         $arrayEstados = array('Ingresado',
-                              'Pendiente PlanificaciÃ³n',
-                              'Aprobado PlanificaciÃ³n',
-                              'Rechazado PlanificaciÃ³n',
+                              'Pendiente Planificación',
+                              'Aprobado Planificación',
+                              'Rechazado Planificación',
                               'Aprobado escuela',
                               'Rechazado escuela',
                               'Aprobado',
@@ -262,43 +261,106 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
             $manager->persist($horario);
           }
         }
-
-        $diahora1 = new Diahora();
-        $diahora1->setNombre('Lunes 8:05');
-        $diahora1->setDia(1);
+#Dias
+        $dia1 = new Dia();
+        $dia1->setNombre('Lunes');
+        $manager->persist($dia1);
+        $dia2 = new Dia();
+        $dia2->setNombre('Martes');
+        $manager->persist($dia2);
+        $dia3 = new Dia();
+        $dia3->setNombre('Miercoles');
+        $manager->persist($dia3);
+        $dia4 = new Dia();
+        $dia4->setNombre('Jueves');
+        $manager->persist($dia4);
+        $dia5 = new Dia();
+        $dia5->setNombre('Viernes');
+        $manager->persist($dia5);
+        $dia6 = new Dia();
+        $dia6->setNombre('Sabado');
+        $manager->persist($dia6);
+#Franjas
+        $franja1 = new Franja();
+        $franja1->setNombre('franja 1');
         $dateAux = new \DateTime('06-06-06');
-        $dateAux->setTime(8,5);
-        $diahora1->setHora($dateAux);
-        $diahora1->setIdCiclo($ciclo);
-        $manager->persist($diahora1);
-
-        $diahora2 = new Diahora();
-        $diahora2->setNombre('Miercoles 8:05');
-        $diahora2->setDia(3);
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(6,20);
+        $dateAux2->setTime(8,00);
+        $franja1->setHoraInicio($dateAux);
+        $franja1->setHoraFin($dateAux2);
+        $franja1->setIdCiclo($ciclo);
+        $manager->persist($franja1);
+        $franja2 = new Franja();
+        $franja2->setNombre('franja 2');
         $dateAux = new \DateTime('06-06-06');
-        $dateAux->setTime(8,5);
-        $diahora2->setHora($dateAux);
-        $diahora2->setIdCiclo($ciclo);
-        $manager->persist($diahora2);
-
-        $diahora3 = new Diahora();
-        $diahora3->setNombre('Martes 8:05');
-        $diahora3->setDia(2);
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(8,05);
+        $dateAux2->setTime(9,45);
+        $franja2->setHoraInicio($dateAux);
+        $franja2->setHoraFin($dateAux2);
+        $franja2->setIdCiclo($ciclo);
+        $manager->persist($franja2);
+        $franja3 = new Franja();
+        $franja3->setNombre('franja 3');
         $dateAux = new \DateTime('06-06-06');
-        $dateAux->setTime(8,5);
-        $diahora3->setHora($dateAux);
-        $diahora3->setIdCiclo($ciclo);
-        $manager->persist($diahora3);
-
-        $diahora4 = new Diahora();
-        $diahora4->setNombre('Viernes 8:05');
-        $diahora4->setDia(5);
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(9,50);
+        $dateAux2->setTime(11,30);
+        $franja3->setHoraInicio($dateAux);
+        $franja3->setHoraFin($dateAux2);
+        $franja3->setIdCiclo($ciclo);
+        $manager->persist($franja3);
+        $franja4 = new Franja();
+        $franja4->setNombre('franja 4');
         $dateAux = new \DateTime('06-06-06');
-        $dateAux->setTime(8,5);
-        $diahora4->setHora($dateAux);
-        $diahora4->setIdCiclo($ciclo);
-        $manager->persist($diahora4);
-
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(11,35);
+        $dateAux2->setTime(13,15);
+        $franja4->setHoraInicio($dateAux);
+        $franja4->setHoraFin($dateAux2);
+        $franja4->setIdCiclo($ciclo);
+        $manager->persist($franja4);
+        $franja5 = new Franja();
+        $franja5->setNombre('franja 5');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(13,20);
+        $dateAux2->setTime(15,00);
+        $franja5->setHoraInicio($dateAux);
+        $franja5->setHoraFin($dateAux2);
+        $franja5->setIdCiclo($ciclo);
+        $manager->persist($franja5);
+        $franja6 = new Franja();
+        $franja6->setNombre('franja 6');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(15,05);
+        $dateAux2->setTime(16,45);
+        $franja6->setHoraInicio($dateAux);
+        $franja6->setHoraFin($dateAux2);
+        $franja6->setIdCiclo($ciclo);
+        $manager->persist($franja6);
+        $franja7 = new Franja();
+        $franja7->setNombre('franja 7');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(16,50);
+        $dateAux2->setTime(18,30);
+        $franja7->setHoraInicio($dateAux);
+        $franja7->setHoraFin($dateAux2);
+        $franja7->setIdCiclo($ciclo);
+        $manager->persist($franja7);
+        $franja8 = new Franja();
+        $franja8->setNombre('franja 8');
+        $dateAux = new \DateTime('06-06-06');
+        $dateAux2 = new \DateTime('06-06-06');
+        $dateAux ->setTime(18,35);
+        $dateAux2->setTime(20,15);
+        $franja8->setHoraInicio($dateAux);
+        $franja8->setHoraFin($dateAux2);
+        $franja8->setIdCiclo($ciclo);
+        $manager->persist($franja8);
        #HorarioAsignatura
         $horasig = new Horarioasignatura();
         $horasig->setIdHorario($horario);
@@ -311,7 +373,8 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $actividad->setIdTipoactividad($primertipoActividad);
         $actividad->setIdLugar($B11);
         $actividad->setNumeroGrupo(1);
-        $actividad->setIdDiahora($diahora1);
+        $actividad->setIdFranja($franja1);
+        $actividad->setIdDia($dia1);
         $manager->persist($actividad);
         #miercoles 805
         $actividad1 = new Actividad();
@@ -319,9 +382,9 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $actividad1->setIdTipoactividad($primertipoActividad);
         $actividad1->setIdLugar($B11);
         $actividad1->setNumeroGrupo(1);
-        $actividad1->setIdDiahora($diahora2);
+        $actividad1->setIdFranja($franja2);
+        $actividad1->setIdDia($dia2);
         $manager->persist($actividad1);
-
         $manager->flush();
     }
 }

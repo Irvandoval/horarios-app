@@ -11,14 +11,14 @@ class HorarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaCreacion')
-            ->add('idEstado','entity', array(
+            ->add('fechaCreacion','date',array('label'=>'Fecha de Creación',))
+            ->add('idEstado','entity', array('label'=>'Estado',
               'class' => 'QQiRecordappBundle:Estados', 'empty_value' => 'opciones',
             ))
-            ->add('idCiclo','entity', array(
+            ->add('idCiclo','entity', array('label'=>'Ciclo',
               'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'opciones',
             ))
-            ->add('idEscuela','entity', array(
+            ->add('idEscuela','entity', array('label'=>'Escuela',
               'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
             ))
         ;

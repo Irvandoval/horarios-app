@@ -98,7 +98,7 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
      *      inverseJoinColumns={@JoinColumn(name="id_asignatura", referencedColumnName="id")}
      *      )
      */
-    public $Asignaturas;
+    public $Asignatura;
 
     public function __construct()
     {
@@ -362,9 +362,9 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
      * @param \QQi\RecordappBundle\Entity\Asignatura $asignaturas
      * @return Usuario
      */
-    public function addAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignaturas)
+    public function addAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignatura)
     {
-        $this->Asignaturas[] = $asignaturas;
+        $this->Asignatura[] = $asignatura;
 
         return $this;
     }
@@ -374,9 +374,9 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @param \QQi\RecordappBundle\Entity\Asignatura $asignaturas
      */
-    public function removeAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignaturas)
+    public function removeAsignatura(\QQi\RecordappBundle\Entity\Asignatura $asignatura)
     {
-        $this->Asignaturas->removeElement($asignaturas);
+        $this->Asignatura->removeElement($asignatura);
     }
 
     /**
@@ -384,9 +384,9 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAsignaturas()
+    public function getAsignatura()
     {
-        return $this->Asignaturas;
+        return $this->Asignatura;
     }
 
     /**
@@ -398,14 +398,14 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
     public function setIdEscuela(\QQi\RecordappBundle\Entity\Escuelas $idEscuela = null)
     {
         $this->idEscuela = $idEscuela;
-    
+
         return $this;
     }
 
     /**
      * Get idEscuela
      *
-     * @return \QQi\RecordappBundle\Entity\Escuelas 
+     * @return \QQi\RecordappBundle\Entity\Escuelas
      */
     public function getIdEscuela()
     {

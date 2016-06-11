@@ -3,6 +3,7 @@
 namespace QQi\RecordappBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\ManyToMany;
@@ -12,6 +13,7 @@ use Doctrine\ORM\Mapping\ManyToMany;
  *
  * @ORM\Table(name="asignatura")
  * @ORM\Entity
+ * @UniqueEntity(fields={"codigo"}, message="Este campo ya existe en el sistema")
  */
 class Asignatura
 {
@@ -35,9 +37,12 @@ class Asignatura
     /**
      * @var string
      *
-     * @ORM\Column(name="CODIGO", type="string", length=20, nullable=false)
+     * @ORM\Column(name="CODIGO", type="string", length=20, nullable=false, unique=true)
      * @Assert\NotBlank()
-     * @Assert\Regex("/([A-Z]){3}\d{3}$/")
+     * @Assert\Regex(
+     *               pattern="/([A-Z]){3}\d{3}$/",
+     *               match=true,
+     *               message="Código de asignatura inválido")
      */
     private $codigo;
 

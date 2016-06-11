@@ -23,8 +23,10 @@
 			<form class="well" action="{{ path('admin_usuario_editar', { 'id': usuario.id }) }}" method="post" {{ form_enctype(formulario) }}>
 			{{ form_widget(formulario) }}
 				<div class="form-actions">
-					<button type="submit" class="btn btn-primary">Guardar</button>
-					<button class="btn">Cancelar</button>
+					<input class="btn btn-success btn-sm" type="submit" value="Modificar">
+					<a class="btn btn-primary btn-sm" href="{{ path('admin_usuario_listado') }}">
+							Regresar a listado
+					</a>
 				</div>
 			</form>
 		</div>

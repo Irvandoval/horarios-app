@@ -11,12 +11,12 @@ class AsignaturaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('codigo')
-            ->add('idEscuela','entity', array(
-              'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
+            ->add('nombre','text',array('label'=>'Nombre',))
+            ->add('codigo','text',array('label'=>'Código',))
+            ->add('idEscuela','entity', array('label'=>'Escuelas',
+              'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'Elija una Escuela',
             ))
-            ->add('Usuario')
+            ->add('usuario')
 
         ;
     }
