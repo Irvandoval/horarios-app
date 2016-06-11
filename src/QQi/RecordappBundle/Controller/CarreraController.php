@@ -75,13 +75,48 @@ class CarreraController extends Controller
         $form = $this->createForm(new CarreraType(), $entity);
         $form->bind($request);
 
+        $errors=0;
+        $resultado=0;
+        $mje1=' ';
+
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
 
-            return $this->redirect($this->generateUrl('carrera_show', array('id' => $entity->getId())));
+            $nombre=$entity->getNombre();
+
+            $query = $em->createQuery(
+                'SELECT count(p)
+                FROM QQiRecordappBundle:Carrera p
+                WHERE p.nombre = :x'
+            )->setParameter('x',$nombre);
+
+            $resultado = $query->getSingleScalarResult();
+
+            if($resultado >= 1){
+              $errors=1;
+              $mje1='(Error 1: Ya existe un registro con el mismo nombre '.$nombre.') ';
+            }
+
+
+
+            if ($errors <= 0) {
+                $em->persist($entity);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->set(
+                'success',array('title' => 'Exito!  ','message' => 'Nueva Carrera guardada.')
+                );
+                return $this->redirect($this->generateUrl('carrera_show', array('id' => $entity->getId())));
+            }
         }
+
+        $mensaje='';
+        $mensaje=$mje1;
+
+        $this->get('session')->getFlashBag()->set(
+        'error',array('title' => 'Error!  ','message' => $mensaje)
+        );
 
         return $this->render('QQiRecordappBundle:Carrera:new.html.twig', array(
             'entity' => $entity,
@@ -131,12 +166,49 @@ class CarreraController extends Controller
         $editForm = $this->createForm(new CarreraType(), $entity);
         $editForm->bind($request);
 
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
+        $errors=0;
+        $resultado=0;
+        $mje1=' ';
 
-            return $this->redirect($this->generateUrl('carrera_edit', array('id' => $id)));
+        if ($editForm->isValid()) {
+
+
+
+          $nombre=$entity->getNombre();
+
+          $query = $em->createQuery(
+              'SELECT count(p)
+              FROM QQiRecordappBundle:Carrera p
+              WHERE p.nombre = :x'
+          )->setParameter('x',$nombre);
+
+          $resultado = $query->getSingleScalarResult();
+
+          if($resultado > 1){
+            $errors=1;
+            $mje1='(Error 1: Ya existe un registro con el mismo nombre '.$nombre.') ';
+          }
+
+
+
+          if ($errors <= 0) {
+              $em->persist($entity);
+              $em->flush();
+
+              $this->get('session')->getFlashBag()->set(
+              'success',array('title' => 'Exito!  ','message' => 'Se Actualizo la Carrera.')
+              );
+
+              //return $this->redirect($this->generateUrl('carrera_edit', array('id' => $id)));
+              return $this->redirect($this->generateUrl('carrera_show', array('id' => $entity->getId())));
+            }
         }
+        $mensaje='';
+        $mensaje=$mje1;
+
+        $this->get('session')->getFlashBag()->set(
+        'error',array('title' => 'Error!  ','message' => $mensaje)
+        );
 
         return $this->render('QQiRecordappBundle:Carrera:edit.html.twig', array(
             'entity'      => $entity,
@@ -164,6 +236,12 @@ class CarreraController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->set(
+            'success',array('title' => 'Exito!  ','message' => 'Se Ha Borrado la Carrera con Éxito.')
+            );
+
+
         }
 
         return $this->redirect($this->generateUrl('carrera'));
