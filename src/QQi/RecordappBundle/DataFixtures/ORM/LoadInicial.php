@@ -438,12 +438,8 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $actividad1->setIdTipoactividad($primertipoActividad);
         $actividad1->setIdLugar($B11);
         $actividad1->setNumeroGrupo(1);
-<<<<<<< HEAD
         $actividad1->setIdFranja($franja2);
         $actividad1->setIdDia($dia2);
-=======
-        $actividad1->setIdDiahora($diahora2);
->>>>>>> master
         $manager->persist($actividad1);
 
         $manager->flush();
