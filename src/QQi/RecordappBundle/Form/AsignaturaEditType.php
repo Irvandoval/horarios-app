@@ -23,6 +23,6 @@ class AsignaturaEditType extends AbstractType
 
     public function getName()
     {
-        return 'qqi_recordappbundle_asignaturaedittype';
+        return 'asignaturaedittype';
     }
 }
