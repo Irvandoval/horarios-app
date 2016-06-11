@@ -99,7 +99,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         for ($i=0; $i < count($hrs) ; $i++) {
          $manager->remove($hrs[$i]);
         }
-        $carreras = $manager->getRepository('QQiRecordappBundle:carrera')->findAll();
+        $carreras = $manager->getRepository('QQiRecordappBundle:Carrera')->findAll();
         for ($i=0; $i < count($carreras) ; $i++) {
          $manager->remove($carreras[$i]);
         }

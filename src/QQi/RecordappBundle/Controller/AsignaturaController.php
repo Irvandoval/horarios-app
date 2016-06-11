@@ -81,6 +81,19 @@ class AsignaturaController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('asignatura_show', array('id' => $entity->getId())));
+        }else{
+          $asignatura =  $entity->getNombre();
+          if(!preg_match('/([A-Z]){3}\d{3}$/', $asignatura)){
+
+           $this->get('session')->getFlashBag()->set(
+               'error',array('title' => 'Error!  ','message' => 'El formato de asignatura es incorrecto')
+               );
+          }
+          return $this->render('QQiRecordappBundle:Asignatura:new.html.twig', array(
+              'entity' => $entity,
+              'form'   => $form->createView(),
+          ));
+
         }
 
         return $this->render('QQiRecordappBundle:Asignatura:new.html.twig', array(
