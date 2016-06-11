@@ -4,19 +4,16 @@ namespace QQi\RecordappBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use QQi\RecordappBundle\Entity\Asignatura;
 use QQi\RecordappBundle\Form\AsignaturaType;
 
 /**
  * Asignatura controller.
- *
  */
 class AsignaturaController extends Controller
 {
     /**
      * Lists all Asignatura entities.
-     *
      */
     public function indexAction()
     {
@@ -31,7 +28,6 @@ class AsignaturaController extends Controller
 
     /**
      * Finds and displays a Asignatura entity.
-     *
      */
     public function showAction($id)
     {
@@ -46,32 +42,30 @@ class AsignaturaController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('QQiRecordappBundle:Asignatura:show.html.twig', array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
      * Displays a form to create a new Asignatura entity.
-     *
      */
     public function newAction()
     {
         $entity = new Asignatura();
-        $form   = $this->createForm(new AsignaturaType(), $entity);
+        $form = $this->createForm(new AsignaturaType(), $entity);
 
         return $this->render('QQiRecordappBundle:Asignatura:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
     /**
      * Creates a new Asignatura entity.
-     *
      */
     public function createAction(Request $request)
     {
-        $entity  = new Asignatura();
+        $entity = new Asignatura();
         $form = $this->createForm(new AsignaturaType(), $entity);
         $form->bind($request);
 
@@ -79,32 +73,32 @@ class AsignaturaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
+            $this->get('session')->getFlashBag()->set(
+           'success', array('title' => 'Guardado!  ', 'message' => 'Se ha guardado la asignatura en el sistema')
+           );
             return $this->redirect($this->generateUrl('asignatura_show', array('id' => $entity->getId())));
-        }else{
-          $asignatura =  $entity->getNombre();
-          if(!preg_match('/([A-Z]){3}\d{3}$/', $asignatura)){
-
-           $this->get('session')->getFlashBag()->set(
-               'error',array('title' => 'Error!  ','message' => 'El formato de asignatura es incorrecto')
+        } else {
+            $asignatura = $entity->getNombre();
+            if (!preg_match('/([A-Z]){3}\d{3}$/', $asignatura)) {
+                $this->get('session')->getFlashBag()->set(
+               'error', array('title' => 'Error!  ', 'message' => 'El formato de asignatura es incorrecto')
                );
-          }
-          return $this->render('QQiRecordappBundle:Asignatura:new.html.twig', array(
-              'entity' => $entity,
-              'form'   => $form->createView(),
-          ));
+            }
 
+            return $this->render('QQiRecordappBundle:Asignatura:new.html.twig', array(
+              'entity' => $entity,
+              'form' => $form->createView(),
+          ));
         }
 
         return $this->render('QQiRecordappBundle:Asignatura:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
     /**
      * Displays a form to edit an existing Asignatura entity.
-     *
      */
     public function editAction($id)
     {
@@ -120,15 +114,14 @@ class AsignaturaController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('QQiRecordappBundle:Asignatura:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
      * Edits an existing Asignatura entity.
-     *
      */
     public function updateAction(Request $request, $id)
     {
@@ -152,15 +145,14 @@ class AsignaturaController extends Controller
         }
 
         return $this->render('QQiRecordappBundle:Asignatura:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
      * Deletes a Asignatura entity.
-     *
      */
     public function deleteAction(Request $request, $id)
     {
@@ -177,6 +169,9 @@ class AsignaturaController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->set(
+           'success', array('title' => 'Eliminado!  ', 'message' => 'Se ha eliminado la asignatura en el sistema')
+           );
         }
 
         return $this->redirect($this->generateUrl('asignatura'));
