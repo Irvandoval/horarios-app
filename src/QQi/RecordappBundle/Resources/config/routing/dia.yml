@@ -1,0 +1,30 @@
+dia:
+    pattern:  /dia/index
+    defaults: { _controller: "QQiRecordappBundle:Dia:index" }
+
+dia_show:
+    pattern:  /dia/{id}/show
+    defaults: { _controller: "QQiRecordappBundle:Dia:show" }
+
+dia_new:
+    pattern:  /dia/new
+    defaults: { _controller: "QQiRecordappBundle:Dia:new" }
+
+dia_create:
+    pattern:  /dia/create
+    defaults: { _controller: "QQiRecordappBundle:Dia:create" }
+    requirements: { _method: post }
+
+dia_edit:
+    pattern:  /dia/{id}/edit
+    defaults: { _controller: "QQiRecordappBundle:Dia:edit" }
+
+dia_update:
+    pattern:  /dia/{id}/update
+    defaults: { _controller: "QQiRecordappBundle:Dia:update" }
+    requirements: { _method: post }
+
+dia_delete:
+    pattern:  /dia/{id}/delete
+    defaults: { _controller: "QQiRecordappBundle:Dia:delete" }
+    requirements: { _method: post }

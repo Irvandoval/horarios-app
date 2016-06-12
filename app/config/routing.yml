@@ -54,10 +54,7 @@ _escuelas:
 _asignatura:
     resource: "@QQiRecordappBundle/Resources/config/routing/asignatura.yml"
 
-_diahora:
-    resource: "@QQiRecordappBundle/Resources/config/routing/diahora.yml"
-
-_pensum:
+pensum:
     resource: "@QQiRecordappBundle/Resources/config/routing/pensum.yml"
 
 _horario:
@@ -71,6 +68,12 @@ _actividad:
 
 _bitacora:
     resource: "@QQiRecordappBundle/Resources/config/routing/bitacora.yml"
+
+_dia:
+    resource: "@QQiRecordappBundle/Resources/config/routing/dia.yml"
+
+_franja:
+    resource: "@QQiRecordappBundle/Resources/config/routing/franja.yml"
 
 _comun:
     resource: "@QQiRecordappBundle/Resources/config/routing.yml"

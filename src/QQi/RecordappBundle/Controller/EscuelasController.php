@@ -75,13 +75,53 @@ class EscuelasController extends Controller
         $form = $this->createForm(new EscuelasType(), $entity);
         $form->bind($request);
 
+        $errors=0;
+        $resultado=0;
+        $mje1=' ';
+
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+          $em = $this->getDoctrine()->getManager();
+
+          $nombre=$entity->getNombre();
+
+          $query = $em->createQuery(
+              'SELECT count(p)
+              FROM QQiRecordappBundle:Escuelas p
+              WHERE p.nombre = :x'
+          )->setParameter('x',$nombre);
+
+          $resultado = $query->getSingleScalarResult();
+
+          if($resultado >= 1){
+            $errors=1;
+            $mje1='(Error 1: Ya existe una Escuela con el mismo nombre '.$nombre.') ';
+          }
+
+
+          if ($errors <= 0) {
+
+
+
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->set(
+            'success',array('title' => 'Exito!  ','message' => 'Se ha Guardado la nueva Escuela.')
+            );
+
+
             return $this->redirect($this->generateUrl('escuelas_show', array('id' => $entity->getId())));
+
+            }
         }
+
+        $mensaje='';
+        $mensaje=$mje1;
+
+        $this->get('session')->getFlashBag()->set(
+        'error',array('title' => 'Error!  ','message' => $mensaje)
+        );
+
 
         return $this->render('QQiRecordappBundle:Escuelas:new.html.twig', array(
             'entity' => $entity,
@@ -131,12 +171,56 @@ class EscuelasController extends Controller
         $editForm = $this->createForm(new EscuelasType(), $entity);
         $editForm->bind($request);
 
+        $errors=0;
+        $resultado=0;
+        $mje1=' ';
+
+
+
         if ($editForm->isValid()) {
+
+
+            $nombre=$entity->getNombre();
+
+            $query = $em->createQuery(
+                'SELECT count(p)
+                FROM QQiRecordappBundle:Escuelas p
+                WHERE p.nombre = :x'
+            )->setParameter('x',$nombre);
+
+            $resultado = $query->getSingleScalarResult();
+
+            if($resultado > 1){
+              $errors=1;
+              $mje1='(Error 1: Ya existe una Escuela con el mismo nombre '.$nombre.') ';
+            }
+
+
+            if ($errors <= 0) {
+
+
+
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('escuelas_edit', array('id' => $id)));
+            //return $this->redirect($this->generateUrl('escuelas_edit', array('id' => $id)));
+
+            $this->get('session')->getFlashBag()->set(
+            'success',array('title' => 'Exito!  ','message' => 'Se ha Actualizado la nueva Escuela.')
+            );
+
+
+            return $this->redirect($this->generateUrl('escuelas_show', array('id' => $entity->getId())));
+          }
         }
+
+        $mensaje='';
+        $mensaje=$mje1;
+
+
+                        $this->get('session')->getFlashBag()->set(
+                        'error',array('title' => 'Error!  ','message' => $mensaje)
+                        );
 
         return $this->render('QQiRecordappBundle:Escuelas:edit.html.twig', array(
             'entity'      => $entity,
@@ -164,8 +248,12 @@ class EscuelasController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
         }
 
+        $this->get('session')->getFlashBag()->set(
+        'success',array('title' => 'Exito!  ','message' => 'Se ha Eliminado la Escuela.')
+        );
         return $this->redirect($this->generateUrl('escuelas'));
     }
 

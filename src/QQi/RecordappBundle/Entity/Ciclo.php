@@ -125,52 +125,8 @@ class Ciclo
     {
         return $this->fechaFin;
     }
-    /**
-    *@ORM\OneToMany(targetEntity="Diahora", mappedBy="idCiclo")
-    */
-    protected $Ciclos;
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ciclos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add ciclos
-     *
-     * @param \QQi\RecordappBundle\Entity\Diahora $ciclos
-     * @return Ciclo
-     */
-    public function addCiclo(\QQi\RecordappBundle\Entity\Diahora $ciclos)
-    {
-        $this->ciclos[] = $ciclos;
-
-        return $this;
-    }
-
-    /**
-     * Remove ciclos
-     *
-     * @param \QQi\RecordappBundle\Entity\Diahora $ciclos
-     */
-    public function removeCiclo(\QQi\RecordappBundle\Entity\Diahora $ciclos)
-    {
-        $this->ciclos->removeElement($ciclos);
-    }
-
-    /**
-     * Get ciclos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCiclos()
-    {
-        return $this->ciclos;
-    }
-		public function __toString()
-    {
-        return $this->nombre;
-    }
+    public function __toString()
+      {
+          return $this->nombre;
+      }
 }

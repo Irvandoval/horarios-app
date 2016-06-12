@@ -5,20 +5,29 @@ namespace QQi\RecordappBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class HorarioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaCreacion')
-            ->add('idEstado','entity', array(
+<<<<<<< HEAD
+            ->add('fechaCreacion', 'date', array('label'=>'Fecha de creacion',
+                'input'  => 'datetime',
+                'widget' => 'single_text',
+            ))
+
+=======
+            ->add('fechaCreacion','date',array('label'=>'Fecha de Creación',))
+>>>>>>> origin
+            ->add('idEstado','entity', array('label'=>'Estado',
               'class' => 'QQiRecordappBundle:Estados', 'empty_value' => 'opciones',
             ))
-            ->add('idCiclo','entity', array(
+            ->add('idCiclo','entity', array('label'=>'Ciclo',
               'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'opciones',
             ))
-            ->add('idEscuela','entity', array(
+            ->add('idEscuela','entity', array('label'=>'Escuela',
               'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
             ))
         ;

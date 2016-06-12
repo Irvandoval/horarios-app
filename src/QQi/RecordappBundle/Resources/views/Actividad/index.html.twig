@@ -4,12 +4,39 @@
 
 {% block body %}
 
+{% for type, flashMessage in app.session.flashbag.all() %}
+    <div class="alert alert-{{ type }} fade in">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        {% if flashMessage.title is defined %}
+        <strong>{{ flashMessage.title }}</strong>
+        {{ flashMessage.message }}
+        {% else %}
+        {{ type }}
+        {% endif %}
+    </div>
+{% endfor %}
+
 <div class="container">
 <!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit">
-    <h3>Actividad</h3>
-        <p><a class="btn btn-primary btn-large" href="{{ path('actividad_new') }}">Nuevo &raquo;</a></p>
-    </div>
+<div class="hero-unit" weigt='50%'>
+
+<td><h3>Actividad</h3></td>
+
+        <div class="btn-group">
+        <button type="button" class="btn-primary btn-block dropdown-toggle"data-toggle="dropdown">
+          Acciones <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="{{ path('actividad_new') }}">Asignar Horario</a></li>
+          <li><a href="{{ path('yes') }}">Asignaturas Aprobadas</a></li>
+          <li><a href="#">Acción #3</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Acción #4</a></li>
+        </ul>
+      </div>
+
+</div>
 
 <!-- Example row of columns -->
 <div class="row">
@@ -19,22 +46,31 @@
     <thead>
         <tr>
                 <th>#</th>
-            <th>Hora Asignada</th>
+            <th>Código</th>
+            <th>Asignatura</th>
             <th>Tipo de Actividad</th>
             <th>Numero de Grupo</th>
             <th>Local</th>
-            <th>Dia y Hora</th>
+            <th>Dia</th>
+            <th>Franja</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.idHoasig }}</td>
+            <td>{{ entity.idHoasig.idAsignatura.codigo }}</td>
+            <td>{{ entity.idHoasig.idAsignatura.nombre }}</td>
             <td>{{ entity.idTipoactividad }}</td>
             <td>{{ entity.numerogrupo }}</td>
             <td>{{ entity.idLugar }}</td>
-            <td>{{ entity.idDiahora }}</td>
+            <td>{{ entity.idDia.nombre}}</td>
+            <td>{{ entity.idFranja.nombre }}</td>
+            <td>{{ entity.idFranja.horaInicio|date('G:ia')}}</td>
+            <td>{{ entity.idFranja.horaFin|date('G:ia')}}</td>
             <td>
                     <a href="{{ path('actividad_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
                     <a href="{{ path('actividad_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> edit</a>

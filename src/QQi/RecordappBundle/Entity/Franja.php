@@ -7,12 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Diahora
+ * franja
  *
- * @ORM\Table(name="diahora")
+ * @ORM\Table(name="franja")
  * @ORM\Entity
  */
-class Diahora
+class Franja
 {
     /**
      * @var integer
@@ -32,29 +32,29 @@ class Diahora
     private $nombre;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="DIA", type="string", length=20, nullable=true)
+     * @ORM\Column(name="HORA_INICIO", type="time", nullable=true)
      *@Assert\NotBlank()
      */
-
-    private $dia;
+    private $hora_inicio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="HORA", type="time", nullable=true)
+     * @ORM\Column(name="HORA_FIN", type="time", nullable=true)
      *@Assert\NotBlank()
      */
-    private $hora;
+    private $hora_fin;
 
     /**
      * @var \Ciclo
      *
-     * @ORM\ManyToOne(targetEntity="Ciclo", inversedBy="ciclos")
+     * @ORM\ManyToOne(targetEntity="Ciclo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_CICLO", referencedColumnName="ID")
      * })
+     *@Assert\NotBlank()
      */
     private $idCiclo;
 
@@ -74,7 +74,7 @@ class Diahora
      * Set nombre
      *
      * @param string $nombre
-     * @return Diahora
+     * @return Franja
      */
     public function setNombre($nombre)
     {
@@ -94,56 +94,56 @@ class Diahora
     }
 
     /**
-     * Set dia
+     * Set hora_inicio
      *
-     * @param integer $dia
-     * @return Diahora
+     * @param \DateTime $horaInicio
+     * @return Franja
      */
-    public function setDia($dia)
+    public function setHoraInicio($horaInicio)
     {
-        $this->dia = $dia;
+        $this->hora_inicio = $horaInicio;
 
         return $this;
     }
 
     /**
-     * Get dia
-     *
-     * @return integer
-     */
-    public function getDia()
-    {
-        return $this->dia;
-    }
-
-    /**
-     * Set hora
-     *
-     * @param \DateTime $hora
-     * @return Diahora
-     */
-    public function setHora($hora)
-    {
-        $this->hora = $hora;
-
-        return $this;
-    }
-
-    /**
-     * Get hora
+     * Get hora_inicio
      *
      * @return \DateTime
      */
-    public function getHora()
+    public function getHoraInicio()
     {
-        return $this->hora;
+        return $this->hora_inicio;
+    }
+
+    /**
+     * Set hora_fin
+     *
+     * @param \DateTime $horaFin
+     * @return Franja
+     */
+    public function setHoraFin($horaFin)
+    {
+        $this->hora_fin = $horaFin;
+
+        return $this;
+    }
+
+    /**
+     * Get hora_fin
+     *
+     * @return \DateTime
+     */
+    public function getHoraFin()
+    {
+        return $this->hora_fin;
     }
 
     /**
      * Set idCiclo
      *
      * @param \QQi\RecordappBundle\Entity\Ciclo $idCiclo
-     * @return Diahora
+     * @return Franja
      */
     public function setIdCiclo(\QQi\RecordappBundle\Entity\Ciclo $idCiclo = null)
     {
@@ -162,8 +162,7 @@ class Diahora
         return $this->idCiclo;
     }
     public function __toString()
-    {
-          return $this->nombre;
-    }
-
+      {
+          return $this->hora_inicio->format('G:ia')." a ".$this->hora_fin->format('G:ia');
+      }
 }
