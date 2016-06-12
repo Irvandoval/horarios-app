@@ -12,7 +12,6 @@ class CicloType extends AbstractType
     {
         $builder
             ->add('nombre','text',array('label'=>'Nombre',))
-<<<<<<< HEAD
              ->add('fechaInicio', 'date', array('label'=>'Fecha Inicio',
                 'input'  => 'datetime',
                 'widget' => 'single_text',
@@ -21,10 +20,6 @@ class CicloType extends AbstractType
                 'input'  => 'datetime',
                 'widget' => 'single_text',
             ))
-=======
-            ->add('fechaInicio','date',array('label'=>'Fecha Inicio',))
-            ->add('fechaFin','date',array('label'=>'Fecha Finalización',))
->>>>>>> origin
         ;
     }
 
