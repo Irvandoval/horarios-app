@@ -28,3 +28,11 @@ horario_delete:
     pattern:  /horario/{id}/delete
     defaults: { _controller: QQiRecordappBundle:Horario:delete }
     requirements: { _method: post }
+	
+horario_reporte:
+    pattern:  /horario/reporte
+    defaults: { _controller: QQiRecordappBundle:Horario:reporte_h_ }
+
+horario_pdf:
+    pattern:  /horario/reporte_pdf
+    defaults: { _controller: QQiRecordappBundle:Horario:reportepdf }
