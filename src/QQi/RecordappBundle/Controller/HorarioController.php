@@ -290,8 +290,8 @@ class HorarioController extends Controller
 
         return $response;
     }
-    /***********************************************/
-	public function reportepdfAction()
+	
+	public function reportepdf_Action()
     {
 		$em = $this->getDoctrine()->getManager();
 
@@ -302,5 +302,4 @@ class HorarioController extends Controller
         ));
     }
 	
-	/*******************************************/
 }
