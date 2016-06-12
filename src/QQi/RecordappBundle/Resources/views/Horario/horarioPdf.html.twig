@@ -1,0 +1,69 @@
+{% extends 'QQiRecordappBundle::layout.html.twig' %}
+{% block title %}Horarios{% endblock %}
+
+{% block body %}
+    <div alling="center" class="row">
+      <div class="col-md-4">
+       <strong>
+        UNIVERSIDAD DE EL SALVADOR   <br>
+        FACULTAD DE INGENIERÌA Y ARQUITECTURA <br>
+        UNIDAD DE PLANIFICACIÓN
+       </strong>
+      </div>
+    </div>
+    <br>
+<div class="row">
+      <div class="col-md-4">
+       <strong>
+       Horarios correspondientes al ciclo <%= horario.ciclo.numero %> - <%= horario.ciclo.anio %>  <br>
+      <%= horario.escuela.nombre %>
+       </strong>
+      </div>
+    </div>
+    <br><br>
+<div class="container">
+<!-- Example row of columns -->
+<div class="row">
+    <div class="span12">
+
+        <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Código</th>
+            <th>Asignatura</th>
+            <th>Tipo de Actividad</th>
+            <th>Numero de Grupo</th>
+            <th>Local</th>
+            <th>Dia</th>
+            <th>Franja</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.id }}</td>
+            <td>{{ entity.idHoasig.idAsignatura.codigo }}</td>
+            <td>{{ entity.idHoasig.idAsignatura.nombre }}</td>
+            <td>{{ entity.idTipoactividad }}</td>
+            <td>{{ entity.numerogrupo }}</td>
+            <td>{{ entity.idLugar }}</td>
+            <td>{{ entity.idDia.nombre}}</td>
+            <td>{{ entity.idFranja.nombre }}</td>
+            <td>{{ entity.idFranja.horaInicio|date('G:ia')}}</td>
+            <td>{{ entity.idFranja.horaFin|date('G:ia')}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+        </table>
+</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+      window.print();
+   </script>
+
+{% endblock %}
