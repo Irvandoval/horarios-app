@@ -224,7 +224,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 																																					 'Comercio Electronico',
 																																					 'Comunicaciones',
 																																					 'Consultoria Profesional',
-																																					 'Diseño de Sistemas II',
+																																					 'Diseno de Sistemas II',
 																																					 'Estructura de Datos',
 																																					 'Ingenieria de Software',
 																																					 'Metodos Probabilisticos');
