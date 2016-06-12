@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dd0a5ff-5e16-4cfd-b5c8-43372f52cf8f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml" afterPath="$PROJECT_DIR$/app/config/parameters.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QQi/RecordappBundle/DataFixtures/ORM/LoadInicial.php" afterPath="$PROJECT_DIR$/src/QQi/RecordappBundle/DataFixtures/ORM/LoadInicial.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QQi/RecordappBundle/Form/AsignaturaEditType.php" afterPath="$PROJECT_DIR$/src/QQi/RecordappBundle/Form/AsignaturaEditType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QQi/RecordappBundle/Form/CicloType.php" afterPath="$PROJECT_DIR$/src/QQi/RecordappBundle/Form/CicloType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QQi/RecordappBundle/Form/HorarioType.php" afterPath="$PROJECT_DIR$/src/QQi/RecordappBundle/Form/HorarioType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QQi/RecordappBundle/Form/UsuarioEditType.php" afterPath="$PROJECT_DIR$/src/QQi/RecordappBundle/Form/UsuarioEditType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QQi/RecordappBundle/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/src/QQi/RecordappBundle/Resources/views/layout.html.twig" />
-    </list>
+    <list default="true" id="7dd0a5ff-5e16-4cfd-b5c8-43372f52cf8f" name="Default" comment="" />
     <ignored path="horariosapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -477,12 +467,12 @@
       <workItem from="1465153623228" duration="985000" />
       <workItem from="1465161217041" duration="7229000" />
       <workItem from="1465665247684" duration="14866000" />
-      <workItem from="1465758178842" duration="2695000" />
+      <workItem from="1465758178842" duration="2851000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48449000" />
+    <option name="totallyTimeSpent" value="48605000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -892,14 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/QQi/RecordappBundle/Form/CicloType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/QQi/RecordappBundle/Form/HorarioType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -932,6 +914,14 @@
           <folding>
             <marker date="1465758972962" expanded="true" signature="1418:1441" placeholder="DELETE FROM " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QQi/RecordappBundle/Form/CicloType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
