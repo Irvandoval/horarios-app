@@ -33,6 +33,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
     {
         $this->manager = $manager;
         $rsm = new ResultSetMapping();
+        $horario = new Horario();
 								#eliminar datos anteriores
 							 $manager->createNativeQuery('DELETE FROM usuario_rol',$rsm)->getResult();
 							 $users = $manager->getRepository('QQiRecordappBundle:Usuario')->findAll();
@@ -99,11 +100,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         for ($i=0; $i < count($carreras) ; $i++) {
          $manager->remove($carreras[$i]);
         }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin
         # Add Rol Administrador
         $rolAdmin = new Rol();
         $rolAdmin->setNombre('ROLE_PLAN');
@@ -132,11 +129,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
                 $carrera->setNombre('(I10515-1998) INGENIERIA DE SISTEMAS INFORMATICOS');
                 $carrera->setIdFacultad($facultad);
                 $manager->persist($carrera);
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin
         # Add Usuario Administrador
         $usuario = new Usuario();
         $usuario->setNombre('Planificador');
@@ -225,7 +218,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 								}
 								#add Asignaturas
 							 $asignaturasNameArray = array('Administracion de Centros de Computo',
-																																						'Administracion de Proyectos Informaticos',
+														'Administracion de Proyectos Informaticos',
 																																					 'Arquitectura de Computadoras',
 																																					 'Auditoria de Sistemas',
 																																					 'Comercio Electronico',
@@ -235,8 +228,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 																																					 'Estructura de Datos',
 																																					 'Ingenieria de Software',
 																																					 'Metodos Probabilisticos');
-								$asignaturasCodeArray = array('ACC115',
-																																						'API115',
+								$asignaturasCodeArray = array('ACC115','API115',
 																																					 'ARC115',
 																																					 'AUS115',
 																																					 'CET115',
@@ -271,9 +263,9 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 								}
         #Crear estados
         $arrayEstados = array('Ingresado',
-                              'Pendiente Planificación',
-                              'Aprobado Planificación',
-                              'Rechazado Planificación',
+                              'Pendiente Planificacion',
+                              'Aprobado Planificacion',
+                              'Rechazado Planificacion',
                               'Aprobado escuela',
                               'Rechazado escuela',
                               'Aprobado',
@@ -297,25 +289,6 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $dia1 = new Dia();
         $dia1->setNombre('Lunes');
         $manager->persist($dia1);
-<<<<<<< HEAD
-
-        $dia2 = new Dia();
-        $dia2->setNombre('Martes');
-        $manager->persist($dia2);
-
-        $dia3 = new Dia();
-        $dia3->setNombre('Miercoles');
-        $manager->persist($dia3);
-
-        $dia4 = new Dia();
-        $dia4->setNombre('Jueves');
-        $manager->persist($dia4);
-
-        $dia5 = new Dia();
-        $dia5->setNombre('Viernes');
-        $manager->persist($dia5);
-
-=======
         $dia2 = new Dia();
         $dia2->setNombre('Martes');
         $manager->persist($dia2);
@@ -328,7 +301,6 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $dia5 = new Dia();
         $dia5->setNombre('Viernes');
         $manager->persist($dia5);
->>>>>>> origin
         $dia6 = new Dia();
         $dia6->setNombre('Sabado');
         $manager->persist($dia6);
@@ -343,10 +315,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja1->setHoraFin($dateAux2);
         $franja1->setIdCiclo($ciclo);
         $manager->persist($franja1);
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
+        
         $franja2 = new Franja();
         $franja2->setNombre('franja 2');
         $dateAux = new \DateTime('06-06-06');
@@ -357,10 +326,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja2->setHoraFin($dateAux2);
         $franja2->setIdCiclo($ciclo);
         $manager->persist($franja2);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin
         $franja3 = new Franja();
         $franja3->setNombre('franja 3');
         $dateAux = new \DateTime('06-06-06');
@@ -371,10 +337,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja3->setHoraFin($dateAux2);
         $franja3->setIdCiclo($ciclo);
         $manager->persist($franja3);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin
         $franja4 = new Franja();
         $franja4->setNombre('franja 4');
         $dateAux = new \DateTime('06-06-06');
@@ -385,10 +348,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja4->setHoraFin($dateAux2);
         $franja4->setIdCiclo($ciclo);
         $manager->persist($franja4);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin
         $franja5 = new Franja();
         $franja5->setNombre('franja 5');
         $dateAux = new \DateTime('06-06-06');
@@ -399,10 +359,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja5->setHoraFin($dateAux2);
         $franja5->setIdCiclo($ciclo);
         $manager->persist($franja5);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin
         $franja6 = new Franja();
         $franja6->setNombre('franja 6');
         $dateAux = new \DateTime('06-06-06');
@@ -413,10 +370,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja6->setHoraFin($dateAux2);
         $franja6->setIdCiclo($ciclo);
         $manager->persist($franja6);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin
         $franja7 = new Franja();
         $franja7->setNombre('franja 7');
         $dateAux = new \DateTime('06-06-06');
@@ -427,10 +381,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja7->setHoraFin($dateAux2);
         $franja7->setIdCiclo($ciclo);
         $manager->persist($franja7);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin
         $franja8 = new Franja();
         $franja8->setNombre('franja 8');
         $dateAux = new \DateTime('06-06-06');
@@ -441,12 +392,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja8->setHoraFin($dateAux2);
         $franja8->setIdCiclo($ciclo);
         $manager->persist($franja8);
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> origin
        #HorarioAsignatura
         $horasig = new Horarioasignatura();
         $horasig->setIdHorario($horario);
