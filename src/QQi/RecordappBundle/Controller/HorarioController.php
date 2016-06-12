@@ -292,4 +292,16 @@ class HorarioController extends Controller
         return $response;
     }
     /***********************************************/
+	public function reportepdfAction()
+    {
+		$em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('QQiRecordappBundle:Actividad')->findAll();
+
+        return $this->render('QQiRecordappBundle:Horario:horarioPdf.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+	
+	/*******************************************/
 }
