@@ -44,7 +44,7 @@
             <td><a href="{{ path('horario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{{ entity.idEstado }}</td>
-            <td>{{ entity.idCiclo }}</td>
+            <td>{{ entity.idCiclo }} {{entity.idCiclo.fechainicio| date('Y')}}</td>
             <td>{{ entity.idEscuela }}</td>
             <td>
                     <a href="{{ path('horario_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>

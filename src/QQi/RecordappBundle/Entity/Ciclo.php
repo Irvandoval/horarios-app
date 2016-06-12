@@ -127,6 +127,7 @@ class Ciclo
     }
     public function __toString()
       {
-          return $this->nombre;
+
+          return $this->nombre . ' ' . $this->fechaInicio->format('Y');
       }
 }
