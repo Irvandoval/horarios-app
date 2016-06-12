@@ -253,6 +253,12 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 								$ciclo->setFechaInicio(new \DateTime('08-08-2015'));
 								$ciclo->setFechaFin(new \DateTime('12-12-2015'));
 								$manager->persist($ciclo);
+
+        $ciclo2 = new Ciclo();
+								$ciclo2->setNombre('Ciclo II');
+								$ciclo2->setFechaInicio(new \DateTime('08-08-2016'));
+								$ciclo2->setFechaFin(new \DateTime('12-12-2016'));
+								$manager->persist($ciclo2);
 								# Tipo Actividad
 								$tiposActividadArray = array('GT', 'GD', 'GL');
 								for ($i=0; $i < count($tiposActividadArray); $i++) {
@@ -315,7 +321,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $franja1->setHoraFin($dateAux2);
         $franja1->setIdCiclo($ciclo);
         $manager->persist($franja1);
-        
+
         $franja2 = new Franja();
         $franja2->setNombre('franja 2');
         $dateAux = new \DateTime('06-06-06');
