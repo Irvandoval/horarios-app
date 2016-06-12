@@ -17,7 +17,11 @@ class UsuarioEditType extends AbstractType
             ->add('password', 'password', array('label' => 'Contraseña'))
             ->add('activo')
             ->add('usuario_rol')
+<<<<<<< HEAD
             ->add('idEscuela','entity', array('label' => 'Escuela:',
+=======
+            ->add('idEscuela','entity', array(
+>>>>>>> origin
               'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
             ))
             ->add('Asignatura')
