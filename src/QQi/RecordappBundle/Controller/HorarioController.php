@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use QQi\RecordappBundle\Entity\Horario;
 use QQi\RecordappBundle\Form\HorarioType;
+use QQi\RecordappBundle\Entity\Actividad;
+
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 /**
  * Horario controller.
