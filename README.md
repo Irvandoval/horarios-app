@@ -62,13 +62,17 @@ Ahora solo queda entrar desde un navegador web a http://<ip servidor>/HorariosAp
 5) Usuarios por defecto
 -----------------------
 
-### Credenciales para el usuario Administrador
+### Credenciales para el usuario Planificador
 
- * admin@admin.com / admin
+ * planificador@mail.com / planificador
 
-### Credenciales para el usuario con menos privilegios
+### Credenciales para el usuario administrador de asignaturas
 
- * usuario@usuario.com / usuario
+ * asignatura@mail.com / asignatura
+ 
+ ### Credenciales para el usuario coordinador de horarios
+
+ * horario@mail.com / horario
  
 6) Configuracion postgresql 
 -----------------------

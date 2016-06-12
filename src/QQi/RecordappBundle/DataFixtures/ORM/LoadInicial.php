@@ -99,11 +99,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         for ($i=0; $i < count($carreras) ; $i++) {
          $manager->remove($carreras[$i]);
         }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin
         # Add Rol Administrador
         $rolAdmin = new Rol();
         $rolAdmin->setNombre('ROLE_PLAN');
@@ -132,11 +128,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
                 $carrera->setNombre('(I10515-1998) INGENIERIA DE SISTEMAS INFORMATICOS');
                 $carrera->setIdFacultad($facultad);
                 $manager->persist($carrera);
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin
         # Add Usuario Administrador
         $usuario = new Usuario();
         $usuario->setNombre('Planificador');
@@ -231,7 +223,7 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 																																					 'Comercio Electronico',
 																																					 'Comunicaciones',
 																																					 'Consultoria Profesional',
-																																					 'Diseño de Sistemas II',
+																																					 'Diseï¿½o de Sistemas II',
 																																					 'Estructura de Datos',
 																																					 'Ingenieria de Software',
 																																					 'Metodos Probabilisticos');
@@ -271,9 +263,9 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
 								}
         #Crear estados
         $arrayEstados = array('Ingresado',
-                              'Pendiente Planificación',
-                              'Aprobado Planificación',
-                              'Rechazado Planificación',
+                              'Pendiente Planificaciï¿½n',
+                              'Aprobado Planificaciï¿½n',
+                              'Rechazado Planificaciï¿½n',
                               'Aprobado escuela',
                               'Rechazado escuela',
                               'Aprobado',
@@ -297,7 +289,6 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $dia1 = new Dia();
         $dia1->setNombre('Lunes');
         $manager->persist($dia1);
-<<<<<<< HEAD
 
         $dia2 = new Dia();
         $dia2->setNombre('Martes');
@@ -315,21 +306,8 @@ class LoadInicial implements FixtureInterface, ContainerAwareInterface
         $dia5->setNombre('Viernes');
         $manager->persist($dia5);
 
-=======
-        $dia2 = new Dia();
-        $dia2->setNombre('Martes');
-        $manager->persist($dia2);
-        $dia3 = new Dia();
-        $dia3->setNombre('Miercoles');
-        $manager->persist($dia3);
-        $dia4 = new Dia();
-        $dia4->setNombre('Jueves');
-        $manager->persist($dia4);
-        $dia5 = new Dia();
-        $dia5->setNombre('Viernes');
-        $manager->persist($dia5);
->>>>>>> origin
         $dia6 = new Dia();
+
         $dia6->setNombre('Sabado');
         $manager->persist($dia6);
 #Franjas
