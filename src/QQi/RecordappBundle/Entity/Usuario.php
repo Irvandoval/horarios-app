@@ -90,15 +90,11 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
      */
     private $idEscuela;
 
-
     /**
-     * @ManyToMany(targetEntity="Asignatura", inversedBy="usuario")
-     * @JoinTable(name="users_groups",
-     *      joinColumns={@JoinColumn(name="id_usuario", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_asignatura", referencedColumnName="id")}
-     *      )
-     */
-    public $Asignatura;
+    *@ORM\OneToMany(targetEntity="Asignatura", mappedBy="usuario")
+    */
+    protected $asignatura;
+
 
     public function __construct()
     {

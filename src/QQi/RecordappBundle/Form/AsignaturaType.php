@@ -16,7 +16,10 @@ class AsignaturaType extends AbstractType
             ->add('idEscuela','entity', array('label'=>'Escuelas',
               'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'Elija una Escuela',
             ))
-            ->add('usuario')
+            ->add('usuario','entity', array('label'=>'Usuario',
+              'class' => 'QQiRecordappBundle:Usuario', 'empty_value' => 'Elija un Uusario',
+            ))
+            ->add('demanda','integer',array('label'=>'Demanda',))
 
         ;
     }
@@ -30,6 +33,6 @@ class AsignaturaType extends AbstractType
 
     public function getName()
     {
-        return 'qqi_recordappbundle_asignaturatype';
+        return 'asignaturaedittype';
     }
 }

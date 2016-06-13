@@ -29,7 +29,7 @@ class Asignatura
     /**
      * @var string
      *
-     * @ORM\Column(name="NOMBRE", type="string", length=50, nullable=false)
+     *@ORM\Column(name="NOMBRE", type="string", length=50, nullable=false)
      *@Assert\NotBlank()
      */
     private $nombre;
@@ -46,10 +46,31 @@ class Asignatura
      */
     private $codigo;
 
-    /**
-     * @ManyToMany(targetEntity="Usuario", mappedBy="Asignatura")
-     */
+     /**
+      * @var \Usuario
+      *
+      *@ORM\ManyToOne(targetEntity="Usuario", inversedBy="asignatura")
+      *@ORM\JoinColumns({
+      *@ORM\JoinColumn(name="ID_USUARIO", referencedColumnName="id")
+      * })
+      */
     private $usuario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="DEMANDA", type="integer", nullable=true)
+     *@Assert\NotBlank()
+     */
+    private $demanda;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PENDIENTE", type="integer", nullable=true)
+     */
+    private $pendiente;
+
 
 
 
@@ -298,5 +319,64 @@ class Asignatura
     public function getUsuario()
     {
         return $this->usuario;
+    }
+
+    /**
+     * Set demanda
+     *
+     * @param integer $demanda
+     * @return Asignatura
+     */
+    public function setDemanda($demanda)
+    {
+        $this->demanda = $demanda;
+
+        return $this;
+    }
+
+    /**
+     * Get demanda
+     *
+     * @return integer
+     */
+    public function getDemanda()
+    {
+        return $this->demanda;
+    }
+
+    /**
+     * Set pendiente
+     *
+     * @param integer $pendiente
+     * @return Asignatura
+     */
+    public function setPendiente($pendiente)
+    {
+        $this->pendiente = $pendiente;
+
+        return $this;
+    }
+
+    /**
+     * Get pendiente
+     *
+     * @return integer
+     */
+    public function getPendiente()
+    {
+        return $this->pendiente;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \QQi\RecordappBundle\Entity\Usuario $usuario
+     * @return Asignatura
+     */
+    public function setUsuario(\QQi\RecordappBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
     }
 }

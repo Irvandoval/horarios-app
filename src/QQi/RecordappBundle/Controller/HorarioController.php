@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use QQi\RecordappBundle\Entity\Horario;
 use QQi\RecordappBundle\Form\HorarioType;
 use QQi\RecordappBundle\Entity\Actividad;
+use QQi\RecordappBundle\Entity\Estados;
+
 
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
@@ -77,6 +79,12 @@ class HorarioController extends Controller
         $entity  = new Horario();
         $form = $this->createForm(new HorarioType(), $entity);
         $form->bind($request);
+
+        /** Setear el estado 1= Ingresado
+           */
+          $em = $this->getDoctrine()->getManager();
+          $estado = $em->getRepository('QQiRecordappBundle:Estados')->find(1);
+          $entity->setIdEstado($estado);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -290,7 +298,7 @@ class HorarioController extends Controller
 
         return $response;
     }
-	
+
 	public function reportepdf_Action()
     {
 		$em = $this->getDoctrine()->getManager();
@@ -301,5 +309,4 @@ class HorarioController extends Controller
             'entities' => $entities,
         ));
     }
-	
 }

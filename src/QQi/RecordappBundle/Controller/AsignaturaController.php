@@ -5,6 +5,7 @@ namespace QQi\RecordappBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use QQi\RecordappBundle\Entity\Asignatura;
+use QQi\RecordappBundle\Form\AsignaturaEditType;
 use QQi\RecordappBundle\Form\AsignaturaType;
 
 /**
@@ -69,27 +70,46 @@ class AsignaturaController extends Controller
         $form = $this->createForm(new AsignaturaType(), $entity);
         $form->bind($request);
 
+        $errors=0;
+        $resultado=0;
+        $mje1=' ';
+        $mje2=' ';
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-            $this->get('session')->getFlashBag()->set(
-           'success', array('title' => 'Guardado!  ', 'message' => 'Se ha guardado la asignatura en el sistema')
-           );
-            return $this->redirect($this->generateUrl('asignatura_show', array('id' => $entity->getId())));
-        } else {
-            $asignatura = $entity->getNombre();
+
+            $numero=$entity->getDemanda();
+            $asignatura = $entity->getCodigo();
+
+
             if (!preg_match('/([A-Z]){3}\d{3}$/', $asignatura)) {
-                $this->get('session')->getFlashBag()->set(
-               'error', array('title' => 'Error!  ', 'message' => 'El formato de asignatura es incorrecto')
-               );
+              $errors=1;
+              $mje1='(Error 1: El formato de asignatura es incorrecto)';
             }
 
-            return $this->render('QQiRecordappBundle:Asignatura:new.html.twig', array(
-              'entity' => $entity,
-              'form' => $form->createView(),
-          ));
+
+            if($numero <= 0){
+              $errors=1;
+              $mje2='(Error 2: El numero de grupo debe ser mayor que cero)';
+            }
+
+            if ($errors <= 0) {
+                  $entity->setPendiente($numero);
+                  $em->persist($entity);
+                  $em->flush();
+                  $this->get('session')->getFlashBag()->set(
+                 'success', array('title' => 'Guardado!  ', 'message' => 'Se ha guardado la asignatura en el sistema')
+                 );
+                  return $this->redirect($this->generateUrl('asignatura_show', array('id' => $entity->getId())));
+          }
         }
+        $mensaje='';
+        $mensaje=$mje1.' '.$mje2;
+
+
+                        $this->get('session')->getFlashBag()->set(
+                        'error',array('title' => 'Error!  ','message' => $mensaje)
+                        );
 
         return $this->render('QQiRecordappBundle:Asignatura:new.html.twig', array(
             'entity' => $entity,
@@ -141,7 +161,8 @@ class AsignaturaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('asignatura_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('asignatura_show', array('id' => $entity->getId())));
+            //return $this->redirect($this->generateUrl('asignatura_edit', array('id' => $id)));
         }
 
         return $this->render('QQiRecordappBundle:Asignatura:edit.html.twig', array(
@@ -184,4 +205,62 @@ class AsignaturaController extends Controller
             ->getForm()
         ;
     }
+    public function verAction($id)
+  	{
+  		$asignatura = $this->getDoctrine()
+  				->getRepository('QQiRecordappBundle:Asignatura')
+  				->find($id);
+
+  		if ($asignatura == null) {
+  			return $this->render('QQiRecordappBundle:Default:error.html.twig');
+  		}
+
+          return $this->render('QQiRecordappBundle:Asignatura:ver.html.twig', array(
+              'asignatura' => $asignatura,
+          ));
+  	}
+
+    public function editarAction($id)
+      {
+      	$peticion = $this->get('request');
+      	$em = $this->getDoctrine()->getEntityManager();
+
+
+      	if (null == $asignatura = $em->find('QQiRecordappBundle:Asignatura', $id)) {
+   	    	return $this->render('QQiRecordappBundle:Default:error.html.twig');
+   	    }
+
+   	    $formulario = $this->get('form.factory')->create(new AsignaturaEditType, $asignatura);
+   	    #$formulario->setData($usuario);
+
+   	    if ($peticion->getMethod() == 'POST'){
+   	    	$formulario->bindRequest($peticion);
+   	    	$usuarioAux = $em->find('QQiRecordappBundle:Asignatura', $id);
+   	    	$usuarioAux->setCodigo($formulario->get('codigo')->getData());
+   	    	$usuarioAux->setIdEscuela($formulario->get('idEscuela')->getData());
+   	    	$usuarioAux->setUsuario($formulario->get('usuario')->getData());
+   	    	$usuarioAux->setDemanda($formulario->get('demanda')->getData());
+   	    	$usuarioAux->setGrupo($formulario->get('grupo')->getData());
+          /*
+  			$factory = $this->container->get('security.encoder_factory');
+  			$usuarioAux->setPassword($formulario->get('password')->getData());
+  			$codificador = $factory->getEncoder($usuarioAux);
+  			$password = $codificador->encodePassword($usuarioAux->getPassword(), $usuarioAux->getSalt());
+  			$usuarioAux->setPassword($password);
+
+   	    	/*if ($formulario->isValid()){*/
+   	    		$em->persist($usuarioAux);
+   	    		$em->flush();
+   	    		return $this->redirect($this->generateUrl('admin_usuario_listado'));
+   	    	/*}*/
+   	    }
+
+   	    return $this->render('QQiRecordappBundle:Asignatura:editar.html.twig', array(
+   	    	'formulario' => $formulario->createView(),
+   	    	'asignatura' => $asignatura,
+   	    	));
+
+      }
+
+
 }

@@ -18,7 +18,6 @@ class UsuarioType extends AbstractType
             ->add('idEscuela','entity', array(
               'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
             ))
-            ->add('Asignatura')
             //->add('activo')
             //->add('usuario_rol')
         ;

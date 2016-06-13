@@ -20,8 +20,7 @@ class UsuarioEditType extends AbstractType
             ->add('idEscuela','entity', array('label' => 'Escuela:',
               'class' => 'QQiRecordappBundle:Escuelas', 'empty_value' => 'opciones',
             ))
-            ->add('Asignatura')
-           // ->add('grupo')
+            // ->add('grupo')
         ;
     }
 

@@ -74,14 +74,50 @@ class FacultadController extends Controller
         $entity  = new Facultad();
         $form = $this->createForm(new FacultadType(), $entity);
         $form->bind($request);
+        $errors=0;
+        $resultado=0;
+        $mje1=' ';
 
         if ($form->isValid()) {
+
+
+          $em = $this->getDoctrine()->getManager();
+
+          $nombre = $entity->getNombre();
+
+          $query = $em->createQuery(
+              'SELECT count(p)
+              FROM QQiRecordappBundle:Facultad p
+              WHERE p.nombre = :x'
+          )->setParameter('x',$nombre);
+
+          $resultado = $query->getSingleScalarResult();
+
+          if($resultado >= 1){
+            $errors=1;
+            $mje1='(Error 1: Ya existe un registro con el mismo nombre '.$nombre.') ';
+          }
+
+          if ($errors <= 0) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->set(
+            'success',array('title' => 'Exito!  ','message' => 'Nuevo Facultad Guardada.')
+            );
+
             return $this->redirect($this->generateUrl('facultad_show', array('id' => $entity->getId())));
+          }
         }
+
+        $mensaje='';
+        $mensaje=$mje1;
+
+
+                        $this->get('session')->getFlashBag()->set(
+                        'error',array('title' => 'Error!  ','message' => $mensaje)
+                        );
 
         return $this->render('QQiRecordappBundle:Facultad:new.html.twig', array(
             'entity' => $entity,
@@ -131,12 +167,50 @@ class FacultadController extends Controller
         $editForm = $this->createForm(new FacultadType(), $entity);
         $editForm->bind($request);
 
+
+        $errors=0;
+        $resultado=0;
+        $mje1=' ';
+
+
         if ($editForm->isValid()) {
+
+          $nombre = $entity->getNombre();
+
+          $query = $em->createQuery(
+              'SELECT count(p)
+              FROM QQiRecordappBundle:Facultad p
+              WHERE p.nombre = :x'
+          )->setParameter('x',$nombre);
+
+          $resultado = $query->getSingleScalarResult();
+
+          if($resultado > 1){
+            $errors=1;
+            $mje1='(Error 1: Ya existe un registro con el mismo nombre '.$nombre.') ';
+          }
+
+          if ($errors <= 0) {
+
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('facultad_edit', array('id' => $id)));
+            $this->get('session')->getFlashBag()->set(
+            'success',array('title' => 'Exito!  ','message' => 'Facultad Actualizada.')
+            );
+
+            return $this->redirect($this->generateUrl('facultad_show', array('id' => $entity->getId())));
+            //return $this->redirect($this->generateUrl('facultad_edit', array('id' => $id)));
+          }
         }
+
+        $mensaje='';
+        $mensaje=$mje1;
+
+
+                        $this->get('session')->getFlashBag()->set(
+                        'error',array('title' => 'Error!  ','message' => $mensaje)
+                        );
 
         return $this->render('QQiRecordappBundle:Facultad:edit.html.twig', array(
             'entity'      => $entity,
@@ -164,6 +238,9 @@ class FacultadController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->set(
+            'success',array('title' => 'Exito!  ','message' => 'La facultad ha sido eliminada.')
+            );
         }
 
         return $this->redirect($this->generateUrl('facultad'));

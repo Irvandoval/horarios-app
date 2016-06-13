@@ -6,6 +6,10 @@ asignatura_show:
     pattern:  /asignatura/{id}/show
     defaults: { _controller: QQiRecordappBundle:Asignatura:show }
 
+asignatura_ver:
+    pattern:	/asignatura/ver/{id}
+    defaults:	{ _controller: QQiRecordappBundle:Asignatura:ver }
+
 asignatura_new:
     pattern:  /asignatura/new
     defaults: { _controller: QQiRecordappBundle:Asignatura:new }
@@ -18,6 +22,10 @@ asignatura_create:
 asignatura_edit:
     pattern:  /asignatura/{id}/edit
     defaults: { _controller: QQiRecordappBundle:Asignatura:edit }
+
+asignatura_editar:
+    pattern:	/asignatura/editar/{id}
+    defaults:	{ _controller: QQiRecordappBundle:Asignatura:editar }
 
 asignatura_update:
     pattern:  /asignatura/{id}/update

@@ -102,7 +102,7 @@ class ActividadController extends Controller
 
             $resultado = $query->getSingleScalarResult();
 
-            if($resultado >= 1){
+            if($resultado >= 2){
               $errors=1;
               $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.') ';
             }

@@ -75,13 +75,38 @@ class PensumController extends Controller
         $form = $this->createForm(new PensumType(), $entity);
         $form->bind($request);
 
+        $errors=0;
+        $resultado=0;
+        $mje1=' ';
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
 
-            return $this->redirect($this->generateUrl('pensum_show', array('id' => $entity->getId())));
+            $numero=$entity->getNivel();
+
+            if($numero <= 0 || $numero > 20){
+                $errors=1;
+                $mje1='(Error 1: El nivel debe ser un numero entre 1 y 20)';
+            }
+
+
+          if ($errors <= 0) {
+                  $em->persist($entity);
+                  $em->flush();
+
+
+                  $this->get('session')->getFlashBag()->set(
+                  'success',array('title' => 'Exito!  ','message' => 'El Nuevo Pensum ha sido Guardado.')
+                  );
+                  return $this->redirect($this->generateUrl('pensum_show', array('id' => $entity->getId())));
+          }
         }
+
+        $mensaje='';
+        $mensaje=$mje1;
+              $this->get('session')->getFlashBag()->set(
+              'error',array('title' => 'Error!  ','message' => $mensaje)
+              );
 
         return $this->render('QQiRecordappBundle:Pensum:new.html.twig', array(
             'entity' => $entity,
@@ -135,7 +160,13 @@ class PensumController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('pensum_edit', array('id' => $id)));
+            $this->get('session')->getFlashBag()->set(
+            'success',array('title' => 'Exito!  ','message' => 'El Pensum ha sido Modificado.')
+            );
+
+            //return $this->redirect($this->generateUrl('pensum_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('pensum_show', array('id' => $entity->getId())));
+
         }
 
         return $this->render('QQiRecordappBundle:Pensum:edit.html.twig', array(
@@ -164,6 +195,10 @@ class PensumController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->set(
+            'success',array('title' => 'Exito!  ','message' => 'El Nuevo Pensum ha sido Eliminado.')
+            );
         }
 
         return $this->redirect($this->generateUrl('pensum'));
