@@ -1,0 +1,35 @@
+{% extends "QQiRecordappBundle::layout.html.twig" %}
+
+{% block title %}Edición de asignatura{% endblock %}
+
+{% block body %}
+
+	<!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+      	<h1>asignatura</h1>
+       	<p><a class="btn btn-primary btn-large" href="{{ path('asignatura') }}">Listado &raquo;</a></p>
+    </div>
+
+    <div class="row">
+
+    	<div class="span4">
+          <h2>Modificación de asignatura</h2>
+          <p>Los catálogos de Dominios sirven para agrupar Sitios Webs con temáticas similares, de tal forma que sea más simple categorizarlos y crear las políticas de accesos.</p>
+        </div>
+
+        <div class="span8">
+			{{ form_errors(formulario) }}
+
+			<form class="well" action="{{ path('asignatura_editar', { 'id': asignatura.id }) }}" method="post" {{ form_enctype(formulario) }}>
+			{{ form_widget(formulario) }}
+				<div class="form-actions">
+					<input class="btn btn-success btn-sm" type="submit" value="Modificar">
+					<a class="btn btn-primary btn-sm" href="{{ path('asignatura') }}">
+							Regresar a listado
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}
