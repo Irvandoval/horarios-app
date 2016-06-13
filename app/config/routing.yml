@@ -60,7 +60,7 @@ pensum:
 _horario:
     resource: "@QQiRecordappBundle/Resources/config/routing/horario.yml"
 
-_horarioasignatura:
+_yes:
     resource: "@QQiRecordappBundle/Resources/config/routing/horarioasignatura.yml"
 
 _actividad:

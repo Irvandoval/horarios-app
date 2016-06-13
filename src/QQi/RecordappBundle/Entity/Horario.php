@@ -168,7 +168,7 @@ class Horario
     }
     public function __toString()
     {
-          return $this->fechaCreacion->format('y-m-d');
+          return $this->fechaCreacion->format('y-m-d').' '.$this->getIdEscuela()->getNombre().' '.$this->getIdCiclo()->getNombre();
     }
     /**
      * Constructor
