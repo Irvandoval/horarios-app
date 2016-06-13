@@ -223,7 +223,7 @@ class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
 
     }
 
-    public function equals(IserInterface $user)
+    public function equals(UserInterface $user)
     {
     	return $user->getUsername() == $this->getUsername();
     }
