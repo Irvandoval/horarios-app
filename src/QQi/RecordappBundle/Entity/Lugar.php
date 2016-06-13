@@ -164,7 +164,7 @@ class Lugar
     }
     public function __toString()
     {
-          return $this->nombre;
+          return $this->nombre.'    Cupo '. $this->cupo;
     }
 
 }

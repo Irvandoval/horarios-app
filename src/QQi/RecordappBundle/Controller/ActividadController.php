@@ -80,6 +80,7 @@ class ActividadController extends Controller
         $mje1=' ';
         $mje2=' ';
         $mje3=' ';
+        $mje4=' ';
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -93,18 +94,150 @@ class ActividadController extends Controller
              $franja = $entity->getidFranja();
              $dia = $entity->getidDia();
 
+             $demanda=$entity->getidHoasig()->getidAsignatura()->getDemanda();
+             $cupo = $entity->getidLugar()->getCupo();
 
-            $query = $em->createQuery(
-                'SELECT count(p)
-                FROM QQiRecordappBundle:Actividad p
-                WHERE p.idHoasig = :x and p.idTipoactividad = :y and p.numero_grupo = :z'
-            )->setParameter('x',$materia)->setParameter('y', $tipo)->setParameter('z',$numero);
+             $flag=$demanda/$cupo;
 
-            $resultado = $query->getSingleScalarResult();
+             $grupo= $entity->getidTipoactividad()->getNombre();
 
-            if($resultado >= 2){
+
+            switch ($grupo) {
+                   case 'GT':{
+                       //$mje4='GT';
+                       $query = $em->createQuery(
+                           'SELECT count(p)
+                           FROM QQiRecordappBundle:Actividad p
+                           WHERE p.idHoasig = :a and p.numero_grupo = :c and p.idTipoactividad = :y '
+                       );
+                       $query->setParameter('a',$materia);
+                       $query->setParameter('c',$numero);
+                       $query->setParameter('y',$tipo);
+
+
+                       $resultado = $query->getSingleScalarResult();
+
+                       if($resultado >= 2){
+                         $errors=1;
+                         $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.')'.$resultado;
+                       }
+
+                       $query = $em->createQuery(
+                           'SELECT count(p)
+                           FROM QQiRecordappBundle:Actividad p
+                           WHERE p.idHoasig = :x and p.idTipoactividad = :y '
+                       )->setParameter('x',$materia)->setParameter('y', $tipo);
+
+                       $resultado = $query->getSingleScalarResult();
+
+                       if($resultado >= ceil($flag)*2){
+                         $errors=1;
+                         $mje4='(Error 4: Ya se ha cubierto la demanda para grupos teoricos para '.$materia.' en '.ceil($flag).' grupos) ';
+                       }
+
+                   } //cierre de case
+
+                       break;
+                   case 'GD':{
+                        //$mje4='GD';
+
+                        $query = $em->createQuery(
+                            'SELECT count(p)
+                            FROM QQiRecordappBundle:Actividad p
+                            WHERE p.idHoasig = :a and p.numero_grupo = :c and p.idTipoactividad = :y '
+                        );
+                        $query->setParameter('a',$materia);
+                        $query->setParameter('c',$numero);
+                        $query->setParameter('y',$tipo);
+
+
+                        $resultado = $query->getSingleScalarResult();
+
+                        if($resultado >= 1){
+                          $errors=1;
+                          $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.')';
+                        }
+
+
+
+                        $query = $em->createQuery(
+                            'SELECT count(p)
+                            FROM QQiRecordappBundle:Actividad p
+                            WHERE p.idHoasig = :x and p.idTipoactividad = :y '
+                        )->setParameter('x',$materia)->setParameter('y', $tipo);
+
+                        $resultado = $query->getSingleScalarResult();
+
+                        if($resultado >= ceil($flag)){
+                          $errors=1;
+                          $mje4='(Error 4: Ya se ha cubierto la demanda para grupos de discusion para '.$materia.' en '.ceil($flag).' grupos) ';
+                        }
+
+                   }
+
+                       break;
+                   case 'GL':{
+                        //$mje4='GL';
+
+                        $query = $em->createQuery(
+                            'SELECT count(p)
+                            FROM QQiRecordappBundle:Actividad p
+                            WHERE p.idHoasig = :a and p.numero_grupo = :c and p.idTipoactividad = :y '
+                        );
+                        $query->setParameter('a',$materia);
+                        $query->setParameter('c',$numero);
+                        $query->setParameter('y',$tipo);
+
+
+                        $resultado = $query->getSingleScalarResult();
+
+                        if($resultado >= 1){
+                          $errors=1;
+                          $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.')'.$resultado;
+                        }
+
+                        $query = $em->createQuery(
+                            'SELECT count(p)
+                            FROM QQiRecordappBundle:Actividad p
+                            WHERE p.idHoasig = :x and p.idTipoactividad = :y '
+                        )->setParameter('x',$materia)->setParameter('y', $tipo);
+
+                        $resultado = $query->getSingleScalarResult();
+
+                        if($resultado >= ceil($flag)){
+                          $errors=1;
+                          $mje4='(Error 4: Ya se ha cubierto la demanda para grupos de laboratorio para '.$materia.' en '.ceil($flag).' grupos) ';
+                        }
+
+
+                   }
+
+                       break;
+               }
+
+
+
+/*
+
+             $query = $em->createQuery(
+                 'SELECT count(p)
+                 FROM QQiRecordappBundle:Actividad p
+                 WHERE p.idHoasig = :x and p.idTipoactividad = :y '
+             )->setParameter('x',$materia)->setParameter('y', $tipo);
+
+             $resultado = $query->getSingleScalarResult();
+
+             if($resultado >= .ceil($flag)*2){
+               $errors=1;
+               $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.') '.$cupo;
+             }
+
+*/
+
+
+            if($resultado > 1){
               $errors=1;
-              $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.') ';
+              $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.')';
             }
 
             if($numero <= 0){
@@ -149,7 +282,7 @@ class ActividadController extends Controller
 
 
 $mensaje='';
-$mensaje=$mje1.' '.$mje2.' '.$mje3;
+$mensaje=$mje1.' '.$mje2.' '.$mje3.' '.$mje4;
 
 
                 $this->get('session')->getFlashBag()->set(
@@ -217,6 +350,12 @@ $mensaje=$mje1.' '.$mje2.' '.$mje3;
               $franja = $entity->getidFranja();
               $dia = $entity->getidDia();
 
+
+              $demanda=$entity->getidHoasig()->getidAsignatura()->getDemanda();
+              $cupo = $entity->getidLugar()->getCupo();
+
+              $flag=$demanda/$cupo;
+
               $query = $em->createQuery('SELECT count(p)
               FROM QQiRecordappBundle:Actividad p
               WHERE p.idLugar = :x and p.idFranja = :y and p.idDia = :z'
@@ -226,16 +365,94 @@ $mensaje=$mje1.' '.$mje2.' '.$mje3;
                   $errors=1;
                   $mje1='(Error 1: Ya existe una actividad en el mismo local, dia y hora) ';
               }
-              $query = $em->createQuery('SELECT count(p)
-              FROM QQiRecordappBundle:Actividad p
-              WHERE p.idHoasig = :x and p.idTipoactividad = :y and p.numero_grupo = :z'
-              )->setParameter('x',$materia)->setParameter('y', $tipo)->setParameter('z',$numero);
-              $resultado = $query->getSingleScalarResult();
 
-              if($resultado > 1){
-                  $errors=1;
-                  $mje2='(Error 2: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.') ';
-              }
+
+
+              $grupo= $entity->getidTipoactividad()->getNombre();
+
+
+              switch ($grupo) {
+                    case 'GT':{
+                        //$mje4='GT';
+                        $query = $em->createQuery(
+                            'SELECT count(p)
+                            FROM QQiRecordappBundle:Actividad p
+                            WHERE p.idHoasig = :a and p.numero_grupo = :c and p.idTipoactividad = :y '
+                        );
+                        $query->setParameter('a',$materia);
+                        $query->setParameter('c',$numero);
+                        $query->setParameter('y',$tipo);
+
+
+                        $resultado = $query->getSingleScalarResult();
+
+                        if($resultado > 2){
+                          $errors=1;
+                          $mje1='(Error 2: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.')'.$resultado;
+                        }
+
+                    } //cierre de case
+
+                        break;
+                    case 'GD':{
+                         //$mje4='GD';
+
+                         $query = $em->createQuery(
+                             'SELECT count(p)
+                             FROM QQiRecordappBundle:Actividad p
+                             WHERE p.idHoasig = :a and p.numero_grupo = :c and p.idTipoactividad = :y '
+                         );
+                         $query->setParameter('a',$materia);
+                         $query->setParameter('c',$numero);
+                         $query->setParameter('y',$tipo);
+
+
+                         $resultado = $query->getSingleScalarResult();
+
+                         if($resultado > 1){
+                           $errors=1;
+                           $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.')';
+                         }
+
+                    }
+
+                        break;
+                    case 'GL':{
+                         //$mje4='GL';
+
+                         $query = $em->createQuery(
+                             'SELECT count(p)
+                             FROM QQiRecordappBundle:Actividad p
+                             WHERE p.idHoasig = :a and p.numero_grupo = :c and p.idTipoactividad = :y '
+                         );
+                         $query->setParameter('a',$materia);
+                         $query->setParameter('c',$numero);
+                         $query->setParameter('y',$tipo);
+
+
+                         $resultado = $query->getSingleScalarResult();
+
+                         if($resultado > 1){
+                           $errors=1;
+                           $mje1='(Error 1: Ya existe un grupo '.$tipo.' '.$numero.' para la materia '.$materia.')'.$resultado;
+                         }
+
+                    }
+
+                        break;
+                }
+
+
+
+
+
+
+
+
+
+
+
+
               if($numero <= 0){
                   $errors=1;
                   $mje2='(Error 3: El numero de grupo debe ser mayor que cero)';
