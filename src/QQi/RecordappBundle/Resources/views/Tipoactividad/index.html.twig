@@ -8,7 +8,7 @@
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="hero-unit">
     <h3>Tipoactividad</h3>
-        <p><a class="btn btn-primary btn-large" href="{{ path('tipoactividad_new') }}">Nuevo &raquo;</a></p>
+      <!--  <p><a class="btn btn-primary btn-large" href="{{ path('tipoactividad_new') }}">Nuevo &raquo;</a></p> -->
     </div>
 
 <!-- Example row of columns -->
@@ -30,7 +30,7 @@
             <td>{{ entity.nombre }}</td>
             <td>
                     <a href="{{ path('tipoactividad_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
-                    <a href="{{ path('tipoactividad_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> edit</a>
+                    <!-- <a href="{{ path('tipoactividad_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> edit</a> -->
             </td>
         </tr>
     {% endfor %}
