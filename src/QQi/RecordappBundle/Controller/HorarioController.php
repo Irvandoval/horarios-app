@@ -81,6 +81,37 @@ class HorarioController extends Controller
             'actividadeshorario' => $listadoActividades,
         ));
     }
+
+
+    /**
+     * Cambiar estado al horario
+     *
+     */
+    public function cambiar_estadoAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('QQiRecordappBundle:Horario')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Horario entity.');
+        }
+        $editForm = $this->createForm(new HorarioType(), $entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        /** Setear el estado 7= Aprobado
+         */
+        $estado = $em->getRepository('QQiRecordappBundle:Estados')->find(7);
+        $entity->setIdEstado($estado);
+        $em->persist($entity);
+        $em->flush();
+
+        return $this->render('QQiRecordappBundle:Horario:show.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+    
     /**
      * Displays a form to create a new Horario entity.
      *

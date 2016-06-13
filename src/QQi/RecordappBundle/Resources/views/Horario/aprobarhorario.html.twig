@@ -45,6 +45,14 @@
                     </tbody>
                 </table>
 
+                <a class="btn btn-primary btn-sm" href="{{ path('horario') }}">
+                    Regresar a listado
+                </a>
+
+                <a class="btn btn-success btn-sm"  href="{{ path('cambiar_estado', { 'id': entity.id }) }}">
+                    Aprobar
+                </a>
+
             </div>
         </div>
 
@@ -107,15 +115,6 @@
                 </table>
 
             </div>
-
-
-<a class="btn btn-primary btn-sm" href="{{ path('horario') }}">
-    Regresar a listado
-</a>
-
-<a class="btn btn-success btn-sm"  href="{{ path('horario_edit', { 'id': entity.id }) }}">
-    Aprobar
-</a>
 
 
 </div>

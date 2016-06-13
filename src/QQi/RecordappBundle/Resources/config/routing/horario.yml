@@ -33,6 +33,10 @@ aprobar_horarios:
     pattern:  /horario/{id}/aprobar_horarios
     defaults: { _controller: QQiRecordappBundle:Horario:aprobar_horarios }
 
+cambiar_estado:
+    pattern:  /horario/{id}/cambiar_estado
+    defaults: { _controller: QQiRecordappBundle:Horario:cambiar_estado }
+
 horario_reporte:
     pattern:  /horario/{id}/reporte
     defaults: { _controller: QQiRecordappBundle:Horario:reporte_h_ }
