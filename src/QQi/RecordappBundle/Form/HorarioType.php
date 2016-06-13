@@ -16,9 +16,9 @@ class HorarioType extends AbstractType
                 'input'  => 'datetime',
                 'widget' => 'single_text',
             ))
-            ->add('idEstado','entity', array('label'=>'Estado',
+           /* ->add('idEstado','entity', array('label'=>'Estado',
               'class' => 'QQiRecordappBundle:Estados', 'empty_value' => 'opciones',
-            ))
+            ))*/
             ->add('idCiclo','entity', array('label'=>'Ciclo',
               'class' => 'QQiRecordappBundle:Ciclo', 'empty_value' => 'opciones',
             ))
