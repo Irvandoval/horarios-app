@@ -49,6 +49,13 @@
             <td>
                     <a href="{{ path('horario_show', { 'id': entity.id }) }}"><i class="icon-th-list"></i> show</a>
                     <a href="{{ path('horario_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i> edit</a>
+                    <a href="{{ path('horario_pdf',  { 'id': entity.id }) }}"><i class="icon-print"></i> PDF</a>
+                    <a href="{{ path('horario_reporte',  { 'id': entity.id }) }}"><i class="icon-print"></i> XLS</a>
+
+                {% if is_granted('ROLE_HORA') %}
+                    <a href="{{ path('aprobar_horarios', { 'id': entity.id }) }}"><i class="icon-camera"></i> Revisar</a>
+                {% endif %}
+
             </td>
         </tr>
     {% endfor %}

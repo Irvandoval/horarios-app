@@ -1,18 +1,12 @@
 <?php
-
 namespace QQi\RecordappBundle\Controller;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use QQi\RecordappBundle\Entity\Horario;
 use QQi\RecordappBundle\Form\HorarioType;
 use QQi\RecordappBundle\Entity\Actividad;
 use QQi\RecordappBundle\Entity\Estados;
-
-
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-
 /**
  * Horario controller.
  *
@@ -26,14 +20,11 @@ class HorarioController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('QQiRecordappBundle:Horario')->findAll();
-
         return $this->render('QQiRecordappBundle:Horario:index.html.twig', array(
             'entities' => $entities,
         ));
     }
-
     /**
      * Finds and displays a Horario entity.
      *
@@ -41,20 +32,55 @@ class HorarioController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('QQiRecordappBundle:Horario')->find($id);
-
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Horario entity.');
+        }
+        $deleteForm = $this->createDeleteForm($id);
+      return $this->render('QQiRecordappBundle:Horario:show.html.twig', array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
+            ));
+    }
+    /**
+     * Aprobar horarios
+     */
+    public function aprobar_horariosAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('QQiRecordappBundle:Horario')->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Horario entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('QQiRecordappBundle:Horario:show.html.twig', array(
+        /**
+         * Cargar la lista de actividades del horario
+         */
+      /*  $repositorio = $this->getDoctrine()->getRepository('QQiRecordappBundle:Actividad');
+        $query = $repositorio->createQueryBuilder('a')
+            ->innerjoin('a.Horarioasignatura', 'ha')
+            ->where('ha.id_horario = :h')
+             ->andWhere('t.estado = True')
+            ->setParameter('h', $id)
+            ->orderBy('ha.id_asignatura', 'DESC')
+            ->getQuery();*/
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT a
+           FROM QQiRecordappBundle:Actividad a
+		   JOIN a.idHoasig has
+		   JOIN has.idHorario idh
+           WHERE idh.id = :id_'
+        )->setParameter('id_', $id );
+        $listadoActividades = $query->getResult();
+        /**
+         * Fin cargar lista de actividades
+         */
+        return $this->render('QQiRecordappBundle:Horario:aprobarhorario.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'actividadeshorario' => $listadoActividades,
+        ));
     }
-
     /**
      * Displays a form to create a new Horario entity.
      *
@@ -63,13 +89,11 @@ class HorarioController extends Controller
     {
         $entity = new Horario();
         $form   = $this->createForm(new HorarioType(), $entity);
-
         return $this->render('QQiRecordappBundle:Horario:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
-
     /**
      * Creates a new Horario entity.
      *
@@ -81,25 +105,21 @@ class HorarioController extends Controller
         $form->bind($request);
 
         /** Setear el estado 1= Ingresado
-           */
-          $em = $this->getDoctrine()->getManager();
-          $estado = $em->getRepository('QQiRecordappBundle:Estados')->find(1);
-          $entity->setIdEstado($estado);
-
+         */
+        $em = $this->getDoctrine()->getManager();
+        $estado = $em->getRepository('QQiRecordappBundle:Estados')->find(1);
+        $entity->setIdEstado($estado);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
             return $this->redirect($this->generateUrl('horario_show', array('id' => $entity->getId())));
         }
-
         return $this->render('QQiRecordappBundle:Horario:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
-
     /**
      * Displays a form to edit an existing Horario entity.
      *
@@ -107,23 +127,18 @@ class HorarioController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('QQiRecordappBundle:Horario')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Horario entity.');
         }
-
         $editForm = $this->createForm(new HorarioType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('QQiRecordappBundle:Horario:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Edits an existing Horario entity.
      *
@@ -131,31 +146,24 @@ class HorarioController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('QQiRecordappBundle:Horario')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Horario entity.');
         }
-
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new HorarioType(), $entity);
         $editForm->bind($request);
-
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
-
             return $this->redirect($this->generateUrl('horario_edit', array('id' => $id)));
         }
-
         return $this->render('QQiRecordappBundle:Horario:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a Horario entity.
      *
@@ -164,22 +172,17 @@ class HorarioController extends Controller
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
-
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('QQiRecordappBundle:Horario')->find($id);
-
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Horario entity.');
             }
-
             $em->remove($entity);
             $em->flush();
         }
-
         return $this->redirect($this->generateUrl('horario'));
     }
-
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))
@@ -187,38 +190,36 @@ class HorarioController extends Controller
             ->getForm()
         ;
     }
-	/***********************************************/
-    public function reporte_h_Action()
+    /***********************************************/
+    public function reporte_h_Action($id )
     {
-		/*$alumnos = array(
-		array("matricula"=>1,"nombre"=>"Prueba1"),
-		array("matricula"=>1,"nombre"=>"Prueba2")
-		);
+        /*$alumnos = array(
+        array("matricula"=>1,"nombre"=>"Prueba1"),
+        array("matricula"=>1,"nombre"=>"Prueba2")
+        );
         return $this->render('QQiRecordappBundle:Default:alumnos.html.twig', array("alumnos"=>$alumnos));*/
-
-		// ask the service for a Excel5
-		$em = $this->getDoctrine()->getManager();
-		 $query = $em->getRepository('QQiRecordappBundle:Actividad')
-            ->createQueryBuilder('e')
-            ->getQuery();
-
+        // ask the service for a Excel5
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT a , has , idh
+           FROM QQiRecordappBundle:Actividad a
+		   JOIN a.idHoasig has
+		   JOIN has.idHorario idh
+           WHERE idh.id = :id_'
+        )->setParameter('id_', $id );
         $result = $query->getResult();
-
-       $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
-       $phpExcelObject->getActiveSheet()->mergeCells('D3:L3');//Para combinar las celdas
-      // $phpExcelObject->getActiveSheet()->mergeCells('D4:L4');
-    //   $phpExcelObject->getActiveSheet()->mergeCells('D5:L5');
-
-
-       $phpExcelObject->getProperties()->setCreator("liuggio")
-           ->setLastModifiedBy("Giulio De Donato")
-           ->setTitle("Office 2005 XLSX Test Document")
-           ->setSubject("Office 2005 XLSX Test Document")
-           ->setDescription("Test document for Office 2005 XLSX, generated using PHP classes.")
-           ->setKeywords("office 2005 openxml php")
-           ->setCategory("Test result file");
-
-		   $phpExcelObject->setActiveSheetIndex(0)
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
+        $phpExcelObject->getActiveSheet()->mergeCells('D3:L3');//Para combinar las celdas
+        // $phpExcelObject->getActiveSheet()->mergeCells('D4:L4');
+        //   $phpExcelObject->getActiveSheet()->mergeCells('D5:L5');
+        $phpExcelObject->getProperties()->setCreator("liuggio")
+            ->setLastModifiedBy("Giulio De Donato")
+            ->setTitle("Office 2005 XLSX Test Document")
+            ->setSubject("Office 2005 XLSX Test Document")
+            ->setDescription("Test document for Office 2005 XLSX, generated using PHP classes.")
+            ->setKeywords("office 2005 openxml php")
+            ->setCategory("Test result file");
+        $phpExcelObject->setActiveSheetIndex(0)
             ->setCellValue('D3', 'UNIVERSIDAD DE EL SALVADOR')
             ->setCellValue('D4', 'FACULTAD DE INGENIERIA Y ARQUITECTURA')
             ->setCellValue('D5', 'UNIDAD DE MANTENIMIENTO')
@@ -231,12 +232,10 @@ class HorarioController extends Controller
             ->setCellValue('H7', 'DIA')
             ->setCellValue('I7', 'HORA INICIO')
             ->setCellValue('J7', 'HORA FIN')
-            ;
-
-
-       $phpExcelObject->getActiveSheet()->setTitle('Simple');
-       // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-	   $phpExcelObject->setActiveSheetIndex(0)
+        ;
+        $phpExcelObject->getActiveSheet()->setTitle('Simple');
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $phpExcelObject->setActiveSheetIndex(0)
             ->getColumnDimension('B')
             ->setWidth(5);
         $phpExcelObject->setActiveSheetIndex(0)
@@ -245,9 +244,9 @@ class HorarioController extends Controller
         $phpExcelObject->setActiveSheetIndex(0)
             ->getColumnDimension('D')
             ->setWidth(50);
-            $phpExcelObject->setActiveSheetIndex(0)
-                ->getColumnDimension('E')
-                ->setWidth(12);
+        $phpExcelObject->setActiveSheetIndex(0)
+            ->getColumnDimension('E')
+            ->setWidth(12);
         $phpExcelObject->setActiveSheetIndex(0)
             ->getColumnDimension('F')
             ->setWidth(12);
@@ -263,25 +262,21 @@ class HorarioController extends Controller
         $phpExcelObject->setActiveSheetIndex(0)
             ->getColumnDimension('J')
             ->setWidth(12);
-
-        	   $row = 8;
+        $row = 8;
         foreach ($result as $item) {
             $phpExcelObject->setActiveSheetIndex(0)
-               ->setCellValue('B'.$row, $item->getId())
-               ->setCellValue('C'.$row, $item->getidHoasig()->getidAsignatura()->getCodigo())
-               ->setCellValue('D'.$row, $item->getidHoasig()->getidAsignatura()->getNombre())
-               ->setCellValue('E'.$row, $item->getidTipoactividad().': '.$item->getnumerogrupo())
-               ->setCellValue('F'.$row, $item->getidLugar())
-               ->setCellValue('G'.$row, $item->getidLugar()->getCupo())
-               ->setCellValue('H'.$row, $item->getidDia()->getNombre())
-               ->setCellValue('I'.$row, $item->getidFranja()->getHoraInicio()->format('G:ia'))
-               ->setCellValue('J'.$row, $item->getidFranja()->getHoraFin()->format('G:ia'))
-                ;
-
-
+                ->setCellValue('B'.$row, $item->getId())
+                ->setCellValue('C'.$row, $item->getidHoasig()->getidAsignatura()->getCodigo())
+                ->setCellValue('D'.$row, $item->getidHoasig()->getidAsignatura()->getNombre())
+                ->setCellValue('E'.$row, $item->getidTipoactividad().': '.$item->getnumerogrupo())
+                ->setCellValue('F'.$row, $item->getidLugar())
+                ->setCellValue('G'.$row, $item->getidLugar()->getCupo())
+                ->setCellValue('H'.$row, $item->getidDia()->getNombre())
+                ->setCellValue('I'.$row, $item->getidFranja()->getHoraInicio()->format('G:ia'))
+                ->setCellValue('J'.$row, $item->getidFranja()->getHoraFin()->format('G:ia'))
+            ;
             $row++;
         }
-
         // create the writer
         $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
         // create the response
@@ -289,22 +284,25 @@ class HorarioController extends Controller
         // adding headers
         $dispositionHeader = $response->headers->makeDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            'stream-file.xls'
+            'HORARIO-ESCUELA-.xls'
         );
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
         $response->headers->set('Content-Disposition', $dispositionHeader);
-
         return $response;
     }
-
-	public function reportepdf_Action()
+    public function reportepdf_Action($id)
     {
-		$em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('QQiRecordappBundle:Actividad')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT a , has , idh
+           FROM QQiRecordappBundle:Actividad a
+		   JOIN a.idHoasig has
+		   JOIN has.idHorario idh
+           WHERE idh.id = :id_'
+        )->setParameter('id_', $id );
+        $entities = $query->getResult();
         return $this->render('QQiRecordappBundle:Horario:horarioPdf.html.twig', array(
             'entities' => $entities,
         ));
